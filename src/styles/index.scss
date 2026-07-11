@@ -1,5 +1,5 @@
-@import './reset.scss';
-@import './vars.scss';
+@use './reset.scss';
+@use './vars.scss';
 
 a:focus-visible,
 button:focus-visible,
