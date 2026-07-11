@@ -1,0 +1,31 @@
+
+.link-btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 10px;
+  height: 45px;
+  padding: 0 24px;
+  color: var(--text);
+  border: 3px solid var(--gold);
+  border-radius: 5px;
+  cursor: pointer; 
+  line-height: 1; 
+
+  &:hover {
+  color: var(--gold);
+  }
+
+  &__text,
+  &__arrow {
+  display: flex;
+  align-items: center;
+
+  & svg {
+    display: block;
+    color: var(--gold);
+    width: 18px;
+    height: 18px;
+  }
+  }
+}

@@ -1,0 +1,28 @@
+:root {
+  --white: #fefefe;
+  --text-h: #dedae4;
+  --bg-dark: #15171a;
+  --gold: #B48E50;
+  --border: rgba(255, 255, 255, .12);
+  --placeholder: rgba(255, 255, 255, .45);
+  --shadow:
+    rgba(0, 0, 0, 0.1) 0 10px 15px -3px, rgba(0, 0, 0, 0.05) 0 4px 6px -2px;
+
+  --serif: "Cormorant Garamond", serif;
+  --sans: system-ui, 'Segoe UI', Roboto, sans-serif;
+  --heading: system-ui, 'Segoe UI', Roboto, sans-serif;
+
+  font-family: var(--sans);
+  font-size: 18px;
+  line-height: 1.45;
+  letter-spacing: 0.18px;
+  color: var(--white);
+  font-synthesis: none;
+  text-rendering: optimizeLegibility;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+
+  @media (max-width: 1024px) {
+    font-size: 16px;
+  }
+}

@@ -1,0 +1,44 @@
+.header {
+  box-shadow: 0 0 8px rgba(0, 0, 0, .7);
+  background-color: rgb(15, 15, 15);
+  padding: 10px 0;
+  position: fixed;
+  inset: 0 0 auto 0;
+  width: 100%;
+  z-index: 1000;
+  border-bottom: 2px solid var(--border);
+
+  &__row {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  }
+
+  &__logo {
+    width: 115px;
+
+  & img {
+  display: block;
+  width: 100%;
+  height: auto;
+    }
+  }
+
+  &__nav-list {
+    display: flex;
+    gap: 20px;
+    align-items: center;
+  }
+
+  &__nav-link {
+    display: inline-block;
+    padding-bottom: 5px;
+    border-bottom: 3px solid transparent;
+
+  &:hover {
+      color: var(--gold);
+      border-bottom-color: var(--gold);
+    }
+  }
+}
+

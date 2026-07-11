@@ -1,0 +1,68 @@
+.image-modal {
+  position: fixed;
+  inset: 0;
+
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+  padding: 40px;
+
+  background: rgba(0, 0, 0, .92);
+
+  z-index: 9999;
+
+  animation: fadeIn .25s ease;
+}
+
+.image-modal__content {
+  position: relative;
+
+  max-width: 95vw;
+  max-height: 95vh;
+}
+
+.image-modal__content img {
+  display: block;
+
+  max-width: 100%;
+  max-height: 90vh;
+
+  border-radius: 10px;
+}
+
+.image-modal__close {
+  position: absolute;
+
+  top: -16px;
+  right: -16px;
+
+  width: 42px;
+  height: 42px;
+
+  border: none;
+  border-radius: 50%;
+
+  cursor: pointer;
+
+  font-size: 22px;
+
+  background: var(--gold);
+  color: black;
+
+  transition: transform .2s ease;
+}
+
+.image-modal__close:hover {
+  transform: rotate(90deg);
+}
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+  }
+
+  to {
+    opacity: 1;
+  }
+}

@@ -1,0 +1,39 @@
+@import './reset.scss';
+@import './vars.scss';
+
+a:focus-visible,
+button:focus-visible,
+input:focus-visible,
+textarea:focus-visible,
+select:focus-visible {
+  outline: 2px solid var(--gold);
+  outline-offset: 3px;
+}
+
+a {
+  color: inherit;
+  transition:
+    color .2s ease,
+    background-color .2s ease,
+    border-color .2s ease;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+.container {
+  width: 100%;
+  max-width: 1400px;
+  margin: 0 auto;
+  padding: 0 20px;
+}
+
+section[id] {
+  scroll-margin-top: 65px;
+}
+
+::selection {
+  background: var(--gold);
+  color: var(--bg-dark);
+}

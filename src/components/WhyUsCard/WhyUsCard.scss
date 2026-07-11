@@ -1,0 +1,59 @@
+.whyUsCard {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+
+  padding: 10px 22px;
+
+  text-align: center;
+
+  border-right: 2px solid var(--text-h);
+
+  transition: transform .35s ease;
+
+  &:last-child {
+    border-right: none;
+  }
+
+  &:hover {
+    transform: translateY(-6px);
+
+    .whyUsCard__icon {
+      transform: scale(1.1);
+    }
+
+    .whyUsCard__title {
+      color: var(--gold);
+    }
+  }
+
+  &__icon {
+    width: 42px;
+    height: 42px;
+
+    margin-bottom: 18px;
+
+    color: var(--gold);
+
+    transition: transform .35s ease;
+  }
+
+  &__title {
+    margin-bottom: 14px;
+
+    color: var(--bg-dark);
+
+    font-size: 16px;
+    font-weight: 600;
+    line-height: 1.5;
+
+    transition: color .35s ease;
+  }
+
+  &__text {
+    color: var(--border);
+
+    font-size: 14px;
+    line-height: 1.8;
+  }
+}

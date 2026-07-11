@@ -1,0 +1,111 @@
+
+
+.service-card {
+  display: flex;
+  flex-direction: column;
+
+  background: var(--text-h);
+  border-radius: 12px;
+  overflow: hidden;
+
+  box-shadow: 0 10px 40px rgba(0, 0, 0, .06);
+
+  transition:
+    transform .45s cubic-bezier(.22, .61, .36, 1),
+    box-shadow .45s ease;
+
+  &:hover {
+    transform: translateY(-12px);
+    box-shadow: 0 22px 60px rgba(0, 0, 0, .15);
+  }
+}
+/*
+.service-card:hover .service-card__image img {
+  transform: scale(1.08);
+}*/
+
+.service-card__content {
+  display: flex;
+  flex-direction: column;
+  flex: 1;
+  padding: 32px;
+}
+
+.service-card__title {
+  font-size: 30px;
+  line-height: 1.25;
+  font-weight: 500;
+  margin-bottom: 28px;
+  color: var(--bg-dark);
+}
+
+.service-card__link {
+  display: inline-flex;
+  align-items: center;
+  gap: 12px;
+  position: relative;
+  width: fit-content;
+  text-decoration: none;
+  color: var(--gold);
+  font-size: 13px;
+  text-transform: uppercase;
+  letter-spacing: 3px;
+  font-weight: 600;
+  margin-top: auto;
+}
+
+.service-card__link::after {
+  content: "";
+  position: absolute;
+  left: 0;
+  right: 0;     // замість width
+  bottom: -8px;
+  height: 1px;
+  background: var(--gold);
+
+  transform: scaleX(0);
+  transform-origin: left;
+  transition: transform .35s ease;
+}
+
+.service-card:hover .service-card__link::after {
+  transform: scaleX(1);
+}
+
+.service-card__arrow {
+  transition: transform .35s ease;
+}
+
+.service-card:hover .service-card__arrow {
+  transform: translateX(8px);
+}
+
+.service-card__image {
+  position: relative;
+  overflow: hidden;
+  height: 280px;
+  img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  transition: transform .35s ease;;
+  }
+
+  &::before {
+    content: "";
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(
+      to top,
+      rgba(0, 0, 0, .15),
+      transparent
+    );
+    opacity: 0;
+    transition: opacity .4s;
+  }
+}
+
+.service-card:hover .service-card__image::before {
+  opacity: 1;
+}
+

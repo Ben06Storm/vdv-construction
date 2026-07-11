@@ -1,0 +1,22 @@
+.contactInfo {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+
+  & + & {
+    margin-top: 22px;
+  }
+
+  &__icon {
+    flex-shrink: 0;
+
+    color: var(--gold);
+  }
+
+  &__text {
+    color: var(--white);
+
+    font-size: 18px;
+    line-height: 1.6;
+  }
+}

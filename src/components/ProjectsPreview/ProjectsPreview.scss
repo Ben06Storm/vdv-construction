@@ -1,0 +1,26 @@
+.projects-preview {
+  background: var(--bg-dark);
+  padding-top: 40px;
+  border-bottom: 2px solid var(--border);
+
+  &__wrapper {
+    display: grid;
+    grid-template-columns: 26% 74%;
+  }
+
+  &__intro {
+    padding: 20px 0;
+
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+
+    border-right: 1px solid var(--border);
+  }
+
+  &__gallery {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+    gap: 8px;
+  }
+}
