@@ -1,13 +1,17 @@
 
 import './LinkButton.scss';
 
-type ButtonProps = {
+type LinkButtonProps = {
   text: string;
   href: string;
   showArrow?: boolean;
 };
 
-const LinkButton = ({ text, href, showArrow}: ButtonProps) => {
+const LinkButton = ({ 
+  text, 
+  href, 
+  showArrow,
+}: LinkButtonProps) => {
   return (
     <a href={href} className="link-btn">
       <span className="link-btn__text">

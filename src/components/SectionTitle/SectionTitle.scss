@@ -1,6 +1,7 @@
 .section-title {
   display: flex;
   flex-direction: column;
+  color: var(--bg-dark);
 
   &--centered {
     align-items: center;
@@ -8,16 +9,13 @@
   }
 
   &--light {
-    .section-title__title {
-      color: var(--white);
-    }
+    color: var(--white);
   }
 
-  &--dark {
-    .section-title__title {
-      color: var(--bg-dark);
-    }
+  &__title {
+    color: inherit;
   }
+
 
   &__subtitle {
     margin-bottom: 18px;
@@ -37,8 +35,7 @@
     padding-bottom: 32px;
 
     font-family: var(--serif);
-    font-size: 44px;
-    //font-size: clamp(44px, 5vw, 64px);
+    font-size: clamp(36px, 5vw, 44px);
     font-weight: 500;
     line-height: 1.05;
 

@@ -1,38 +1,4 @@
-/*import './ProjectPreviewCard.scss';
 
-type ProjectCardProps = {
-  image: string;
-  title: string;
-  category: string;
-};
-
-const ProjectPreviewCard = ({
-  image,
-  title,
-  category,
-}: ProjectCardProps) => {
-  return (
-    <article className="project-preview-card">
-      <img
-        src={image}
-        alt={title}
-        className="project-preview-card__image"
-      />
-
-      <div className="project-preview-card__content">
-        <h3 className="project-preview-card__title">
-          {title}
-        </h3>
-
-        <p className="project-preview-card__category">
-          {category}
-        </p>
-      </div>
-    </article>
-  );
-};
-
-export default ProjectPreviewCard;*/
 
 import './ProjectPreviewCard.scss';
 
@@ -51,14 +17,18 @@ const ProjectPreviewCard = ({
 }: ProjectPreviewCardProps) => {
   return (
     <article className="project-preview-card">
-      <div className="project-preview-card__image"
+      <button
+        type="button"
+        className="project-preview-card__image"
         onClick={() => onImageClick(image, title)}
-        >
+        aria-label={`Open ${title} image`}
+      >
         <img
           src={image}
           alt={title}
+          loading="lazy"
         />
-      </div>
+      </button>
 
       <div className="project-preview-card__content">
         <p className="project-preview-card__category">

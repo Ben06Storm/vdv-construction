@@ -1,44 +1,73 @@
 .header {
-  box-shadow: 0 0 8px rgba(0, 0, 0, .7);
-  background-color: rgb(15, 15, 15);
-  padding: 10px 0;
   position: fixed;
-  inset: 0 0 auto 0;
+  inset: 0 0 auto;
+
   width: 100%;
-  z-index: 1000;
+
+  padding: 8px 0;
+
+  background: var(--bg-dark);
+
   border-bottom: 2px solid var(--border);
+
+  box-shadow: var(--shadow);
+
+  z-index: var(--z-header);
 
   &__row {
     display: flex;
-    justify-content: space-between;
     align-items: center;
+    justify-content: space-between;
+    gap: clamp(24px, 4vw, 34px);
   }
 
   &__logo {
-    width: 115px;
+    width: clamp(110px, 9vw, 130px);
 
-  & img {
-  display: block;
-  width: 100%;
-  height: auto;
+    img {
+      display: block;
+      width: 100%;
+      height: auto;
     }
   }
 
   &__nav-list {
     display: flex;
-    gap: 20px;
     align-items: center;
+    gap: clamp(18px, 2vw, 32px);
   }
 
   &__nav-link {
     display: inline-block;
-    padding-bottom: 5px;
+
+    padding: 8px 0;
+
     border-bottom: 3px solid transparent;
 
-  &:hover {
+    transition: .35s ease;
+
+    &:hover,
+    &:focus-visible {
       color: var(--gold);
       border-bottom-color: var(--gold);
     }
   }
 }
 
+@media (max-width: 768px) {
+
+  .header {
+    &__row {
+      justify-content: space-between;
+    }
+
+    &__nav {
+      display: none;
+    }
+
+    .link-btn {
+      display: none;
+    }
+  }
+
+}

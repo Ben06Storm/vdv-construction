@@ -1,3 +1,5 @@
+import { useEffect } from 'react';
+
 import './ImageModal.scss';
 
 type ImageModalProps = {
@@ -11,6 +13,27 @@ const ImageModal = ({
   title,
   onClose,
 }: ImageModalProps) => {
+  useEffect(() => {
+    if (!image) {
+      return;
+    }
+
+    const handleKeyDown = (event: KeyboardEvent) => {
+      if (event.key === 'Escape') {
+        onClose();
+      }
+    };
+
+    document.body.style.overflow = 'hidden';
+
+    window.addEventListener('keydown', handleKeyDown);
+
+    return () => {
+      document.body.style.overflow = '';
+      window.removeEventListener('keydown', handleKeyDown);
+    };
+  }, [image, onClose]);
+
   if (!image) {
     return null;
   }
@@ -18,23 +41,29 @@ const ImageModal = ({
   return (
     <div
       className="image-modal"
+      role="dialog"
+      aria-modal="true"
+      aria-label={title}
       onClick={onClose}
     >
       <div
         className="image-modal__content"
-        onClick={(e) => e.stopPropagation()}
+        onClick={(event) => event.stopPropagation()}
       >
         <button
+          type="button"
           className="image-modal__close"
-          onClick={onClose}
           aria-label="Close image"
+          onClick={onClose}
         >
           ✕
         </button>
 
         <img
+          className="image-modal__image"
           src={image}
           alt={title}
+          decoding="async"
         />
       </div>
     </div>

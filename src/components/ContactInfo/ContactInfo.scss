@@ -3,7 +3,7 @@
   align-items: center;
   gap: 16px;
 
-  & + & {
+  &+& {
     margin-top: 22px;
   }
 
@@ -16,7 +16,7 @@
   &__text {
     color: var(--white);
 
-    font-size: 18px;
+    font-size:clamp(15px,2vw,18px);
     line-height: 1.6;
   }
 }

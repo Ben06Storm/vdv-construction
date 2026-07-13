@@ -8,7 +8,11 @@ type CardServiceProps = {
 };
 
 
-const CardService = ({ image, title, href }: CardServiceProps) => {
+const CardService = ({ 
+  image, 
+  title, 
+  href, 
+}: CardServiceProps) => {
   return (
     <article className="service-card">
 
