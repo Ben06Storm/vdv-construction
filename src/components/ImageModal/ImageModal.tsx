@@ -1,5 +1,7 @@
 import { useEffect } from 'react';
 
+import { X } from 'lucide-react';
+
 import './ImageModal.scss';
 
 type ImageModalProps = {
@@ -17,27 +19,21 @@ const ImageModal = ({
     if (!image) {
       return;
     }
-
     const handleKeyDown = (event: KeyboardEvent) => {
       if (event.key === 'Escape') {
         onClose();
       }
     };
-
     document.body.style.overflow = 'hidden';
-
     window.addEventListener('keydown', handleKeyDown);
-
     return () => {
       document.body.style.overflow = '';
       window.removeEventListener('keydown', handleKeyDown);
     };
   }, [image, onClose]);
-
   if (!image) {
     return null;
   }
-
   return (
     <div
       className="image-modal"
@@ -56,9 +52,8 @@ const ImageModal = ({
           aria-label="Close image"
           onClick={onClose}
         >
-          ✕
+          <X size={24} strokeWidth={2.5} />
         </button>
-
         <img
           className="image-modal__image"
           src={image}

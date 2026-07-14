@@ -14,15 +14,12 @@ const StatCard = ({
   icon: IconComponent, 
 }: StatCardProps) => (
   <article className="stat-card">
-
     {IconComponent ? (
       <IconComponent className="stat-card__icon" />
     ) : (
       <h3 className="stat-card__value">{value}</h3>
     )}
-
     <p className="stat-card__label">{label}</p>
-
   </article>
 );
 export default StatCard;

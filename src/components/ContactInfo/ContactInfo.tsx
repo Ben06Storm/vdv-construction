@@ -18,23 +18,21 @@ const ContactInfo = ({
 
       <Icon
         size={20}
-        aria-hidden = "true"
+        aria-hidden="true"
         className="contactInfo__icon"
       />
-
-{href ? (
-  <a
-    href={href}
-    className="contactInfo__text"
-  >
-    {text}
-  </a>
-) : (
-  <p className="contactInfo__text">
-    {text}
-  </p>
-)}
-
+      {href ? (
+        <a
+          href={href}
+          className="contactInfo__text"
+        >
+          {text}
+        </a>
+      ) : (
+        <p className="contactInfo__text">
+          {text}
+        </p>
+      )}
     </div>
   );
 };

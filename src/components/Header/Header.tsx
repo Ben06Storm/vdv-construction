@@ -16,7 +16,7 @@ const Header = () => {
   const toggleMenu = () => {
     setIsMenuOpen(prev => !prev);
   };
-
+  
   const closeMenu = () => {
     setIsMenuOpen(false);
   };
@@ -64,7 +64,6 @@ const Header = () => {
     </header>
   );
 };
-
 
 export default Header;
 

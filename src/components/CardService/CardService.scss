@@ -1,15 +1,11 @@
 .service-card {
   display: flex;
   flex-direction: column;
-
   background: var(--text-h);
   border-radius: 12px;
   overflow: hidden;
-
   cursor: pointer;
-
   box-shadow: var(--shadow);
-
   transition:
     transform .45s cubic-bezier(.22, .61, .36, 1),
     box-shadow .45s ease;
@@ -51,7 +47,6 @@
       bottom: -8px;
       height: 1px;
       background: var(--gold);
-
       transform: scaleX(0);
       transform-origin: left;
       transition: transform .35s ease;

@@ -1,16 +1,12 @@
+import { stats } from '../../data/stats';
 
-// Components
 import SectionTitle from '../SectionTitle/SectionTitle';
 import LinkButton from '../LinkButton/LinkButton';
 import StatCard from '../StatCard/StatCard';
 
-// Data
-import { stats } from '../../data/stats';
 
-// Assets
 import master from '../../assets/images/masterVDV.png';
 
-// Styles
 import './AboutUs.scss';
 
 const AboutUs = () => {

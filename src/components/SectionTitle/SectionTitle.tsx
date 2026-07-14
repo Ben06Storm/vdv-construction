@@ -26,7 +26,6 @@ const SectionTitle = ({
       <p className="section-title__subtitle">
         {subtitle}
       </p>
-
       <h2
         className={`
           section-title__title
@@ -35,7 +34,6 @@ const SectionTitle = ({
       >
         {title}
       </h2>
-
     </div>
   );
 };

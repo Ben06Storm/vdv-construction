@@ -29,12 +29,10 @@ const ProjectPreviewCard = ({
           loading="lazy"
         />
       </button>
-
       <div className="project-preview-card__content">
         <p className="project-preview-card__category">
           {category}
         </p>
-
         <h3 className="project-preview-card__title">
           {title}
         </h3>

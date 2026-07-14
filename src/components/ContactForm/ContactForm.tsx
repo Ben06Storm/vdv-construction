@@ -37,18 +37,13 @@ const ContactForm = () => {
     event: React.FormEvent<HTMLFormElement>,
   ) => {
     event.preventDefault();
-
     setLoading(true);
     setSuccess(false);
     setError('');
-
     try {
       // fetch() або axios
-
       console.log(formData);
-
       setSuccess(true);
-
       setFormData({
         name: '',
         phone: '',
@@ -63,15 +58,12 @@ const ContactForm = () => {
       setLoading(false);
     }
   };
-
   return (
     <form
       className="contactForm"
       onSubmit={handleSubmit}
     >
-
       <div className="contactForm__row">
-
         <input
           type="text"
           name="name"
@@ -80,7 +72,6 @@ const ContactForm = () => {
           onChange={handleChange}
           required
         />
-
         <input
           type="tel"
           name="phone"
@@ -89,9 +80,7 @@ const ContactForm = () => {
           onChange={handleChange}
           required
         />
-
       </div>
-
       <input
         type="email"
         name="email"
@@ -100,7 +89,6 @@ const ContactForm = () => {
         onChange={handleChange}
         required
       />
-
       <CustomSelect
         placeholder="Select Project Type"
         options={projectOptions}
@@ -112,7 +100,6 @@ const ContactForm = () => {
           }))
         }
       />
-
       <textarea
         name="message"
         rows={5}
@@ -120,7 +107,6 @@ const ContactForm = () => {
         value={formData.message}
         onChange={handleChange}
       />
-
       <button
         className='contactForm__button'
         type="submit"
@@ -130,19 +116,16 @@ const ContactForm = () => {
           ? 'Sending...'
           : 'GET A FREE QUOTE'}
       </button>
-
       {success && (
         <p className="contactForm__success">
           Your request has been sent successfully!
         </p>
       )}
-
       {error && (
         <p className="contactForm__error">
           {error}
         </p>
       )}
-
     </form>
   );
 };

@@ -44,27 +44,21 @@ const MobileMenu = ({
 
   return (
     <>
-
       <div
         className={`mobile-menu__backdrop ${
           isOpen ? 'mobile-menu__backdrop--visible' : ''
         }`}
         onClick={onClose}
       />
-
       <aside
         className={`mobile-menu ${
           isOpen ? 'mobile-menu--open' : ''
         }`}
       >
-
         <nav aria-label="Mobile navigation">
-
           <ul className="mobile-menu__list">
-
             {links.map(link => (
               <li key={link.href}>
-
                 <a
                   href={link.href}
                   onClick={onClose}
@@ -72,21 +66,15 @@ const MobileMenu = ({
                 >
                   {link.label}
                 </a>
-
               </li>
             ))}
-
           </ul>
-
         </nav>
-
         <LinkButton
           text="Get a Quote"
           href="#contacts"
         />
-
       </aside>
-
     </>
   );
 };
