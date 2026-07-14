@@ -77,7 +77,7 @@ const Contact = () => {
               </a>
 
                             <a
-                href="https://facebook.com/your_page"
+                href="https://twitter.com/your_page"
                 target="_blank"
                 rel="noopener noreferrer"
                 className="contact__social"
