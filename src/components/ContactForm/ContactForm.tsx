@@ -43,9 +43,7 @@ const ContactForm = () => {
     setError('');
 
     try {
-      // fetch() або axios
-
-      console.log(formData);
+ // TODO: replace with a real request, e.g. fetch() or axios
 
       setSuccess(true);
 
