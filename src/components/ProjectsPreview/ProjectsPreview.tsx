@@ -30,7 +30,7 @@ const ProjectsPreview = () => {
 
   return (
 
-    <section className="projects-preview" id='projects'>
+    <section className="projects-preview" id='projects-preview'>
 
       <div className="container">
 
