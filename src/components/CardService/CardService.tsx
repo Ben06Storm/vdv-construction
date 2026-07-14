@@ -22,7 +22,7 @@ const CardService = ({ image, title, href }: CardServiceProps) => {
 
         <h3 className='service-card__title'>{title}</h3>
 
-        <a href={href} className="service-card__link">
+        <a href={href ?? '#contacts'} className="service-card__link">
 
           Explore Service
 
