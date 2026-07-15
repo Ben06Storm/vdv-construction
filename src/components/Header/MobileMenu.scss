@@ -1,17 +1,13 @@
 .mobile-menu__backdrop {
   position: fixed;
   inset: 0;
-
   background: rgba(0, 0, 0, .55);
-
   opacity: 0;
   visibility: hidden;
   pointer-events: none;
-
   transition:
     opacity .35s ease,
     visibility .35s ease;
-
   z-index: var(--z-backdrop);
 
   &--visible {
@@ -24,27 +20,20 @@
 .mobile-menu {
   position: fixed;
   inset: 0 0 0 auto;
-
-  width: min(90vw, 320px);
+  width: min(90vw, 240px);
   height: 100vh;
-
   display: flex;
   flex-direction: column;
   justify-content: space-between;
-
   padding: 100px 32px 40px;
-
   background: var(--bg-dark);
   box-shadow: var(--shadow-hover);
-
   transform: translateX(100%);
   visibility: hidden;
   pointer-events: none;
-
   transition:
     transform .35s ease,
     visibility .35s ease;
-
   z-index: var(--z-mobile-menu);
 
   &--open {
