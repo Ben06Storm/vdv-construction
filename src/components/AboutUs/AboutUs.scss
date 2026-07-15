@@ -109,3 +109,9 @@
     transparent
   );
 }
+
+@media (max-width: 992px) {
+  .about__wrapper {
+    grid-template-columns: 1fr;
+  }
+}

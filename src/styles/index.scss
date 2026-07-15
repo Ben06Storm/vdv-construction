@@ -20,6 +20,7 @@ a {
 
 html {
   scroll-behavior: smooth;
+  overscroll-behavior: none;
 }
 
 .container {
@@ -30,7 +31,7 @@ html {
 }
 
 section[id] {
-  scroll-margin-top: 75px;
+  scroll-margin-top: 60px;
 }
 
 ::selection {
