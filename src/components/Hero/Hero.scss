@@ -1,0 +1,91 @@
+.hero {
+  min-height: 100vh;
+  display: flex;
+  align-items: flex-start;
+  background-image: url('../../assets/images/bg-hero.png');
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+  border-bottom: 2px solid var(--border);
+  padding-top: 130px;
+
+&__content {
+  max-width: 620px;
+  padding: 0 20px;
+  background:
+    linear-gradient(to left,
+      rgba(0, 0, 0, 0) 0%,
+      rgba(0, 0, 0, 0.76) 30%,
+      #030303 100%)
+}
+
+&__tagline {
+  font-size: 1rem;
+  font-weight: 700;
+  color: var(--gold);
+}
+
+&__title {
+  font-size: clamp(44px, 6vw, 56px);
+  line-height: 1;
+  font-style: italic;
+  font-weight: 800;
+  margin-bottom: 20px;
+  letter-spacing: -1.5px;
+}
+
+&__location {
+  margin-bottom: 20px;
+
+  span {
+  color: var(--gold);
+  font-weight: 900;
+  padding-right: 20px;
+  }
+}
+
+&__subtitle {
+  font-size: 1rem;
+  line-height: 150%;
+  margin-bottom: 20px;
+  color: var(--text-h);
+  max-width: 430px;
+}
+}
+
+@media (max-width: 1024px) {
+  .hero {
+  background-image: url('../../assets/images/bg-hero-laptop.png');
+  }
+}
+
+@media (max-width: 768px) {
+  .hero {
+    &__content {
+      max-width: 520px;
+    }
+  }
+}
+
+@media (max-width: 480px) {
+  .hero {
+  background-image: url('../../assets/images/bg-hero-phone.png');
+
+    &__content {
+      max-width: 360px;
+    }
+
+    &__title {
+      font-size: 2rem;
+      letter-spacing: -1px;
+    }
+
+    &__tagline {
+      font-size: .85rem;
+    }
+
+    &__subtitle {
+      font-size: .95rem;
+    }
+  }
+}

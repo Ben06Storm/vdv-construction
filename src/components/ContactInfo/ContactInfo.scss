@@ -9,14 +9,12 @@
 
   &__icon {
     flex-shrink: 0;
-
     color: var(--gold);
   }
 
   &__text {
     color: var(--white);
-
-    font-size:clamp(15px,2vw,18px);
+    font-size: clamp(15px, 2vw, 18px);
     line-height: 1.6;
   }
 }

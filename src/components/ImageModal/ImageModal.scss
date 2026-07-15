@@ -1,58 +1,47 @@
 .image-modal {
   position: fixed;
   inset: 0;
-
   display: flex;
   justify-content: center;
   align-items: center;
-
   padding: 40px;
-
   background: var(--bg-dark);
-
   z-index: 9999;
-
   animation: fadeIn .25s ease;
 
 &__content {
   position: relative;
-
   max-width: 95vw;
   max-height: 95vh;
 }
 
 &__image {
   display:block;
-
   max-width:100%;
   max-height:90vh;
-
   border-radius:10px;
 }
-
-&__close {
-  position: absolute;
-
+  
+&__close {                   
+  position: absolute;  
+  display: flex;
+  justify-content: center;
+  align-items: center;     
   top: -16px;
   right: -16px;
-
   width: 42px;
   height: 42px;
-
   border: none;
   border-radius: 50%;
-
   cursor: pointer;
-
-  font-size: 22px;
-
-  background: var(--gold);
-  color: black;
-
+  background: rgba(255, 255, 255, .12);
+  backdrop-filter: blur(8px);
+  color: var(--white);
   transition: transform .2s ease;
 
 &:hover {
-  transform: rotate(90deg);
+    background: var(--gold);
+    color: var(--bg-dark);
 }
 }
 

@@ -13,19 +13,13 @@
   textarea {
     width: 100%;
     padding: 18px 22px;
-
     background: var(--bg-dark);
     color: var(--white);
-
     border: 1px solid var(--border);
-
     font-size: 16px;
     font-family: inherit;
-
     outline: none;
-
     transition: .3s ease;
-
     appearance: none;
     -webkit-appearance: none;
     -moz-appearance: none;
@@ -38,10 +32,8 @@
     &::placeholder {
       color: var(--placeholder);
     }
-
-}
+  }
   
-
   textarea {
     resize: none;
     min-height: 170px;
@@ -49,22 +41,14 @@
 
   &__button {
     align-self: flex-start;
-
     padding: 18px 42px;
-
     border: none;
-
     background: var(--gold);
-
     color: var(--bg-dark);
-
     font-weight: 700;
     letter-spacing: 1px;
-
     cursor: pointer;
-
     transition: .3s;
-
     &:hover {
       transform: translateY(-2px);
       filter: brightness(1.08);
@@ -74,15 +58,10 @@
     display:flex;
     align-items:center;
     gap:10px;
-
     padding:14px 18px;
-
     background:rgba(76,175,80,.12);
-
     border-left:3px solid #4CAF50;
-
     color:#4CAF50;
-
     border-radius:8px;
   }
 

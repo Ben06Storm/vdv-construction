@@ -1,5 +1,4 @@
 
-
 import LuxuryTile from '../assets/images/luxuryTile.png';
 import Deck from '../assets/images/decks.png';
 import Heated from '../assets/images/heatedFloor.png';
@@ -8,7 +7,6 @@ import Sauna from '../assets/images/sauna.png';
 import Shower from '../assets/images/shower.png';
 import Waterproof from '../assets/images/waterproof.png';
 import CommercialTile from '../assets/images/comercialTile.png';
-
 
 export interface Service {
   id: number;
@@ -58,43 +56,3 @@ export const services: Service[] = [
     image: CommercialTile,
   },
 ];
-
-/*export const services = [
-  {
-    image: tile,
-    title: 'Tile Installation',
-    description:
-      'Professional installation of ceramic, porcelain, and natural stone tiles.',
-  },
-  {
-    image: decks,
-    title: 'Premium Decks',
-    description:
-      'Beautiful and durable custom deck construction for outdoor living.',
-  },
-  {
-    image: heatedFloor,
-    title: 'Heated Floors',
-    description:
-      'Comfortable and energy-efficient heated floor systems for your home.',
-  },
-  {
-    image: porcelain,
-    title: 'Large Format Porcelain Slabs',
-    description:
-      'Precision installation of large-format porcelain slabs for modern interiors.',
-  },
-  {
-    image: sauna,
-    title: 'Sauna Construction',
-    description:
-      'Custom-designed saunas built with premium materials and craftsmanship.',
-  },
-  {
-    image: shower,
-    title: 'Custom Showers',
-    description:
-      'Elegant and waterproof custom shower installations tailored to your space.',
-  },
-];
-*/

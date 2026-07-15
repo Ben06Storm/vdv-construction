@@ -1,6 +1,6 @@
 
 import Header from './components/Header/Header';
-import Hero from './components/Home/Home';
+import Hero from './components/Hero/Hero';
 import Services from './components/Services/Services';
 import AboutUs from './components/AboutUs/AboutUs';
 import ProjectsPreview from './components/ProjectsPreview/ProjectsPreview';
@@ -19,7 +19,7 @@ const App = () => {
         <AboutUs />
         <ProjectsPreview />
         <Projects />
-        <WhyUs />
+        <WhyUs /> 
         <Contacts />
       </main>
       <Footer />

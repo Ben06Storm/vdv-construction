@@ -8,7 +8,6 @@ import { services } from '../../data/service';
 const Services = () => {
   return (
     <section className="services" id='services'>
-
       <div className="services__container">
         <div className="services__title">
           <SectionTitle
@@ -17,18 +16,14 @@ const Services = () => {
           />
         </div>
         <div className="services__grid">
-
           {services.map((service) => (
             <CardService
               key={service.id}
               {...service}
             />
           ))}
-
         </div>
-
       </div>
-
     </section>
   );
 };

@@ -16,10 +16,8 @@
     color: inherit;
   }
 
-
   &__subtitle {
     margin-bottom: 18px;
-
     color: var(--gold);
     font-size: 12px;
     font-weight: 600;
@@ -29,11 +27,9 @@
 
   &__title {
     position: relative;
-
     max-width: 720px;
     margin: 0;
     padding-bottom: 32px;
-
     font-family: var(--serif);
     font-size: clamp(36px, 5vw, 44px);
     font-weight: 500;

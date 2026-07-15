@@ -12,7 +12,7 @@ type Option = {
   label: string;
 };
 
-type Props = {
+type OptionProps = {
   placeholder: string;
   options: Option[];
   value: string;
@@ -24,10 +24,9 @@ const CustomSelect = ({
   options,
   value,
   onChange,
-}: Props) => {
+}: OptionProps) => {
   const [isOpen, setIsOpen] = useState(false);
   const [activeIndex, setActiveIndex] = useState(0);
-
   const selectRef = useRef<HTMLDivElement>(null);
 
   useEffect(() => {
@@ -39,23 +38,17 @@ const CustomSelect = ({
         setIsOpen(false);
       }
     };
-
     document.addEventListener('mousedown', handleClick);
-
     return () =>
       document.removeEventListener('mousedown', handleClick);
   }, []);
-
   const selectedOption = options.find(
     option => option.value === value,
   );
-
   const handleKeyDown = (
     event: React.KeyboardEvent<HTMLButtonElement>,
   ) => {
-
     if (!isOpen) {
-
       if (
         event.key === 'Enter' ||
         event.key === ' '
@@ -63,49 +56,34 @@ const CustomSelect = ({
         event.preventDefault();
         setIsOpen(true);
       }
-
       return;
     }
-
     switch (event.key) {
-
       case 'ArrowDown':
         event.preventDefault();
-
         setActiveIndex(prev =>
           prev === options.length - 1
             ? 0
             : prev + 1,
         );
-
         break;
-
       case 'ArrowUp':
         event.preventDefault();
-
         setActiveIndex(prev =>
           prev === 0
             ? options.length - 1
             : prev - 1,
         );
-
         break;
-
       case 'Enter':
         event.preventDefault();
-
         onChange(options[activeIndex].value);
-
         setIsOpen(false);
-
         break;
-
       case 'Escape':
         setIsOpen(false);
         break;
-
     }
-
   };
 
   return (
@@ -131,19 +109,16 @@ const CustomSelect = ({
         >
           {selectedOption?.label || placeholder}
         </span>
-
         <ChevronDown
           size={18}
           className={`customSelect__arrow ${isOpen ? 'customSelect__arrow--open' : ''
             }`}
         />
       </button>
-
       {isOpen && (
         <ul
           className="customSelect__menu"
           role="listbox">
-
           {options.map((option, index) => (
             <li
               role="option"
@@ -159,13 +134,11 @@ const CustomSelect = ({
               }}
             >
               <span>{option.label}</span>
-
               {value === option.value && (
                 <Check size={18} />
               )}
             </li>
           ))}
-
         </ul>
       )}
     </div>

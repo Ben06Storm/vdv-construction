@@ -5,11 +5,32 @@
 
   &__wrapper {
     display: grid;
-    grid-template-columns: 320px repeat(6, 1fr);
+    grid-template-columns: 320px repeat(auto-fit, minmax(160px, 1fr));
   }
 
   &__intro {
     padding-right: 20px;
 
+  }
+}
+@media (max-width: 1024px) {
+  .whyUs__wrapper {
+    grid-template-columns: repeat(2, 1fr);
+    gap: 24px;
+  }
+
+  .whyUs__intro {
+    grid-column: 1 / -1;
+    padding-right: 0;
+  }
+}
+
+@media (max-width: 768px) {
+  .whyUs__wrapper {
+    grid-template-columns: 1fr;
+  }
+
+  .whyUs__intro {
+    text-align: center;
   }
 }
