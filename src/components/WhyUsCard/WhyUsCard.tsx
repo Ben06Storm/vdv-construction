@@ -17,7 +17,7 @@ const WhyUsCard = ({
   return (
     <article className="whyUsCard">
       <Icon
-        aria-hidden = "true"
+        aria-hidden="true"
         className="whyUsCard__icon"
       />
       <h3 className="whyUsCard__title">
