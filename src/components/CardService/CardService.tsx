@@ -19,7 +19,7 @@ const CardService = ({
       </div>
       <div className="service-card__content">
         <h3 className='service-card__title'>{title}</h3>
-        <a href={href} className="service-card__link">
+        <a href={href ?? '#contacts'} className="service-card__link">
           Explore Service
           <span className="service-card__arrow">
             →

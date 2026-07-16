@@ -14,7 +14,6 @@ const AboutUs = () => {
     <section className="about" id="about">
       <div className="container">
         <div className="about__wrapper">
-
           <div className="about__content">
             <div className="about__title">
               <SectionTitle
@@ -31,7 +30,6 @@ const AboutUs = () => {
               to detail. From complex showers to large-format slabs, we bring
               precision and passion to every project.
             </p>
-
             <div className="about__btn">
               <LinkButton
                 text="Learn More About Us"
@@ -39,14 +37,12 @@ const AboutUs = () => {
               />
             </div>
           </div>
-
           <div className="about__image">
             <img
               src={master}
               alt="VDV Construction craftsman"
             />
           </div>
-
           <div className="about__stats">
             {stats.map(stat => (
               <StatCard
@@ -55,7 +51,6 @@ const AboutUs = () => {
               />
             ))}
           </div>
-
         </div>
       </div>
     </section>
