@@ -42,7 +42,6 @@ const ContactForm = () => {
     setError('');
     try {
       // fetch() або axios
-      console.log(formData);
       setSuccess(true);
       setFormData({
         name: '',

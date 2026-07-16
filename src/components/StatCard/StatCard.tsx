@@ -1,5 +1,4 @@
 
-
 import './StatCard.scss';
 
 type StatCardProps = {

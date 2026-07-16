@@ -7,9 +7,9 @@ type LinkButtonProps = {
   showArrow?: boolean;
 };
 
-const LinkButton = ({ 
-  text, 
-  href, 
+const LinkButton = ({
+  text,
+  href,
   showArrow,
 }: LinkButtonProps) => {
   return (

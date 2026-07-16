@@ -3,14 +3,14 @@
   flex-direction: column;
   justify-content: center;
   align-items: center;
-  min-height: 180px;
+  min-height: clamp(150px, 18vw, 180px);
   text-align: center;
 
   &__value {
     margin-bottom: 16px;
     font-family: var(--serif);
     font-size: clamp(52px, 5vw, 72px);
-    font-weight:300;
+    font-weight: 300;
     line-height: 1;
     color: var(--gold);
   }
@@ -18,13 +18,13 @@
   &__icon {
     margin-bottom: 16px;
     color: var(--gold);
-    width: 68px;
-    height: 68px;
+    width: clamp(52px, 5vw, 72px);
+    height: clamp(52px, 5vw, 72px);
   }
 
   &__label {
     color: var(--text-h);
-    font-size: 15px;
+    font-size: clamp(14px, 2vw, 15px);
     line-height: 1.7;
   }
 }
