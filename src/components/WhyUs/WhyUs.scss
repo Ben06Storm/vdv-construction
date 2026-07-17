@@ -9,28 +9,40 @@
   }
 
   &__intro {
-    padding-right: 20px;
-
-  }
-}
-@media (max-width: 1024px) {
-  .whyUs__wrapper {
-    grid-template-columns: repeat(2, 1fr);
-    gap: 24px;
-  }
-
-  .whyUs__intro {
-    grid-column: 1 / -1;
-    padding-right: 0;
+    padding-right: clamp(12px, 2vw, 20px);
   }
 }
 
-@media (max-width: 768px) {
-  .whyUs__wrapper {
-    grid-template-columns: 1fr;
-  }
+@media (max-width: 1350px) {
+  .whyUs {
 
-  .whyUs__intro {
-    text-align: center;
+    &__wrapper {
+      grid-template-columns: repeat(3, 1fr);
+      gap: 24px;
+    }
+
+    &__intro {
+      grid-column: 1 / -1;
+      padding-right: 0;
+      text-align: center;
+    }
+  }
+}
+
+@media (max-width: 525px) {
+  .whyUs {
+
+    &__wrapper {
+      grid-template-columns: repeat(2, 1fr);
+    }
+  }
+}
+
+@media (max-width: 377px) {
+  .whyUs {
+
+    &__wrapper {
+      grid-template-columns: 1fr;
+    }
   }
 }

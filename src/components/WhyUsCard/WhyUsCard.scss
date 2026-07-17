@@ -2,36 +2,37 @@
   display: flex;
   flex-direction: column;
   align-items: center;
-  padding: 10px 22px;
+  padding: clamp(20px, 3vw, 32px);
   text-align: center;
-  border-right: 1px solid var(--text-h);
+  border-right: 1px solid var(--border);
 
   &:last-child {
     border-right: none;
   }
 
   &__icon {
-    width: 42px;
-    height: 42px;
+    width: clamp(38px, 4vw, 48px);
+    height: clamp(38px, 4vw, 48px);
     margin-bottom: 16px;
     color: var(--gold);
   }
 
   &__title {
-    gap: 16px;
     color: var(--bg-dark);
-    font-size: 16px;
+    font-size: clamp(16px, 2vw, 18px);
     font-weight: 600;
     line-height: 1.5;
   }
 
   &__text {
-    color: var(--border);
-    font-size: 14px;
+    color: var(--description);
+    font-size: clamp(14px, 1.5vw, 15px);
     line-height: 1.8;
   }
+}
 
-  @media (max-width: 768px) {
+@media (max-width:1350px) {
+.whyUsCard {
   border-right: none;
   border-bottom: 1px solid var(--border);
 }

@@ -24,12 +24,12 @@ const WhyUs = () => {
 
           </div>
 
-            {whyUsCards.map((item) => (
-              <WhyUsCard
-                key={item.title}
-                {...item}
-              />
-            ))}
+          {whyUsCards.map((item) => (
+            <WhyUsCard
+              key={item.title}
+              {...item}
+            />
+          ))}
 
         </div>
       </div>
