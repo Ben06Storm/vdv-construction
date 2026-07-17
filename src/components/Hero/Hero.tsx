@@ -18,7 +18,7 @@ const Hero = () => {
 
           <LinkButton
             text="View Projects"
-            href="#projects"
+            href="#projects-preview"
             showArrow
           />
         </div>
