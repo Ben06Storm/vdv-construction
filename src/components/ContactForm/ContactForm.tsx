@@ -66,6 +66,7 @@ const ContactForm = () => {
         <input
           type="text"
           name="name"
+          autoComplete="name"
           placeholder="Your Name"
           value={formData.name}
           onChange={handleChange}
@@ -74,6 +75,7 @@ const ContactForm = () => {
         <input
           type="tel"
           name="phone"
+          autoComplete="tel"
           placeholder="Phone Number"
           value={formData.phone}
           onChange={handleChange}
@@ -83,6 +85,7 @@ const ContactForm = () => {
       <input
         type="email"
         name="email"
+        autoComplete="email"
         placeholder="Email Address"
         value={formData.email}
         onChange={handleChange}
@@ -102,9 +105,10 @@ const ContactForm = () => {
       <textarea
         name="message"
         rows={5}
-        placeholder="Tell us about your project"
+        placeholder="Tell us about your project..."
         value={formData.message}
         onChange={handleChange}
+        required
       />
       <button
         className='contactForm__button'

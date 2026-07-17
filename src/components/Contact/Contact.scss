@@ -1,27 +1,21 @@
 .contact {
   position: relative;
-
-  padding: 80px 0;
+  padding: clamp(60px, 8vw, 80px) 0;
 
   background:
-    linear-gradient(
-      rgba(8, 8, 8, .82),
-      rgba(8, 8, 8, .82)
-    ),
+    linear-gradient(rgba(8, 8, 8, .82),
+      rgba(8, 8, 8, .82)),
     url('../../assets/images/shower.png') center / cover;
-
   border-bottom: 2px solid var(--border);
 
   &__wrapper {
     display: grid;
-    grid-template-columns: 420px 1fr;
-    gap: 70px;
+    grid-template-columns: minmax(320px, 420px) 1fr;
+    gap: clamp(40px, 5vw, 70px);
     align-items: center;
   }
 
   &__description {
-    margin: 30px 0 40px;
-
     color: var(--text-h);
     line-height: 1.8;
   }
@@ -33,32 +27,29 @@
   }
 
   &__form {
-  display: flex;
-  flex-direction: column;
+    display: flex;
+    flex-direction: column;
+    grid-row: 1 / span 3;
+    grid-column: 2;
+
   }
 
-    &__socials {
+  &__socials {
     display: flex;
-    justify-content: flex-end;
+    justify-content: flex-start;
     gap: 16px;
-
-    margin-top: 24px;
   }
 
   &__social {
     display: flex;
     align-items: center;
     justify-content: center;
-
     width: 52px;
     height: 52px;
-
-    border: 1px solid rgba(255, 255, 255, .12);
+    border: 1px solid var(--border);
     border-radius: 50%;
-
     color: var(--white);
-    background: rgba(255, 255, 255, .03);
-
+    background: var(--bg-dark);
     transition:
       transform .3s ease,
       background-color .3s ease,
@@ -76,7 +67,36 @@
   @media (max-width: 992px) {
     &__wrapper {
       grid-template-columns: 1fr;
-      gap: 60px;
+    }
+
+    &__form,
+    &__info,
+    &__items,
+    &__socials {
+      grid-column: auto;
+      grid-row: auto;
+    }
+
+    &__info {
+      text-align: center;
+    }
+
+    &__items {
+      align-items: center;
+    }
+
+    &__socials {
+      justify-content: center;
+    }
+  }
+}
+
+@media (max-width: 375px) {
+  .contact {
+
+    &__items {
+      align-items: start;
+      gap: 0;
     }
   }
 }
