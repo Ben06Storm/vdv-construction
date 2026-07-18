@@ -5,13 +5,21 @@ type CardServiceProps = {
   image: string;
   title: string;
   href?: string;
+  onRequest?: (title: string) => void;
 };
 
 const CardService = ({ 
   image, 
   title, 
   href, 
-}: CardServiceProps) => {
+  onRequest,
+}: CardServiceProps) => { 
+  const handleClick = (event: React.MouseEvent<HTMLAnchorElement>) => {
+    if (onRequest) {
+     event.preventDefault();
+      onRequest(title);
+    }
+  };
   return (
     <article className="service-card">
       <div className="service-card__image">
@@ -19,7 +27,7 @@ const CardService = ({
       </div>
       <div className="service-card__content">
         <h3 className='service-card__title'>{title}</h3>
-        <a href={href ?? '#contacts'} className="service-card__link">
+        <a href={href ?? '#contacts'} className="service-card__link" onClick={handleClick}>
           Explore Service
           <span className="service-card__arrow">
             →
