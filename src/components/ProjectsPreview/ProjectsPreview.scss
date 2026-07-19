@@ -8,6 +8,14 @@
     grid-template-columns: 310px 1fr;
   }
 
+  &__image {
+    display: block;
+    max-width: 95vw;
+    max-height: 90vh;
+
+    object-fit: contain;
+  }
+
   &__intro {
     padding: 20px 0;
     display: flex;
