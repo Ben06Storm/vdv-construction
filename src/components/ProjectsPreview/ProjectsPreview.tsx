@@ -5,7 +5,7 @@ import { projects } from '../../data/projects';
 import SectionTitle from '../SectionTitle/SectionTitle';
 import LinkButton from '../LinkButton/LinkButton';
 import ProjectPreviewCard from '../ProjectPreviewCard/ProjectPreviewCard';
-import ImageModal from '../ImageModal/ImageModal';
+import Modal from '../Modal/Modal';
 
 import './ProjectsPreview.scss';
 
@@ -53,11 +53,19 @@ const ProjectsPreview = () => {
               />
             ))}
           </div>
-          <ImageModal
-            image={selectedImage}
-            title={selectedTitle}
+          <Modal
+            isOpen={Boolean(selectedImage)}
             onClose={handleCloseImage}
-          />
+            ariaLabel={selectedTitle}
+            variant="image"
+          >
+            <img
+              className="projects-preview__image"
+              src={selectedImage ?? ''}
+              alt={selectedTitle}
+              decoding="async"
+            />
+          </Modal>
         </div>
       </div>
     </section>

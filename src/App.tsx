@@ -8,6 +8,7 @@ import Projects from './components/Projects/Projects';
 import Contacts from './components/Contact/Contact';
 import Footer from './components/Footer/Footer';
 import WhyUs from './components/WhyUs/WhyUs';
+import Reviews from './components/Reviews/Reviews';
 
 const App = () => {
   return (
@@ -19,7 +20,8 @@ const App = () => {
         <AboutUs />
         <ProjectsPreview />
         <Projects />
-        <WhyUs /> 
+        <WhyUs />
+        <Reviews />
         <Contacts />
       </main>
       <Footer />

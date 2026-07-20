@@ -1,0 +1,122 @@
+.modal {
+  position: fixed;
+  inset: 0;
+  z-index: 9999;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 24px;
+  background: rgba(0, 0, 0, .8);
+  animation: modalFadeIn .25s ease;
+
+  &__content {
+    position: relative;
+    width: min(100%, 700px);
+    max-height: 90vh;
+    padding: 40px;
+    overflow-y: auto;
+    background: var(--bg-dark);
+    box-shadow: var(--shadow-hover);
+    animation: modalScaleIn .25s ease;
+  }
+
+  &__close {
+    position: absolute;
+    top: 12px;
+    right: 12px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 40px;
+    height: 40px;
+    padding: 0;
+    border: 1px solid var(--border);
+    background: transparent;
+    color: var(--white);
+    cursor: pointer;
+    transition:
+      color .3s ease,
+      background-color .3s ease,
+      border-color .3s ease,
+      transform .3s ease;
+
+    &:hover {
+      background: var(--gold);
+      border-color: var(--gold);
+      color: var(--bg-dark);
+      transform: rotate(90deg);
+    }
+  }
+
+  &--image {
+    padding: 40px;
+    background: rgba(0, 0, 0, .9);
+
+    .modal__content {
+      width: auto;
+      max-width: 95vw;
+      max-height: 95vh;
+      padding: 0;
+      overflow: visible;
+      background: transparent;
+      box-shadow: none;
+    }
+
+    .modal__close {
+      top: -16px;
+      right: -16px;
+      border: none;
+      border-radius: 50%;
+      background: rgba(255, 255, 255, .12);
+      backdrop-filter: blur(8px);
+
+      &:hover {
+        background: var(--gold);
+      }
+    }
+  }
+
+  @media (max-width: 600px) {
+    padding: 16px;
+
+    &__content {
+      padding: 40px 20px 20px;
+    }
+
+    &--image {
+      padding: 20px;
+
+      .modal__content {
+        width: 100%;
+        padding: 0;
+      }
+
+      .modal__close {
+        top: -12px;
+        right: -12px;
+      }
+    }
+  }
+}
+
+@keyframes modalFadeIn {
+  from {
+    opacity: 0;
+  }
+
+  to {
+    opacity: 1;
+  }
+}
+
+@keyframes modalScaleIn {
+  from {
+    opacity: 0;
+    transform: scale(.95);
+  }
+
+  to {
+    opacity: 1;
+    transform: scale(1);
+  }
+}

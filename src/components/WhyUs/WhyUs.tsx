@@ -1,7 +1,7 @@
+import { whyUsCards } from '../../data/whyUsCards';
+
 import SectionTitle from '../SectionTitle/SectionTitle';
 import WhyUsCard from '../WhyUsCard/WhyUsCard';
-
-import { whyUsCards } from '../../data/whyUsCards';
 
 import './WhyUs.scss';
 
