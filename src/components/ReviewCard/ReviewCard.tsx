@@ -1,51 +1,54 @@
-import { useState } from 'react';
 import { Star } from 'lucide-react';
+
+import type { Rating } from '../../data/reviews';
 
 import './ReviewCard.scss';
 
 type ReviewCardProps = {
   name: string;
   city: string;
-  rating: number;
+  rating: Rating;
   review: string;
+  onReadMore: () => void;
 };
 
-const REVIEW_LIMIT = 150;
+const REVIEW_LIMIT = 100;
 
 const ReviewCard = ({
   name,
   city,
   rating,
   review,
+  onReadMore,
 }: ReviewCardProps) => {
-  const [isExpanded, setIsExpanded] = useState(false);
+  const isLongReview =
+    review.length > REVIEW_LIMIT;
 
-  const isLongReview = review.length > REVIEW_LIMIT;
-
-  const visibleReview =
-    isExpanded || !isLongReview
-      ? review
-      : `${review.slice(0, REVIEW_LIMIT)}...`;
+  const visibleReview = isLongReview
+    ? `${review.slice(0, REVIEW_LIMIT)}...`
+    : review;
 
   const stars = Array.from(
     { length: 5 },
     (_, index) => (
       <Star
         key={index}
-        className={`review-card__star ${
-          index < rating
+        className={`
+          review-card__star
+          ${index < rating
             ? 'review-card__star--active'
             : ''
-        }`}
+          }
+        `}
         aria-hidden="true"
       />
     ),
   );
-
   return (
     <article className="review-card">
       <div
         className="review-card__stars"
+        role="img"
         aria-label={`Rating: ${rating} out of 5`}
       >
         {stars}
@@ -58,13 +61,9 @@ const ReviewCard = ({
           <button
             type="button"
             className="review-card__toggle"
-            onClick={() =>
-              setIsExpanded(prev => !prev)
-            }
+            onClick={onReadMore}
           >
-            {isExpanded
-              ? 'Show less'
-              : 'Read more'}
+            Read more
           </button>
         )}
         <h3 className="review-card__name">

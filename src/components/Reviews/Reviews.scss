@@ -3,26 +3,133 @@
   background: var(--white);
   border-bottom: 2px solid var(--border);
 
-  &__list {
-    display: grid;
-    grid-template-columns: repeat(3, 1fr);
+  &__carousel {
+    display: flex;
+    align-items: center;
     gap: 24px;
     margin-top: 50px;
   }
-}
 
-@media (max-width: 992px) {
-  .reviews {
-    &__list {
-      grid-template-columns: repeat(2, 1fr);
+  &__slider {
+    flex: 1;
+    min-width: 0;
+  }
+
+  &__arrow {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-shrink: 0;
+    width: 44px;
+    height: 44px;
+    padding: 0;
+    border: 1px solid var(--border);
+    background: var(--bg-dark);
+    color: var(--white);
+    cursor: pointer;
+    transition:
+      color .3s ease,
+      background-color .3s ease,
+      border-color .3s ease;
+
+    &:hover {
+      background: var(--gold);
+      border-color: var(--gold);
+      color: var(--bg-dark);
     }
+
+    svg {
+      display: block;
+    }
+  }
+
+  .swiper {
+    padding-bottom: 50px;
+  }
+
+  .swiper-slide {
+    display: flex;
+    height: auto;
+  }
+
+  .swiper-slide .review-card {
+    width: 100%;
+  }
+
+  .swiper-pagination {
+    bottom: 0;
+  }
+
+  .swiper-pagination-bullet {
+    width: 8px;
+    height: 8px;
+    margin: 0 4px !important;
+    background: var(--border);
+    opacity: 1;
+    transition:
+      background-color .3s ease,
+      transform .3s ease;
+  }
+
+  .swiper-pagination-bullet-active {
+    background: var(--gold);
+    transform: scale(1.2);
   }
 }
 
-@media (max-width: 600px) {
+.review-modal {
+  &__stars {
+    display: flex;
+    gap: 4px;
+    margin-bottom: 16px;
+  }
+
+  &__star {
+    width: 16px;
+    height: 16px;
+    color: var(--border);
+
+    &--active {
+      color: var(--gold);
+      fill: var(--gold);
+    }
+  }
+
+  &__review {
+    margin: 0;
+    color: var(--text-h);
+    line-height: 1.8;
+  }
+
+  &__name {
+    margin: 0 0 3px;
+    padding-top: 16px;
+    color: var(--white);
+    font-family: var(--serif);
+    font-size: 17px;
+    font-weight: 500;
+  }
+
+  &__city {
+    margin: 0;
+    color: var(--description);
+    font-size: 12px;
+  }
+}
+
+@media (max-width: 770px) {
   .reviews {
-    &__list {
-      grid-template-columns: 1fr;
+    &__carousel {
+      gap: 8px;
+    }
+
+    &__arrow {
+      width: 32px;
+      height: 44px;
+    }
+
+    .swiper {
+      padding-bottom: 45px;
     }
   }
 }
