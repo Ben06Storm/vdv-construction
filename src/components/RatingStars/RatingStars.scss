@@ -1,0 +1,19 @@
+.rating-stars {
+
+&__stars {
+    display: flex;
+    gap: 4px;
+    margin-bottom: 16px;
+  }
+
+  &__star {
+    width: 16px;
+    height: 16px;
+    color: var(--border);
+
+    &--active {
+      color: var(--gold);
+      fill: var(--gold);
+    }
+  }
+}

@@ -1,6 +1,8 @@
-import { Star } from 'lucide-react';
+
 
 import type { Rating } from '../../data/reviews';
+
+import RatingStars from '../RatingStars/RatingStars';
 
 import './ReviewCard.scss';
 
@@ -28,22 +30,6 @@ const ReviewCard = ({
     ? `${review.slice(0, REVIEW_LIMIT)}...`
     : review;
 
-  const stars = Array.from(
-    { length: 5 },
-    (_, index) => (
-      <Star
-        key={index}
-        className={`
-          review-card__star
-          ${index < rating
-            ? 'review-card__star--active'
-            : ''
-          }
-        `}
-        aria-hidden="true"
-      />
-    ),
-  );
   return (
     <article className="review-card">
       <div
@@ -51,7 +37,10 @@ const ReviewCard = ({
         role="img"
         aria-label={`Rating: ${rating} out of 5`}
       >
-        {stars}
+        <RatingStars
+          rating={rating}
+          className="review-card__stars"
+        />
       </div>
       <div className="review-card__content">
         <p className="review-card__review">
