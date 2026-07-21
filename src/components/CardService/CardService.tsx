@@ -1,24 +1,20 @@
+import { ArrowRight } from 'lucide-react';
 
 import './CardService.scss';
 
 type CardServiceProps = {
   image: string;
   title: string;
-  href?: string;
-  onRequest?: (title: string) => void;
+  onRequest: (title: string) => void;
 };
 
-const CardService = ({ 
-  image, 
-  title, 
-  href, 
+const CardService = ({
+  image,
+  title,
   onRequest,
-}: CardServiceProps) => { 
-  const handleClick = (event: React.MouseEvent<HTMLAnchorElement>) => {
-    if (onRequest) {
-     event.preventDefault();
-      onRequest(title);
-    }
+}: CardServiceProps) => {
+  const handleRequest = () => {
+    onRequest(title);
   };
   return (
     <article className="service-card">
@@ -27,12 +23,18 @@ const CardService = ({
       </div>
       <div className="service-card__content">
         <h3 className='service-card__title'>{title}</h3>
-        <a href={href ?? '#contacts'} className="service-card__link" onClick={handleClick}>
+        <button            
+        type="button"
+          className="service-card__btn"
+          onClick={handleRequest}>
           Explore Service
-          <span className="service-card__arrow">
-            →
-          </span>
-        </a>
+          <ArrowRight
+            className="service-card__arrow"
+            size={14}
+            strokeWidth={1.5}
+            aria-hidden="true"
+          />
+        </button>
       </div>
     </article>
   );

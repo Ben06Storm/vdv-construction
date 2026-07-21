@@ -3,6 +3,30 @@
   flex-direction: column;
   gap: 18px;
 
+  &__field {
+    display: flex;
+    flex-direction: column;
+    gap: 6px;
+    width: 100%;
+  }
+
+  &__error {
+    color: #d9534f;
+    font-size: 12px;
+    line-height: 1.4;
+  }
+
+  &__success {
+    color: #3c9b5f;
+    font-size: 14px;
+  }
+
+  &__row {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 16px;
+  }
+
   &__row {
     display: grid;
     grid-template-columns: repeat(2, 1fr);
@@ -20,11 +44,11 @@
     border-radius: 8px;
   }
 
-  &__error {
-    color: #ff4d4f;
-    font-size: 15px;
-    font-weight: 500;
-  }
+  // &__error {
+  //   color: #ff4d4f;
+  //   font-size: 15px;
+  //   font-weight: 500;
+  // }
 
   input,
   textarea {
