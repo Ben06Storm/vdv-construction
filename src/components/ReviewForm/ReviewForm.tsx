@@ -1,5 +1,6 @@
 import { useState } from 'react';
-import { Star } from 'lucide-react';
+
+import RatingStars from '../RatingStars/RatingStars';
 
 import './ReviewForm.scss';
 
@@ -143,44 +144,12 @@ const ReviewForm = ({
             Your Rating
           </p>
 
-          <div
+          <RatingStars
+            rating={formData.rating}
             className="review-form__stars"
-            role="radiogroup"
-            aria-label="Rating"
-          >
-            {Array.from(
-              { length: 5 },
-              (_, index) => {
-                const rating = index + 1;
-
-                return (
-                  <button
-                    key={rating}
-                    type="button"
-                    className={
-                      rating <= formData.rating
-                        ? 'review-form__star review-form__star--active'
-                        : 'review-form__star'
-                    }
-                    onClick={() =>
-                      handleRating(rating)
-                    }
-                    role="radio"
-                    aria-checked={
-                      rating === formData.rating
-                    }
-                    aria-label={`${rating} stars`}
-                  >
-                    <Star
-                      size={24}
-                      strokeWidth={1.5}
-                      aria-hidden="true"
-                    />
-                  </button>
-                );
-              },
-            )}
-          </div>
+            interactive
+            onRatingChange={handleRating}
+          />
         </div>
 
         <textarea

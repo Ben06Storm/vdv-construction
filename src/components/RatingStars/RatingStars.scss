@@ -1,12 +1,10 @@
 .rating-stars {
-
-&__stars {
-    display: flex;
-    gap: 4px;
-    margin-bottom: 16px;
-  }
+  display: flex;
+  align-items: center;
+  gap: 4px;
 
   &__star {
+    display: block;
     width: 16px;
     height: 16px;
     color: var(--border);
@@ -14,6 +12,23 @@
     &--active {
       color: var(--gold);
       fill: var(--gold);
+    }
+  }
+
+  button.rating-stars__star {
+    padding: 0;
+    border: 0;
+    background: transparent;
+    cursor: pointer;
+
+    &:focus-visible {
+      outline: 2px solid var(--gold);
+      outline-offset: 4px;
+      border-radius: 4px;
+    }
+
+    &:hover {
+      color: var(--gold);
     }
   }
 }
