@@ -1,0 +1,131 @@
+.service-request-form {
+  &__subtitle {
+    margin: 0 0 8px;
+    color: var(--gold);
+    font-size: 12px;
+    font-weight: 600;
+    letter-spacing: 2px;
+  }
+
+  &__title {
+    margin: 0 0 16px;
+    color: var(--white);
+    font-family: var(--serif);
+    font-size: 28px;
+    font-weight: 500;
+    line-height: 1.2;
+  }
+
+  &__description {
+    margin: 0 0 24px;
+    color: var(--description);
+    font-size: 14px;
+    line-height: 1.7;
+  }
+
+  &__form {
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+  }
+
+  &__row {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 16px;
+  }
+
+  input,
+  textarea {
+    width: 100%;
+    box-sizing: border-box;
+    padding: 14px 16px;
+    border: 1px solid var(--border);
+    border-radius: 0;
+    background: var(--bg);
+    color: var(--white);
+    font-family: inherit;
+    font-size: 14px;
+    outline: none;
+    transition:
+      border-color .3s ease,
+      box-shadow .3s ease;
+
+    &::placeholder {
+      color: var(--description);
+    }
+
+    &:focus {
+      border-color: var(--gold);
+      box-shadow: 0 0 0 1px var(--gold);
+    }
+  }
+
+  textarea {
+    min-height: 120px;
+    resize: vertical;
+  }
+
+  button {
+    width: 100%;
+    padding: 14px 24px;
+    border: 1px solid var(--gold);
+    background: var(--gold);
+    color: var(--bg-dark);
+    font-family: inherit;
+    font-size: 13px;
+    font-weight: 600;
+    letter-spacing: 1px;
+    cursor: pointer;
+    transition:
+      background-color .3s ease,
+      color .3s ease,
+      border-color .3s ease;
+
+    &:hover {
+      background: transparent;
+      color: var(--gold);
+    }
+
+    &:disabled {
+      opacity: .6;
+      cursor: not-allowed;
+    }
+  }
+
+  &__success,
+  &__error {
+    margin: 0;
+    font-size: 13px;
+    line-height: 1.5;
+  }
+
+  &__success {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    padding: 14px 18px;
+    background: rgba(76, 175, 80, .12);
+    border-left: 3px solid #4CAF50;
+    color: #4CAF50;
+    border-radius: 8px;
+  }
+
+  &__error {
+    color: #ff4d4f;
+    font-size: 15px;
+    font-weight: 500;
+  }
+}
+
+@media (max-width: 600px) {
+  .service-request-form {
+    &__row {
+      grid-template-columns: 1fr;
+    }
+
+    &__title {
+      font-size: 24px;
+    }
+  }
+}

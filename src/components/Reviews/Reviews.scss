@@ -78,22 +78,6 @@
 }
 
 .review-modal {
-  &__stars {
-    display: flex;
-    gap: 4px;
-    margin-bottom: 16px;
-  }
-
-  &__star {
-    width: 16px;
-    height: 16px;
-    color: var(--border);
-
-    &--active {
-      color: var(--gold);
-      fill: var(--gold);
-    }
-  }
 
   &__review {
     margin: 0;
@@ -131,5 +115,26 @@
     .swiper {
       padding-bottom: 45px;
     }
+  }
+}
+
+.reviews__actions {
+  display: flex;
+  justify-content: center;
+  margin: 40px 0;
+}
+
+.reviews__leave-review {
+  padding: 14px 32px;
+  border: 2px solid var(--gold);
+  background: transparent;
+  color: var(--gold);
+  font-weight: 600;
+  cursor: pointer;
+  transition: .3s;
+
+  &:hover {
+    background: var(--gold);
+    color: var(--bg-dark);
   }
 }

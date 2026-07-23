@@ -25,20 +25,23 @@
     color: var(--bg-dark);
   }
 
-  &__link {
+  &__btn {
+    position: relative;
     display: inline-flex;
     align-items: center;
-    gap: 12px;
-    min-height: 44px;
-    position: relative;
     width: fit-content;
-    text-decoration: none;
-    color: var(--gold);
-    font-size: 13px;
-    text-transform: uppercase;
-    letter-spacing: 3px;
-    font-weight: 600;
+    min-height: 44px;
+    gap: 12px;
     margin-top: auto;
+    padding: 0;
+    border: none;
+    background: transparent;
+    color: var(--gold);
+    font: inherit;
+    font-size: 13px;
+    font-weight: 600;
+    letter-spacing: 3px;
+    text-transform: uppercase;
     cursor: pointer;
 
     &:focus-visible {
@@ -94,7 +97,7 @@
     transform: translateY(-12px);
     box-shadow: var(--shadow-hover);
 
-    .service-card__link::after {
+    .service-card__btn::after {
       transform: scaleX(1);
     }
 

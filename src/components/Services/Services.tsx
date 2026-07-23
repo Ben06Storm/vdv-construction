@@ -2,7 +2,8 @@ import { useState } from 'react';
 
 import CardService from '../CardService/CardService';
 import SectionTitle from '../SectionTitle/SectionTitle';
-import ServiceRequestModal from '../ServiceRequestModal/ServiceRequestModal';
+import Modal from '../Modal/Modal';
+import ServiceRequestForm from '../ServiceRequestForm/ServiceRequestForm';
 import './Services.scss';
 
 import { services } from '../../data/service';
@@ -38,11 +39,18 @@ const Services = () => {
           ))}
         </div>
       </div>
-      <ServiceRequestModal
-        serviceTitle={selectedService}
+      <Modal
+        isOpen={Boolean(selectedService)}
         onClose={handleCloseModal}
-      />
-    </section>
+        ariaLabel="Request a service"
+      >
+        {selectedService && (
+          <ServiceRequestForm
+            serviceTitle={selectedService}
+          />
+        )}
+      </Modal>
+    </section >
   );
 };
 

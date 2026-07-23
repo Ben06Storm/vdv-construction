@@ -1,0 +1,130 @@
+.review-form {
+  width: 100%;
+
+  &__subtitle {
+    margin: 0 0 8px;
+    color: var(--gold);
+    font-size: 12px;
+    font-weight: 600;
+    letter-spacing: 3px;
+    text-transform: uppercase;
+  }
+
+  &__title {
+    margin: 0 0 12px;
+    color: var(--white);
+    font-family: var(--serif);
+    font-size: 32px;
+    font-weight: 500;
+  }
+
+  &__description {
+    margin: 0 0 28px;
+    color: var(--description);
+    font-size: 14px;
+    line-height: 1.7;
+  }
+
+  &__form {
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+  }
+
+  &__row {
+    display: grid;
+    grid-template-columns:
+      repeat(2, minmax(0, 1fr));
+    gap: 16px;
+  }
+
+  input,
+  textarea {
+    width: 100%;
+    box-sizing: border-box;
+    padding: 14px 16px;
+    border: 1px solid var(--border);
+    border-radius: 4px;
+    background: var(--bg-dark);
+    color: var(--white);
+    font-family: inherit;
+    font-size: 14px;
+    outline: none;
+    transition:
+      border-color .3s ease,
+      box-shadow .3s ease;
+
+    &::placeholder {
+      color: var(--description);
+    }
+
+    &:focus {
+      border-color: var(--gold);
+      box-shadow:
+        0 0 0 2px rgba(190, 160, 90, .15);
+    }
+  }
+
+  textarea {
+    resize: vertical;
+    min-height: 120px;
+  }
+
+  &__rating-title {
+    margin: 0;
+    color: var(--text-h);
+    font-size: 13px;
+    font-weight: 600;
+  }
+
+  &__button {
+    min-height: 48px;
+    padding: 0 24px;
+    border: 1px solid var(--gold);
+    border-radius: 4px;
+    background: var(--gold);
+    color: var(--bg-dark);
+    font-size: 13px;
+    font-weight: 600;
+    letter-spacing: 2px;
+    cursor: pointer;
+    transition:
+      background-color .3s ease,
+      color .3s ease;
+
+    &:hover {
+      background: transparent;
+      color: var(--gold);
+    }
+
+    &:focus-visible {
+      outline: 2px solid var(--gold);
+      outline-offset: 4px;
+    }
+  }
+
+  &__error {
+    margin: 0;
+    color: #d66;
+    font-size: 13px;
+  }
+
+  &__success {
+    margin: 0;
+    color: #7fcf9b;
+    font-size: 13px;
+    line-height: 1.5;
+  }
+}
+
+@media (max-width: 600px) {
+  .review-form {
+    &__row {
+      grid-template-columns: 1fr;
+    }
+
+    &__title {
+      font-size: 28px;
+    }
+  }
+}
