@@ -5,20 +5,14 @@ import {
   validateForm,
   type FormErrors,
 } from '../../utils/validation';
+import type { ContactFormData } from '../../types/forms';
+import { submitContactForm } from '../../api/contactApi';
 
 import CustomSelect from '../CustomSelect/CustomSelect';
 
 import './ContactForm.scss';
 
-type FormData = {
-  name: string;
-  phone: string;
-  email: string;
-  project: string;
-  message: string;
-};
-
-const initialFormData: FormData = {
+const initialFormData: ContactFormData = {
   name: '',
   phone: '',
   email: '',
@@ -28,7 +22,7 @@ const initialFormData: FormData = {
 
 const ContactForm = () => {
   const [formData, setFormData] =
-    useState<FormData>(initialFormData);
+    useState<ContactFormData>(initialFormData);
 
   const [errors, setErrors] =
     useState<FormErrors>({});
@@ -102,7 +96,7 @@ const ContactForm = () => {
     setErrors({});
 
     try {
-      // await sendForm(formData);
+      await submitContactForm(formData);
 
       setSuccess(true);
       setFormData(initialFormData);
