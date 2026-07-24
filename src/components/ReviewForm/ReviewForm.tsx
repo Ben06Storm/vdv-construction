@@ -1,15 +1,12 @@
 import { useState } from 'react';
+import type {
+  ReviewFormData,
+} from '../../types/forms';
 
 import RatingStars from '../RatingStars/RatingStars';
 
 import './ReviewForm.scss';
 
-export type ReviewFormData = {
-  name: string;
-  city: string;
-  rating: number;
-  review: string;
-};
 
 type ReviewFormProps = {
   onSubmit: (data: ReviewFormData) => Promise<void>;
@@ -72,21 +69,18 @@ const ReviewForm = ({
       );
       return;
     }
-
     if (!formData.city.trim()) {
       setValidationError(
         'Please enter your city.',
       );
       return;
     }
-
     if (formData.rating === 0) {
       setValidationError(
         'Please select a rating.',
       );
       return;
     }
-
     if (!formData.review.trim()) {
       setValidationError(
         'Please write your review.',
@@ -98,22 +92,18 @@ const ReviewForm = ({
 
     setFormData(initialFormData);
   };
-
   return (
     <div className="review-form">
       <p className="review-form__subtitle">
         SHARE YOUR EXPERIENCE
       </p>
-
       <h3 className="review-form__title">
         Leave a Review
       </h3>
-
       <p className="review-form__description">
         We would love to hear about your experience
         with us.
       </p>
-
       <form
         className="review-form__form"
         onSubmit={handleSubmit}
@@ -128,7 +118,6 @@ const ReviewForm = ({
             onChange={handleChange}
             autoComplete="name"
           />
-
           <input
             type="text"
             name="city"
@@ -138,12 +127,10 @@ const ReviewForm = ({
             autoComplete="address-level2"
           />
         </div>
-
         <div className="review-form__rating">
           <p className="review-form__rating-title">
             Your Rating
           </p>
-
           <RatingStars
             rating={formData.rating}
             className="review-form__stars"
@@ -151,7 +138,6 @@ const ReviewForm = ({
             onRatingChange={handleRating}
           />
         </div>
-
         <textarea
           name="review"
           rows={5}
@@ -159,7 +145,16 @@ const ReviewForm = ({
           value={formData.review}
           onChange={handleChange}
         />
-
+        {validationError && (
+          <p className="review-form__error">
+            {validationError}
+          </p>
+        )}
+        {error && (
+          <p className="review-form__error">
+            {error}
+          </p>
+        )}
         <button
           className="review-form__button"
           type="submit"
@@ -169,18 +164,6 @@ const ReviewForm = ({
             ? 'Submitting...'
             : 'SUBMIT REVIEW'}
         </button>
-
-        {validationError && (
-          <p className="review-form__error">
-            {validationError}
-          </p>
-        )}
-
-        {error && (
-          <p className="review-form__error">
-            {error}
-          </p>
-        )}
       </form>
     </div>
   );

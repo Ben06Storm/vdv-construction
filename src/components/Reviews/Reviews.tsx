@@ -20,13 +20,12 @@ import 'swiper/css';
 import 'swiper/css/pagination';
 
 import { reviewsCards } from '../../data/reviews';
+import type { ReviewFormData } from '../../types/forms';
 
 import SectionTitle from '../SectionTitle/SectionTitle';
 import ReviewCard from '../ReviewCard/ReviewCard';
 import Modal from '../Modal/Modal';
-import ReviewForm, {
-  type ReviewFormData,
-} from '../ReviewForm/ReviewForm';
+import ReviewForm from '../ReviewForm/ReviewForm';
 import RatingStars from '../RatingStars/RatingStars';
 
 import './Reviews.scss';
