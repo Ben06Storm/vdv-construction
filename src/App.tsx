@@ -1,33 +1,39 @@
+import {
+  BrowserRouter,
+  Routes,
+  Route,
+} from 'react-router-dom';
 
 import Header from './components/Header/Header';
-import Hero from './components/Hero/Hero';
-import Services from './components/Services/Services';
-import AboutUs from './components/AboutUs/AboutUs';
-import ProjectsPreview from './components/ProjectsPreview/ProjectsPreview';
-import Projects from './components/Projects/Projects';
-import WhyUs from './components/WhyUs/WhyUs';
-import Reviews from './components/Reviews/Reviews';
-import Contacts from './components/Contact/Contact';
 import Footer from './components/Footer/Footer';
 import BackToTop from './components/BackToTop/BackToTop';
+import Home from './pages/Home/Home';
+import PrivacyPolicy from './pages/PrivacyPolicy/PrivacyPolicy';
+import TermsOfService from './pages/TermsOfService/TermsOfService';
+import ScrollToSection from './components/ScrollToSection/ScrollToSection';
 
 const App = () => {
   return (
-    <>
+    <BrowserRouter>
       <Header />
-      <main>
-        <Hero />
-        <Services />
-        <AboutUs />
-        <ProjectsPreview />
-        <Projects />
-        <WhyUs />
-        <Reviews />
-        <Contacts />
-      </main>
+      <ScrollToSection />
+      <Routes>
+        <Route
+          path="/"
+          element={<Home />}
+        />
+        <Route
+          path="/privacy-policy"
+          element={<PrivacyPolicy />}
+        />
+        <Route
+          path="/terms-of-service"
+          element={<TermsOfService />}
+        />
+      </Routes>
       <Footer />
       <BackToTop />
-    </>
+    </BrowserRouter>
   );
 };
 
