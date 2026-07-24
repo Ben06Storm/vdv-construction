@@ -13,6 +13,11 @@ export type ServiceRequestFormData = {
   message: string;
 };
 
+export type ServiceRequestPayload =
+  ServiceRequestFormData & {
+    service: string;
+  };
+
 export type ReviewFormData = {
   name: string;
   city: string;

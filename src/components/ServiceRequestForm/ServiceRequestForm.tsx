@@ -7,6 +7,7 @@ import {
 import type {
   ServiceRequestFormData,
 } from '../../types/forms';
+import { submitServiceRequest } from '../../api/serviceRequestApi';
 
 import './ServiceRequestForm.scss';
 
@@ -97,12 +98,11 @@ const ServiceRequestForm = ({
     setLoading(true);
 
     try {
-      // await sendForm(formData);
 
-      console.log({
-        service: serviceTitle,
-        ...formData,
-      });
+await submitServiceRequest({
+  ...formData,
+  service: serviceTitle,
+});
 
       setSuccess(true);
       setFormData(initialFormData);

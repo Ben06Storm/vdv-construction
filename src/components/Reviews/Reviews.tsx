@@ -21,6 +21,7 @@ import 'swiper/css/pagination';
 
 import { reviewsCards } from '../../data/reviews';
 import type { ReviewFormData } from '../../types/forms';
+import { submitReview } from '../../api/reviewApi';
 
 import SectionTitle from '../SectionTitle/SectionTitle';
 import ReviewCard from '../ReviewCard/ReviewCard';
@@ -87,10 +88,7 @@ const Reviews = () => {
     setSubmitError(null);
 
     try {
-      console.log(data);
-
-      // await reviewService.create(data);
-
+      await submitReview(data);
       setIsReviewFormOpen(false);
     } catch (error) {
       setSubmitError(

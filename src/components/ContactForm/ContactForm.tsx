@@ -6,6 +6,7 @@ import {
   type FormErrors,
 } from '../../utils/validation';
 import type { ContactFormData } from '../../types/forms';
+import { submitContactForm } from '../../api/contactApi';
 
 import CustomSelect from '../CustomSelect/CustomSelect';
 
@@ -95,7 +96,7 @@ const ContactForm = () => {
     setErrors({});
 
     try {
-      // await sendForm(formData);
+      await submitContactForm(formData);
 
       setSuccess(true);
       setFormData(initialFormData);
