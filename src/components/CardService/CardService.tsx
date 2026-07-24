@@ -27,7 +27,7 @@ const CardService = ({
         type="button"
           className="service-card__btn"
           onClick={handleRequest}>
-          Explore Service
+          Request a Service
           <ArrowRight
             className="service-card__arrow"
             size={14}

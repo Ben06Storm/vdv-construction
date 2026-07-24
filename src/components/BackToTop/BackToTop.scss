@@ -1,0 +1,50 @@
+.back-to-top {
+  position: fixed;
+  right: 24px;
+  bottom: 24px;
+  z-index: 900;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 48px;
+  height: 48px;
+  border: 1px solid var(--gold);
+  border-radius: 4px;
+  background-color: var(--bg-dark);
+  color: var(--gold);
+  opacity: 0;
+  visibility: hidden;
+  transform: translateY(16px);
+  cursor: pointer;
+  transition:
+    opacity .3s ease,
+    visibility .3s ease,
+    transform .3s ease,
+    background-color .3s ease,
+    color .3s ease;
+
+  &:hover {
+    background-color: var(--gold);
+    color: var(--bg-dark);
+  }
+
+  &:focus-visible {
+    outline: 2px solid var(--gold);
+    outline-offset: 4px;
+  }
+
+  &--visible {
+    opacity: 1;
+    visibility: visible;
+    transform: translateY(0);
+  }
+}
+
+@media (max-width: 600px) {
+  .back-to-top {
+    right: 16px;
+    bottom: 16px;
+    width: 44px;
+    height: 44px;
+  }
+}
