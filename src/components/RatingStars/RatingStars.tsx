@@ -55,6 +55,7 @@ const RatingStars = ({
                 <Star
                   size={24}
                   strokeWidth={1.5}
+                  fill={isActive ? 'currentColor' : 'none'}
                   aria-hidden="true"
                 />
               </button>
@@ -68,6 +69,7 @@ const RatingStars = ({
                   ? 'rating-stars__star rating-stars__star--active'
                   : 'rating-stars__star'
               }
+              fill={isActive ? 'currentColor' : 'none'}
               aria-hidden="true"
             />
           );

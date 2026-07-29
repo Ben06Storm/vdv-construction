@@ -16,7 +16,7 @@ const Header = () => {
   const toggleMenu = () => {
     setIsMenuOpen(prev => !prev);
   };
-  
+
   const closeMenu = () => {
     setIsMenuOpen(false);
   };
@@ -26,7 +26,9 @@ const Header = () => {
       <div className="container">
         <div className="header__row">
           <div className="header__logo">
-            <Logo />
+            <a href="#home">
+              <Logo />
+            </a>
           </div>
           <nav
             id="main-navigation"
