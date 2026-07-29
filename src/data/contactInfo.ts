@@ -8,12 +8,12 @@ import {
 export const contactInfo = [
   {
     icon: Phone,
-    text: '(503) 123-4567',
-    href: 'tel:+380684875490',
+    text: '971-895-5827',
+    href: 'tel:971-895-5827',
   },
   {
     icon: Mail,
-    text: 'info@vdvconstruction.com',
+    text: 'llcvdvconstruction@gmail.com',
     href: 'mailto:llcvdvconstruction@gmail.com',
   },
   {

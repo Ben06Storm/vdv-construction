@@ -1,3 +1,5 @@
+import { Link } from 'react-router-dom';
+
 import Logo from '../Header/Logo';
 import './Footer.scss';
 
@@ -6,38 +8,27 @@ const Footer = () => {
 
   return (
     <footer className="footer">
-
       <div className="container">
-
         <div className="footer__wrapper">
-
-          <a
-            href="#home"
+          <Link
+            to="/"
             className="footer__logo"
           >
             <Logo />
-          </a>
-
+          </Link>
           <p className="footer__copyright">
             © {year} VDV Construction. All rights reserved.
           </p>
-
           <nav className="footer__nav">
-
-            <a href="#privacy">
+            <Link to="/privacy-policy">
               Privacy Policy
-            </a>
-
-            <a href="#terms">
+            </Link>
+            <Link to="/terms-of-service">
               Terms of Service
-            </a>
-
+            </Link>
           </nav>
-
         </div>
-
       </div>
-
     </footer>
   );
 };

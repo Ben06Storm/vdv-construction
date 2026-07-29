@@ -67,4 +67,12 @@
   }
 }
 
+@media (max-height: 400px) {
+.mobile-menu {
+  padding: 24px;
 
+    &__list {
+    gap: 12px;
+  }
+}
+}

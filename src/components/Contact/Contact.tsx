@@ -4,7 +4,6 @@ import { contactInfo } from '../../data/contactInfo';
 import {
   FaFacebookF,
   FaInstagram,
-  FaTwitter,
 } from 'react-icons/fa6';
 
 import SectionTitle from '../SectionTitle/SectionTitle';
@@ -61,14 +60,6 @@ const Contact = () => {
               className="contact__social"
             >
               <FaFacebookF size={22} />
-            </a>
-            <a
-              href="https://twitter.com/your_page"
-              target="_blank"
-              rel="noopener noreferrer"
-              className="contact__social"
-            >
-              <FaTwitter size={22} />
             </a>
           </div>
         </div>

@@ -2,9 +2,9 @@
 import LuxuryTile from '../assets/images/luxuryTile.png';
 import Deck from '../assets/images/decks.png';
 import Heated from '../assets/images/heatedFloor.png';
-import Porcelain from '../assets/images/porcelainSlabs.png';
+import LargeTile from '../assets/images/largeTile.png';
 import Sauna from '../assets/images/sauna.png';
-import Shower from '../assets/images/shower.png';
+import BathroomRemodeling from '../assets/images/bathroomRemodeling.png';
 import Waterproof from '../assets/images/waterproof.png';
 import CommercialTile from '../assets/images/comercialTile.png';
 
@@ -22,13 +22,13 @@ export const services: Service[] = [
   },
   {
     id: 2,
-    title: 'Large Format Porcelain Slabs',
-    image: Porcelain,
+    title: 'Large Format Tile Slabs',
+    image: LargeTile,
   },
   {
     id: 3,
-    title: 'Custom Showers',
-    image: Shower,
+    title: 'Bathroom Remodeling',
+    image: BathroomRemodeling,
   },
   {
     id: 4,
