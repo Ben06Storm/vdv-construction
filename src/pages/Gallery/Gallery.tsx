@@ -1,4 +1,4 @@
-import { useState } from 'react';
+import { useEffect, useState, useCallback, useMemo } from 'react';
 
 import {
   ChevronLeft,
@@ -11,54 +11,114 @@ import CustomSelect from '../../components/CustomSelect/CustomSelect';
 
 import { galleryImages } from '../../data/galleryImages';
 import { galleryCategories } from '../../data/galleryCategories';
-
 import type { GalleryImage } from '../../types/gallery';
 
 import './Gallery.scss';
 
+const ALL_CATEGORY = 'All';
+
+const getCyclicIndex = (
+  current: number,
+  delta: 1 | -1,
+  length: number,
+) => (current + delta + length) % length;
+
+const categoryOptions = [
+  { value: ALL_CATEGORY, label: ALL_CATEGORY },
+  ...galleryCategories.map(category => ({
+    value: category,
+    label: category,
+  })),
+];
+
 const Gallery = () => {
   const [activeCategory, setActiveCategory] =
-    useState('All');
+    useState(ALL_CATEGORY);
 
   const [selectedImage, setSelectedImage] =
     useState<GalleryImage | null>(null);
 
-  const filteredImages =
-    activeCategory === 'All'
-      ? galleryImages
-      : galleryImages.filter(
-        image =>
-          image.category === activeCategory,
-      );
+  const filteredImages = useMemo(
+    () =>
+      activeCategory === ALL_CATEGORY
+        ? galleryImages
+        : galleryImages.filter(
+          image =>
+            image.category === activeCategory,
+        ),
+    [activeCategory],
+  );
 
-  const currentIndex = selectedImage
-    ? filteredImages.findIndex(
-      image => image.id === selectedImage.id,
-    )
-    : -1;
+  const currentIndex = useMemo(
+    () =>
+      selectedImage
+        ? filteredImages.findIndex(
+          image => image.id === selectedImage.id,
+        )
+        : -1,
+    [selectedImage, filteredImages],
+  );
 
-  const handlePreviousImage = () => {
-    if (currentIndex <= 0) {
+  const hasMultipleImages = filteredImages.length > 1;
+
+  const handlePreviousImage = useCallback(() => {
+    if (!selectedImage || !hasMultipleImages) {
       return;
     }
 
-    setSelectedImage(
-      filteredImages[currentIndex - 1],
+    const previousIndex = getCyclicIndex(
+      currentIndex,
+      -1,
+      filteredImages.length,
     );
-  };
 
-  const handleNextImage = () => {
-    if (
-      currentIndex === -1 ||
-      currentIndex >= filteredImages.length - 1
-    ) {
+    setSelectedImage(filteredImages[previousIndex]);
+  }, [selectedImage, hasMultipleImages, currentIndex, filteredImages]);
+
+  const handleNextImage = useCallback(() => {
+    if (!selectedImage || !hasMultipleImages) {
       return;
     }
 
-    setSelectedImage(
-      filteredImages[currentIndex + 1],
+    const nextIndex = getCyclicIndex(
+      currentIndex,
+      1,
+      filteredImages.length,
     );
-  };
+
+    setSelectedImage(filteredImages[nextIndex]);
+  }, [selectedImage, hasMultipleImages, currentIndex, filteredImages]);
+
+  const handleCloseModal = useCallback(() => {
+    setSelectedImage(null);
+  }, []);
+
+  useEffect(() => {
+    if (!selectedImage) {
+      return;
+    }
+
+    const handleKeyDown = (event: KeyboardEvent) => {
+      if (event.key === 'ArrowLeft') {
+        handlePreviousImage();
+      }
+
+      if (event.key === 'ArrowRight') {
+        handleNextImage();
+      }
+    };
+
+    window.addEventListener('keydown', handleKeyDown);
+
+    return () => {
+      window.removeEventListener('keydown', handleKeyDown);
+    };
+  }, [
+    selectedImage,
+    handlePreviousImage,
+    handleNextImage,
+    handleCloseModal,
+  ]);
 
   return (
     <section className="gallery-page">
@@ -74,13 +134,11 @@ const Gallery = () => {
           <CustomSelect
             placeholder="Select Category"
             value={activeCategory}
-            onChange={setActiveCategory}
-            options={galleryCategories.map(
-              category => ({
-                value: category,
-                label: category,
-              }),
-            )}
+            onChange={(category) => {
+              setSelectedImage(null);
+              setActiveCategory(category);
+            }}
+            options={categoryOptions}
           />
         </div>
 
@@ -90,13 +148,12 @@ const Gallery = () => {
               key={image.id}
               type="button"
               className="gallery-page__item"
-              onClick={() =>
-                setSelectedImage(image)
-              }
+              onClick={() => setSelectedImage(image)}
             >
               <img
                 src={image.image}
                 alt={image.title}
+                loading="lazy"
               />
             </button>
           ))}
@@ -104,7 +161,7 @@ const Gallery = () => {
 
         <Modal
           isOpen={Boolean(selectedImage)}
-          onClose={() => setSelectedImage(null)}
+          onClose={handleCloseModal}
           ariaLabel="Gallery image"
           variant="image"
         >
@@ -117,14 +174,17 @@ const Gallery = () => {
               />
 
               <div className="gallery-page__controls">
-                <button
-                  type="button"
-                  className="gallery-page__nav gallery-page__nav--prev"
-                  onClick={handlePreviousImage}
-                  disabled={currentIndex === 0}
-                >
-                  <ChevronLeft />
-                </button>
+                {hasMultipleImages && (
+                  <button
+                    type="button"
+                    className="gallery-page__nav gallery-page__nav--prev"
+                    onClick={handlePreviousImage}
+                    aria-label="Previous image"
+                  >
+                    <ChevronLeft aria-hidden="true" />
+                  </button>
+                )}
+
                 <div className="gallery-page__content">
                   <h3 className="gallery-page__modal-title">
                     {selectedImage.title}
@@ -133,20 +193,24 @@ const Gallery = () => {
                   <p className="gallery-page__modal-category">
                     {selectedImage.category}
                   </p>
-                  <div className="gallery-page__counter">
-                    {currentIndex + 1} / {filteredImages.length}
-                  </div>
+
+                  {hasMultipleImages && (
+                    <div className="gallery-page__counter">
+                      {currentIndex + 1} / {filteredImages.length}
+                    </div>
+                  )}
                 </div>
-                <button
-                  type="button"
-                  className="gallery-page__nav gallery-page__nav--next"
-                  onClick={handleNextImage}
-                  disabled={
-                    currentIndex === filteredImages.length - 1
-                  }
-                >
-                  <ChevronRight />
-                </button>
+
+                {hasMultipleImages && (
+                  <button
+                    type="button"
+                    className="gallery-page__nav gallery-page__nav--next"
+                    onClick={handleNextImage}
+                    aria-label="Next image"
+                  >
+                    <ChevronRight aria-hidden="true" />
+                  </button>
+                )}
               </div>
             </div>
           )}

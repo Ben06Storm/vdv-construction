@@ -2,8 +2,6 @@
   padding: 140px 0 80px;
 
   &__filters {
-    display: flex;
-    justify-content: center;
     margin-bottom: 40px;
   }
 
@@ -72,21 +70,21 @@
   }
 
   &__modal-title {
-  color: var(--white);
-  font-size: 20px;
-  text-align: center;
-}
+    color: var(--white);
+    font-size: 20px;
+    text-align: center;
+  }
 
-&__modal-category {
-  color: var(--gold);
-  text-align: center;
-}
+  &__modal-category {
+    color: var(--gold);
+    text-align: center;
+  }
 
-&__counter {
-  color: var(--white);
-  font-size: 16px;
-  font-weight: 600;
-}
+  &__counter {
+    color: var(--white);
+    font-size: 16px;
+    font-weight: 600;
+  }
 
   &__nav {
     display: flex;
