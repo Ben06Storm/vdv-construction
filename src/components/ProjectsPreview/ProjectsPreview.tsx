@@ -40,7 +40,7 @@ const ProjectsPreview = () => {
             <div>
               <LinkButton
                 text="View All Projects"
-                href="#projects"
+                href="/gallery"
               />
             </div>
           </div>

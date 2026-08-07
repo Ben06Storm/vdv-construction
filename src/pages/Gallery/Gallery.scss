@@ -1,0 +1,131 @@
+.gallery-page {
+  padding: 140px 0 80px;
+
+  &__filters {
+    display: flex;
+    justify-content: center;
+    margin-bottom: 40px;
+  }
+
+  &__grid {
+    display: grid;
+    grid-template-columns:
+      repeat(auto-fit, minmax(320px, 1fr));
+    gap: 24px;
+  }
+
+  &__item {
+    overflow: hidden;
+    padding: 0;
+    border: 2px solid var(--border);
+    border-radius: 8px;
+    background: transparent;
+    cursor: pointer;
+    transition: border-color .3s ease;
+
+    img {
+      display: block;
+      width: 100%;
+      aspect-ratio: 4 / 3;
+      object-fit: cover;
+      transition: transform .4s ease;
+    }
+
+    &:hover {
+      border-color: var(--gold);
+    }
+
+    &:hover img {
+      transform: scale(1.05);
+    }
+  }
+
+  &__preview {
+    display: block;
+    width: 100%;
+    max-height: 80vh;
+    object-fit: contain;
+    border-radius: 8px;
+  }
+
+  &__modal {
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+    gap: 20px;
+  }
+
+  &__controls {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    width: 100%;
+  }
+
+  &__content {
+    display: flex;
+    flex: 1;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+    gap: 8px;
+  }
+
+  &__modal-title {
+  color: var(--white);
+  font-size: 20px;
+  text-align: center;
+}
+
+&__modal-category {
+  color: var(--gold);
+  text-align: center;
+}
+
+&__counter {
+  color: var(--white);
+  font-size: 16px;
+  font-weight: 600;
+}
+
+  &__nav {
+    display: flex;
+    justify-content: center;
+    width: 52px;
+    height: 52px;
+    border: 1px solid var(--border);
+    border-radius: 50%;
+    background: var(--bg-dark);
+    color: var(--white);
+    cursor: pointer;
+    transition: .3s ease;
+
+    &:hover:not(:disabled) {
+      color: var(--gold);
+      border-color: var(--gold);
+    }
+
+    &:disabled {
+      opacity: .3;
+      cursor: default;
+    }
+  }
+}
+
+@media (max-width: 769px) {
+  .gallery-page {
+    padding: 120px 0 60px;
+
+    &__item img {
+      aspect-ratio: 3 / 2;
+    }
+  }
+}
+
+@media (max-width: 425px) {
+  .gallery-page {
+    &__grid {
+      grid-template-columns: 1fr;
+    }
+  }
+}

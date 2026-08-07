@@ -96,9 +96,21 @@ const CustomSelect = ({
         aria-haspopup="listbox"
         aria-expanded={isOpen}
         type="button"
-        className={`customSelect__button ${isOpen ? 'customSelect__button--open' : ''
+        className={`customSelect__button ${isOpen
+          ? 'customSelect__button--open'
+          : ''
           }`}
-        onClick={() => setIsOpen(prev => !prev)}
+        onClick={() => {
+          const selectedIndex = options.findIndex(
+            option => option.value === value,
+          );
+
+          setActiveIndex(
+            selectedIndex >= 0 ? selectedIndex : 0,
+          );
+
+          setIsOpen(prev => !prev);
+        }}
       >
         <span
           className={
@@ -124,9 +136,12 @@ const CustomSelect = ({
               role="option"
               aria-selected={value === option.value}
               key={option.value}
-              className={`customSelect__item ${activeIndex === index
+              className={`customSelect__item ${value === option.value
                 ? 'customSelect__item--active'
                 : ''
+                } ${activeIndex === index
+                  ? 'customSelect__item--focused'
+                  : ''
                 }`}
               onClick={() => {
                 onChange(option.value);
