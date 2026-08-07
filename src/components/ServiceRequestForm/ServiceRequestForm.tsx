@@ -4,6 +4,10 @@ import {
   isValidEmail,
   isValidPhone,
 } from '../../utils/validation';
+import type {
+  ServiceRequestFormData,
+} from '../../types/forms';
+import { submitServiceRequest } from '../../api/serviceRequestApi';
 
 import './ServiceRequestForm.scss';
 
@@ -11,14 +15,7 @@ type ServiceRequestFormProps = {
   serviceTitle: string;
 };
 
-type FormData = {
-  name: string;
-  phone: string;
-  email: string;
-  message: string;
-};
-
-const initialFormData: FormData = {
+const initialFormData: ServiceRequestFormData = {
   name: '',
   phone: '',
   email: '',
@@ -29,7 +26,7 @@ const ServiceRequestForm = ({
   serviceTitle,
 }: ServiceRequestFormProps) => {
   const [formData, setFormData] =
-    useState<FormData>(initialFormData);
+    useState<ServiceRequestFormData>(initialFormData);
 
   const [loading, setLoading] =
     useState(false);
@@ -101,12 +98,11 @@ const ServiceRequestForm = ({
     setLoading(true);
 
     try {
-      // await sendForm(formData);
 
-      console.log({
-        service: serviceTitle,
-        ...formData,
-      });
+await submitServiceRequest({
+  ...formData,
+  service: serviceTitle,
+});
 
       setSuccess(true);
       setFormData(initialFormData);
