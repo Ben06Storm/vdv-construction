@@ -1,6 +1,16 @@
 .gallery-page {
   padding: 140px 0 80px;
 
+  &__swiper {
+    width: 100%;
+  }
+
+  &__swiper .swiper-slide {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+
   &__filters {
     margin-bottom: 40px;
   }
@@ -40,63 +50,67 @@
 
   &__preview {
     display: block;
-    width: 100%;
-    max-height: 80vh;
+    max-height: 95vh;
     object-fit: contain;
     border-radius: 8px;
   }
 
   &__modal {
-    display: flex;
-    align-items: center;
-    flex-direction: column;
-    gap: 20px;
-  }
-
-  &__controls {
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
+    position: relative;
     width: 100%;
   }
 
-  &__content {
-    display: flex;
-    flex: 1;
-    align-items: center;
-    justify-content: center;
-    flex-direction: column;
-    gap: 8px;
-  }
-
-  &__modal-title {
-    color: var(--white);
-    font-size: 20px;
+  &__info {
+    position: absolute;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    padding: 24px;
+    background: linear-gradient(transparent,
+        rgba(0, 0, 0, .8));
     text-align: center;
+    z-index: 10;
+
+    h3 {
+      color: white;
+      font-size: clamp(16px, 4vw, 28px);
+      margin-bottom: 8px;
+    }
+
+    p {
+      color: var(--gold);
+      margin-bottom: 10px;
+    }
+
+    span {
+      color: white;
+      font-weight: 600;
+    }
   }
 
-  &__modal-category {
-    color: var(--gold);
-    text-align: center;
+  &__nav--prev {
+    left: 20px;
   }
 
-  &__counter {
-    color: var(--white);
-    font-size: 16px;
-    font-weight: 600;
+  &__nav--next {
+    right: 20px;
   }
 
   &__nav {
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    z-index: 20;
     display: flex;
+    align-items: center;
     justify-content: center;
-    width: 52px;
-    height: 52px;
-    border: 1px solid var(--border);
+    width: 56px;
+    height: 56px;
     border-radius: 50%;
-    background: var(--bg-dark);
-    color: var(--white);
+    border: 1px solid rgba(255, 255, 255, .2);
+    background: rgba(0, 0, 0, .5);
+    color: white;
     cursor: pointer;
-    transition: .3s ease;
 
     &:hover:not(:disabled) {
       color: var(--gold);
@@ -117,6 +131,29 @@
     &__item img {
       aspect-ratio: 3 / 2;
     }
+
+    &__info {
+      position: static;
+      padding: 16px 10px;
+      background: var(--bg-dark);
+      text-align: center;
+    }
+
+        &__nav {
+      top: auto;
+      bottom: 20px;
+      transform: none;
+      width: 44px;
+      height: 44px;
+
+      &--prev {
+        left: 10px;
+      }
+
+      &--next {
+        right: 10px;
+      }
+    }
   }
 }
 
@@ -126,4 +163,30 @@
       grid-template-columns: 1fr;
     }
   }
+}
+
+@media (max-height: 500px) {
+  .gallery-page {
+    &__info {
+      display: none;
+    }
+
+    &__preview {
+      max-height: 90vh;
+    }
+            &__nav {
+      &--prev {
+        display: none;
+      }
+
+      &--next {
+        display: none;
+      }
+  }
+}
+.gallery-page--content .modal__close {
+  position: absolute;
+  top: 30px;
+  right: 10px;
+}
 }

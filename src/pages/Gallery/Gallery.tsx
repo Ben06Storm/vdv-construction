@@ -1,4 +1,16 @@
-import { useEffect, useState, useCallback, useMemo } from 'react';
+import { useState, useMemo, useRef } from 'react';
+
+import { Swiper, SwiperSlide } from 'swiper/react';
+
+import {
+  Navigation,
+  Keyboard,
+} from 'swiper/modules';
+
+import type { Swiper as SwiperType } from 'swiper';
+
+import 'swiper/css';
+import 'swiper/css/navigation';
 
 import {
   ChevronLeft,
@@ -11,17 +23,10 @@ import CustomSelect from '../../components/CustomSelect/CustomSelect';
 
 import { galleryImages } from '../../data/galleryImages';
 import { galleryCategories } from '../../data/galleryCategories';
-import type { GalleryImage } from '../../types/gallery';
 
 import './Gallery.scss';
 
 const ALL_CATEGORY = 'All';
-
-const getCyclicIndex = (
-  current: number,
-  delta: 1 | -1,
-  length: number,
-) => (current + delta + length) % length;
 
 const categoryOptions = [
   { value: ALL_CATEGORY, label: ALL_CATEGORY },
@@ -35,8 +40,17 @@ const Gallery = () => {
   const [activeCategory, setActiveCategory] =
     useState(ALL_CATEGORY);
 
-  const [selectedImage, setSelectedImage] =
-    useState<GalleryImage | null>(null);
+  const [isModalOpen, setIsModalOpen] =
+    useState(false);
+
+  const [initialSlideIndex, setInitialSlideIndex] =
+    useState(0);
+
+  const [currentSlide, setCurrentSlide] =
+    useState(0);
+
+  const swiperRef =
+    useRef<SwiperType | null>(null);
 
   const filteredImages = useMemo(
     () =>
@@ -49,76 +63,33 @@ const Gallery = () => {
     [activeCategory],
   );
 
-  const currentIndex = useMemo(
-    () =>
-      selectedImage
-        ? filteredImages.findIndex(
-          image => image.id === selectedImage.id,
-        )
-        : -1,
-    [selectedImage, filteredImages],
-  );
-
   const hasMultipleImages = filteredImages.length > 1;
+  const currentImage = filteredImages[currentSlide];
 
-  const handlePreviousImage = useCallback(() => {
-    if (!selectedImage || !hasMultipleImages) {
-      return;
-    }
+  const handlePrevious = () => {
+    swiperRef.current?.slidePrev();
+  };
 
-    const previousIndex = getCyclicIndex(
-      currentIndex,
-      -1,
-      filteredImages.length,
-    );
+  const handleNext = () => {
+    swiperRef.current?.slideNext();
+  };
 
-    setSelectedImage(filteredImages[previousIndex]);
-  }, [selectedImage, hasMultipleImages, currentIndex, filteredImages]);
+  const handleCategoryChange = (category: string) => {
+    setActiveCategory(category);
+    setCurrentSlide(0);
+    setInitialSlideIndex(0);
+  };
 
-  const handleNextImage = useCallback(() => {
-    if (!selectedImage || !hasMultipleImages) {
-      return;
-    }
+  const handleOpenImage = (index: number) => {
+    setInitialSlideIndex(index);
+    setCurrentSlide(index);
+    setIsModalOpen(true);
+  };
 
-    const nextIndex = getCyclicIndex(
-      currentIndex,
-      1,
-      filteredImages.length,
-    );
-
-    setSelectedImage(filteredImages[nextIndex]);
-  }, [selectedImage, hasMultipleImages, currentIndex, filteredImages]);
-
-  const handleCloseModal = useCallback(() => {
-    setSelectedImage(null);
-  }, []);
-
-  useEffect(() => {
-    if (!selectedImage) {
-      return;
-    }
-
-    const handleKeyDown = (event: KeyboardEvent) => {
-      if (event.key === 'ArrowLeft') {
-        handlePreviousImage();
-      }
-
-      if (event.key === 'ArrowRight') {
-        handleNextImage();
-      }
-    };
-
-    window.addEventListener('keydown', handleKeyDown);
-
-    return () => {
-      window.removeEventListener('keydown', handleKeyDown);
-    };
-  }, [
-    selectedImage,
-    handlePreviousImage,
-    handleNextImage,
-    handleCloseModal,
-  ]);
+  const handleCloseModal = () => {
+    setIsModalOpen(false);
+    setCurrentSlide(0);
+  };
 
   return (
     <section className="gallery-page">
@@ -134,21 +105,18 @@ const Gallery = () => {
           <CustomSelect
             placeholder="Select Category"
             value={activeCategory}
-            onChange={(category) => {
-              setSelectedImage(null);
-              setActiveCategory(category);
-            }}
+            onChange={handleCategoryChange}
             options={categoryOptions}
           />
         </div>
 
         <div className="gallery-page__grid">
-          {filteredImages.map(image => (
+          {filteredImages.map((image, index) => (
             <button
               key={image.id}
               type="button"
               className="gallery-page__item"
-              onClick={() => setSelectedImage(image)}
+              onClick={() => handleOpenImage(index)}
             >
               <img
                 src={image.image}
@@ -158,63 +126,69 @@ const Gallery = () => {
             </button>
           ))}
         </div>
+        <div className="gallery-page--content">
+          <Modal
+            isOpen={isModalOpen}
+            onClose={handleCloseModal}
+            ariaLabel="Gallery image"
+            variant="image"
+          >
+            {isModalOpen && currentImage && (
+              <div className="gallery-page__modal">
+                <Swiper
+                  modules={[Navigation, Keyboard]}
+                  initialSlide={initialSlideIndex}
+                  loop={hasMultipleImages}
+                  keyboard={{ enabled: true }}
+                  onSwiper={(swiper) => {
+                    swiperRef.current = swiper;
+                  }}
+                  onSlideChange={(swiper) => {
+                    setCurrentSlide(swiper.realIndex);
+                  }}
+                  className="gallery-page__swiper"
+                >
+                  {filteredImages.map((image) => (
+                    <SwiperSlide key={image.id}>
+                      <img
+                        className="gallery-page__preview"
+                        src={image.image}
+                        alt={image.title}
+                      />
+                    </SwiperSlide>
+                  ))}
+                </Swiper>
 
-        <Modal
-          isOpen={Boolean(selectedImage)}
-          onClose={handleCloseModal}
-          ariaLabel="Gallery image"
-          variant="image"
-        >
-          {selectedImage && (
-            <div className="gallery-page__modal">
-              <img
-                className="gallery-page__preview"
-                src={selectedImage.image}
-                alt={selectedImage.title}
-              />
-
-              <div className="gallery-page__controls">
                 {hasMultipleImages && (
-                  <button
-                    type="button"
-                    className="gallery-page__nav gallery-page__nav--prev"
-                    onClick={handlePreviousImage}
-                    aria-label="Previous image"
-                  >
-                    <ChevronLeft aria-hidden="true" />
-                  </button>
+                  <>
+                    <button
+                      className="gallery-page__nav gallery-page__nav--prev"
+                      onClick={handlePrevious}
+                    >
+                      <ChevronLeft />
+                    </button>
+
+                    <button
+                      className="gallery-page__nav gallery-page__nav--next"
+                      onClick={handleNext}
+                    >
+                      <ChevronRight />
+                    </button>
+                  </>
                 )}
 
-                <div className="gallery-page__content">
-                  <h3 className="gallery-page__modal-title">
-                    {selectedImage.title}
-                  </h3>
+                <div className="gallery-page__info">
+                  <h3>{currentImage.title}</h3>
+                  <p>{currentImage.category}</p>
 
-                  <p className="gallery-page__modal-category">
-                    {selectedImage.category}
-                  </p>
-
-                  {hasMultipleImages && (
-                    <div className="gallery-page__counter">
-                      {currentIndex + 1} / {filteredImages.length}
-                    </div>
-                  )}
+                  <span>
+                    {currentSlide + 1} / {filteredImages.length}
+                  </span>
                 </div>
-
-                {hasMultipleImages && (
-                  <button
-                    type="button"
-                    className="gallery-page__nav gallery-page__nav--next"
-                    onClick={handleNextImage}
-                    aria-label="Next image"
-                  >
-                    <ChevronRight aria-hidden="true" />
-                  </button>
-                )}
               </div>
-            </div>
-          )}
-        </Modal>
+            )}
+          </Modal>
+          </div>
       </div>
     </section>
   );
