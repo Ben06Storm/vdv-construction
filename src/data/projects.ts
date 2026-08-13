@@ -1,7 +1,7 @@
 import bathroom from '../assets/images/comercialTile.png';
-import kitchen from '../assets/images/porcelainSlabs.png';
-import stairs from '../assets/images/luxuryTile.png';
-import deck from '../assets/images/decks.png';
+import sauna from '../assets/images/gallery/sauna/sauna-01.jpg';
+import stairs from '../assets/images/gallery/deck/deck-33.jpg';
+import deck from '../assets/images/gallery/deck/deck-01.jpg';
 import shower from '../assets/images/shower.png';
 
 export const projects = [
@@ -11,19 +11,19 @@ export const projects = [
     category: 'Porcelain Slabs',
   },
   {
-    image: kitchen,
-    title: 'Luxury Kitchen',
-    category: 'Large Format Tile',
+    image: sauna,
+    title: 'Luxury Sauna',
+    category: 'Sauna',
   },
   {
     image: stairs,
-    title: 'Entryway Stairs',
-    category: 'Tile Installation',
+    title: 'Outdoor Stairs',
+    category: 'Stairs',
   },
   {
     image: deck,
     title: 'Outdoor Deck',
-    category: 'Porcelain Pavers',
+    category: 'Deck',
   },
   {
     image: shower,
