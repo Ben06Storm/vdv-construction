@@ -139,7 +139,7 @@
       text-align: center;
     }
 
-        &__nav {
+    &__nav {
       top: auto;
       bottom: 20px;
       transform: none;
@@ -170,11 +170,8 @@
     &__info {
       display: none;
     }
-
-    &__preview {
-      max-height: 90vh;
-    }
-            &__nav {
+    
+    &__nav {
       &--prev {
         display: none;
       }
@@ -182,11 +179,6 @@
       &--next {
         display: none;
       }
+    }
   }
-}
-.gallery-page--content .modal__close {
-  position: absolute;
-  top: 30px;
-  right: 10px;
-}
 }

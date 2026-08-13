@@ -126,69 +126,71 @@ const Gallery = () => {
             </button>
           ))}
         </div>
-        <div className="gallery-page--content">
-          <Modal
-            isOpen={isModalOpen}
-            onClose={handleCloseModal}
-            ariaLabel="Gallery image"
-            variant="image"
-          >
-            {isModalOpen && currentImage && (
-              <div className="gallery-page__modal">
-                <Swiper
-                  modules={[Navigation, Keyboard]}
-                  initialSlide={initialSlideIndex}
-                  loop={hasMultipleImages}
-                  keyboard={{ enabled: true }}
-                  onSwiper={(swiper) => {
-                    swiperRef.current = swiper;
-                  }}
-                  onSlideChange={(swiper) => {
-                    setCurrentSlide(swiper.realIndex);
-                  }}
-                  className="gallery-page__swiper"
-                >
-                  {filteredImages.map((image) => (
-                    <SwiperSlide key={image.id}>
-                      <img
-                        className="gallery-page__preview"
-                        src={image.image}
-                        alt={image.title}
-                      />
-                    </SwiperSlide>
-                  ))}
-                </Swiper>
+        <Modal
+          isOpen={isModalOpen}
+          onClose={handleCloseModal}
+          ariaLabel="Gallery image"
+          variant="image"
+        >
+          {isModalOpen && currentImage && (
+            <div className="gallery-page__modal">
+              <Swiper
+                modules={[Navigation, Keyboard]}
+                initialSlide={initialSlideIndex}
+                loop={hasMultipleImages}
+                keyboard={{ enabled: true }}
+                onSwiper={(swiper) => {
+                  swiperRef.current = swiper;
+                }}
+                onSlideChange={(swiper) => {
+                  setCurrentSlide(swiper.realIndex);
+                }}
+                className="gallery-page__swiper"
+              >
+                {filteredImages.map((image) => (
+                  <SwiperSlide key={image.id}>
+                    <img
+                      className="gallery-page__preview"
+                      src={image.image}
+                      alt={image.title}
+                    />
+                  </SwiperSlide>
+                ))}
+              </Swiper>
 
-                {hasMultipleImages && (
-                  <>
-                    <button
-                      className="gallery-page__nav gallery-page__nav--prev"
-                      onClick={handlePrevious}
-                    >
-                      <ChevronLeft />
-                    </button>
+              {hasMultipleImages && (
+                <>
+                  <button
+                    type="button"
+                    className="gallery-page__nav gallery-page__nav--prev"
+                    onClick={handlePrevious}
+                    aria-label="Previous image"
+                  >
+                    <ChevronLeft />
+                  </button>
 
-                    <button
-                      className="gallery-page__nav gallery-page__nav--next"
-                      onClick={handleNext}
-                    >
-                      <ChevronRight />
-                    </button>
-                  </>
-                )}
+                  <button
+                    type="button"
+                    className="gallery-page__nav gallery-page__nav--next"
+                    onClick={handleNext}
+                    aria-label="Next image"
+                  >
+                    <ChevronRight />
+                  </button>
+                </>
+              )}
 
-                <div className="gallery-page__info">
-                  <h3>{currentImage.title}</h3>
-                  <p>{currentImage.category}</p>
+              <div className="gallery-page__info">
+                <h3>{currentImage.title}</h3>
+                <p>{currentImage.category}</p>
 
-                  <span>
-                    {currentSlide + 1} / {filteredImages.length}
-                  </span>
-                </div>
+                <span>
+                  {currentSlide + 1} / {filteredImages.length}
+                </span>
               </div>
-            )}
-          </Modal>
-          </div>
+            </div>
+          )}
+        </Modal>
       </div>
     </section>
   );

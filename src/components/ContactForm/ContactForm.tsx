@@ -118,7 +118,14 @@ const ContactForm = () => {
     >
       <div className="contactForm__row">
         <div className="contactForm__field">
+          <label
+            className="visually-hidden"
+            htmlFor="name"
+          >
+            Your Name
+          </label>
           <input
+            id="name"
             type="text"
             name="name"
             autoComplete="name"
@@ -140,7 +147,14 @@ const ContactForm = () => {
         </div>
 
         <div className="contactForm__field">
+          <label
+            className="visually-hidden"
+            htmlFor="phone"
+          >
+            Phone Number
+          </label>
           <input
+            id="phone"
             type="tel"
             name="phone"
             autoComplete="tel"
@@ -163,7 +177,14 @@ const ContactForm = () => {
       </div>
 
       <div className="contactForm__field">
+        <label
+          className="visually-hidden"
+          htmlFor="email"
+        >
+          Email Address
+        </label>
         <input
+          id="email"
           type="email"
           name="email"
           autoComplete="email"
@@ -185,7 +206,14 @@ const ContactForm = () => {
       </div>
 
       <div className="contactForm__field">
+        <label
+          className="visually-hidden"
+          htmlFor="project"
+        >
+          Project Type
+        </label>
         <CustomSelect
+          id="project"
           placeholder="Select Project Type"
           options={projectOptions}
           value={formData.project}
@@ -200,7 +228,14 @@ const ContactForm = () => {
       </div>
 
       <div className="contactForm__field">
+        <label
+          className="visually-hidden"
+          htmlFor="message"
+        >
+          Tell us about your project
+        </label>
         <textarea
+          id="message"
           name="message"
           rows={5}
           placeholder="Tell us about your project..."

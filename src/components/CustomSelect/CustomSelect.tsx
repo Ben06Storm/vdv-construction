@@ -13,6 +13,7 @@ type Option = {
 };
 
 type OptionProps = {
+  id?: string;
   placeholder: string;
   options: Option[];
   value: string;
@@ -20,6 +21,7 @@ type OptionProps = {
 };
 
 const CustomSelect = ({
+  id,
   placeholder,
   options,
   value,
@@ -92,6 +94,7 @@ const CustomSelect = ({
       ref={selectRef}
     >
       <button
+        id={id}
         onKeyDown={handleKeyDown}
         aria-haspopup="listbox"
         aria-expanded={isOpen}

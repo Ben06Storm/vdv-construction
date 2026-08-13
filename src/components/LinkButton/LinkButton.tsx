@@ -1,3 +1,4 @@
+import { Link } from 'react-router-dom';
 
 import './LinkButton.scss';
 
@@ -10,10 +11,11 @@ type LinkButtonProps = {
 const LinkButton = ({
   text,
   href,
-  showArrow,
+  showArrow = false,
 }: LinkButtonProps) => {
-  return (
-    <a href={href} className="link-btn">
+
+  const content = (
+    <>
       <span className="link-btn__text">
         {text}
       </span>
@@ -35,7 +37,27 @@ const LinkButton = ({
           </svg>
         </span>
       )}
-    </a>
+    </>
+  );
+
+  if (href.startsWith('#') || href.startsWith('/#')) {
+    return (
+      <a
+        href={href}
+        className="link-btn"
+      >
+        {content}
+      </a>
+    );
+  }
+
+  return (
+    <Link
+      to={href}
+      className="link-btn"
+    >
+      {content}
+    </Link>
   );
 };
 

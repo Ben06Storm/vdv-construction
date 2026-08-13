@@ -26,7 +26,7 @@ const Header = () => {
       <div className="container">
         <div className="header__row">
           <div className="header__logo">
-            <a href="#home">
+            <a href="/#home">
               <Logo />
             </a>
           </div>
@@ -54,7 +54,7 @@ const Header = () => {
             onClick={toggleMenu}
           />
           <LinkButton
-            text="Get a Quote"
+            text='Get a Quote'
             href='#contacts'
           />
         </div>
