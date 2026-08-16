@@ -1,6 +1,6 @@
 export const galleryCategories = [
-  'Bathroom Remodeling',
-  'Luxury Tile',
-  'Saunas',
   'Decks',
+  'Saunas',
+  'Luxury Tile',
+  'Bathroom Remodeling',
 ];

@@ -1,8 +1,8 @@
-import bathroom from '../assets/images/gallery/bathroom/bathroom-01.jpg';
-import sauna from '../assets/images/gallery/sauna/sauna-01.jpg';
-import stairs from '../assets/images/gallery/deck/deck-33.jpg';
-import deck from '../assets/images/gallery/deck/deck-01.jpg';
-import tile from '../assets/images/gallery/tile/tile-01.jpg';
+import bathroom from '../assets/images/gallery/bathroom/bathroom-01.webp';
+import sauna from '../assets/images/gallery/sauna/sauna-01.webp';
+import stairs from '../assets/images/gallery/deck/deck-33.webp';
+import deck from '../assets/images/gallery/deck/deck-01.webp';
+import tile from '../assets/images/gallery/tile/tile-01.webp';
 
 export const projects = [
   {
