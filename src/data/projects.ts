@@ -1,14 +1,14 @@
-import bathroom from '../assets/images/comercialTile.png';
+import bathroom from '../assets/images/gallery/bathroom/bathroom-01.jpg';
 import sauna from '../assets/images/gallery/sauna/sauna-01.jpg';
 import stairs from '../assets/images/gallery/deck/deck-33.jpg';
 import deck from '../assets/images/gallery/deck/deck-01.jpg';
-import shower from '../assets/images/shower.png';
+import tile from '../assets/images/gallery/tile/tile-01.jpg';
 
 export const projects = [
   {
     image: bathroom,
     title: 'Modern Bathroom',
-    category: 'Porcelain Slabs',
+    category: 'Bathroom',
   },
   {
     image: sauna,
@@ -26,8 +26,8 @@ export const projects = [
     category: 'Deck',
   },
   {
-    image: shower,
-    title: 'Spa Shower',
-    category: 'Custom Tile Work',
+    image: tile,
+    title: 'Custom Tile Work',
+    category: 'Luxury Tile',
   },
 ];

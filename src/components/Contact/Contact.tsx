@@ -1,11 +1,6 @@
 
 import { contactInfo } from '../../data/contactInfo';
 
-import {
-  FaFacebookF,
-  FaInstagram,
-} from 'react-icons/fa6';
-
 import SectionTitle from '../SectionTitle/SectionTitle';
 import ContactInfo from '../ContactInfo/ContactInfo';
 import ContactForm from '../ContactForm/ContactForm';
@@ -43,24 +38,6 @@ const Contact = () => {
                 key={item.text}
                 {...item} />
             ))}
-          </div>
-          <div className="contact__socials">
-            <a
-              href="https://instagram.com/your_page"
-              target="_blank"
-              rel="noopener noreferrer"
-              className="contact__social"
-            >
-              <FaInstagram size={22} />
-            </a>
-            <a
-              href="https://facebook.com/your_page"
-              target="_blank"
-              rel="noopener noreferrer"
-              className="contact__social"
-            >
-              <FaFacebookF size={22} />
-            </a>
           </div>
         </div>
       </div>

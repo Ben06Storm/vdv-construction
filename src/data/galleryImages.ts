@@ -71,6 +71,93 @@ import sauna28 from '../assets/images/gallery/sauna/sauna-28.jpg';
 import sauna29 from '../assets/images/gallery/sauna/sauna-29.jpg';
 import sauna30 from '../assets/images/gallery/sauna/sauna-30.jpg';
 import sauna31 from '../assets/images/gallery/sauna/sauna-31.jpg';
+
+import bathroom01 from '../assets/images/gallery/bathroom/bathroom-01.jpg';
+import bathroom02 from '../assets/images/gallery/bathroom/bathroom-02.jpg';
+import bathroom03 from '../assets/images/gallery/bathroom/bathroom-03.jpg';
+import bathroom04 from '../assets/images/gallery/bathroom/bathroom-04.jpg';
+import bathroom05 from '../assets/images/gallery/bathroom/bathroom-05.jpg';
+import bathroom06 from '../assets/images/gallery/bathroom/bathroom-06.jpg';
+import bathroom07 from '../assets/images/gallery/bathroom/bathroom-07.jpg';
+import bathroom08 from '../assets/images/gallery/bathroom/bathroom-08.jpg';
+import bathroom09 from '../assets/images/gallery/bathroom/bathroom-09.jpg';
+import bathroom10 from '../assets/images/gallery/bathroom/bathroom-10.jpg';
+import bathroom11 from '../assets/images/gallery/bathroom/bathroom-11.jpg';
+import bathroom12 from '../assets/images/gallery/bathroom/bathroom-12.jpg';
+import bathroom13 from '../assets/images/gallery/bathroom/bathroom-13.jpg';
+import bathroom14 from '../assets/images/gallery/bathroom/bathroom-14.jpg';
+import bathroom15 from '../assets/images/gallery/bathroom/bathroom-15.jpg';
+import bathroom16 from '../assets/images/gallery/bathroom/bathroom-16.jpg';
+import bathroom17 from '../assets/images/gallery/bathroom/bathroom-17.jpg';
+import bathroom18 from '../assets/images/gallery/bathroom/bathroom-18.jpg';
+import bathroom19 from '../assets/images/gallery/bathroom/bathroom-19.jpg';
+import bathroom20 from '../assets/images/gallery/bathroom/bathroom-20.jpg';
+import bathroom21 from '../assets/images/gallery/bathroom/bathroom-21.jpg';
+import bathroom22 from '../assets/images/gallery/bathroom/bathroom-22.jpg';
+import bathroom23 from '../assets/images/gallery/bathroom/bathroom-23.jpg';
+import bathroom24 from '../assets/images/gallery/bathroom/bathroom-24.jpg';
+import bathroom25 from '../assets/images/gallery/bathroom/bathroom-25.jpg';
+import bathroom26 from '../assets/images/gallery/bathroom/bathroom-26.jpg';
+import bathroom27 from '../assets/images/gallery/bathroom/bathroom-27.jpg';
+import bathroom28 from '../assets/images/gallery/bathroom/bathroom-28.jpg';
+import bathroom29 from '../assets/images/gallery/bathroom/bathroom-29.jpg';
+import bathroom30 from '../assets/images/gallery/bathroom/bathroom-30.jpg';
+import bathroom31 from '../assets/images/gallery/bathroom/bathroom-31.jpg';
+import bathroom32 from '../assets/images/gallery/bathroom/bathroom-32.jpg';
+import bathroom33 from '../assets/images/gallery/bathroom/bathroom-33.jpg';
+import bathroom34 from '../assets/images/gallery/bathroom/bathroom-34.jpg';
+import bathroom35 from '../assets/images/gallery/bathroom/bathroom-35.jpg';
+
+import tile01 from '../assets/images/gallery/tile/tile-01.jpg';
+import tile02 from '../assets/images/gallery/tile/tile-02.jpg';
+import tile03 from '../assets/images/gallery/tile/tile-03.jpg';
+import tile04 from '../assets/images/gallery/tile/tile-04.jpg';
+import tile05 from '../assets/images/gallery/tile/tile-05.jpg';
+import tile06 from '../assets/images/gallery/tile/tile-06.jpg';
+import tile07 from '../assets/images/gallery/tile/tile-07.jpg';
+import tile08 from '../assets/images/gallery/tile/tile-08.jpg';
+import tile09 from '../assets/images/gallery/tile/tile-09.jpg';
+import tile10 from '../assets/images/gallery/tile/tile-10.jpg';
+import tile11 from '../assets/images/gallery/tile/tile-11.jpg';
+import tile12 from '../assets/images/gallery/tile/tile-12.jpg';
+import tile13 from '../assets/images/gallery/tile/tile-13.jpg';
+import tile14 from '../assets/images/gallery/tile/tile-14.jpg';
+import tile15 from '../assets/images/gallery/tile/tile-15.jpg';
+import tile16 from '../assets/images/gallery/tile/tile-16.jpg';
+import tile17 from '../assets/images/gallery/tile/tile-17.jpg';
+import tile18 from '../assets/images/gallery/tile/tile-18.jpg';
+import tile19 from '../assets/images/gallery/tile/tile-19.jpg';
+import tile20 from '../assets/images/gallery/tile/tile-20.jpg';
+import tile21 from '../assets/images/gallery/tile/tile-21.jpg';
+import tile22 from '../assets/images/gallery/tile/tile-22.jpg';
+import tile23 from '../assets/images/gallery/tile/tile-23.jpg';
+import tile24 from '../assets/images/gallery/tile/tile-24.jpg';
+import tile25 from '../assets/images/gallery/tile/tile-25.jpg';
+import tile26 from '../assets/images/gallery/tile/tile-26.jpg';
+import tile27 from '../assets/images/gallery/tile/tile-27.jpg';
+import tile28 from '../assets/images/gallery/tile/tile-28.jpg';
+import tile29 from '../assets/images/gallery/tile/tile-29.jpg';
+import tile30 from '../assets/images/gallery/tile/tile-30.jpg';
+import tile31 from '../assets/images/gallery/tile/tile-31.jpg';
+import tile32 from '../assets/images/gallery/tile/tile-32.jpg';
+import tile33 from '../assets/images/gallery/tile/tile-33.jpg';
+import tile34 from '../assets/images/gallery/tile/tile-34.jpg';
+import tile35 from '../assets/images/gallery/tile/tile-35.jpg';
+import tile36 from '../assets/images/gallery/tile/tile-36.jpg';
+import tile37 from '../assets/images/gallery/tile/tile-37.jpg';
+import tile38 from '../assets/images/gallery/tile/tile-38.jpg';
+import tile39 from '../assets/images/gallery/tile/tile-39.jpg';
+import tile40 from '../assets/images/gallery/tile/tile-40.jpg';
+import tile41 from '../assets/images/gallery/tile/tile-41.jpg';
+import tile42 from '../assets/images/gallery/tile/tile-42.jpg';
+import tile43 from '../assets/images/gallery/tile/tile-43.jpg';
+import tile44 from '../assets/images/gallery/tile/tile-44.jpg';
+import tile45 from '../assets/images/gallery/tile/tile-45.jpg';
+import tile46 from '../assets/images/gallery/tile/tile-46.jpg';
+import tile47 from '../assets/images/gallery/tile/tile-47.jpg';
+import tile48 from '../assets/images/gallery/tile/tile-48.jpg';
+import tile49 from '../assets/images/gallery/tile/tile-49.jpg';
+import tile50 from '../assets/images/gallery/tile/tile-50.jpg';
 export const galleryImages: GalleryImage[] = [
 {
   id: 1,
@@ -491,5 +578,516 @@ export const galleryImages: GalleryImage[] = [
   image: sauna31,
   title: 'Sauna',
   category: 'Saunas',
+},
+
+{
+  id: 71,
+  image: bathroom01,
+  title: 'Bathroom Remodeling',
+  category: 'Bathroom Remodeling',
+},
+{
+  id: 72,
+  image: bathroom02,
+  title: 'Bathroom Remodeling',
+  category: 'Bathroom Remodeling',
+},
+{
+  id: 73,
+  image: bathroom03,
+  title: 'Bathroom Remodeling',
+  category: 'Bathroom Remodeling',
+},
+{
+  id: 74,
+  image: bathroom04,
+  title: 'Bathroom Remodeling',
+  category: 'Bathroom Remodeling',
+},
+{
+  id: 75,
+  image: bathroom05,
+  title: 'Bathroom Remodeling',
+  category: 'Bathroom Remodeling',
+},
+{
+  id: 76,
+  image: bathroom06,
+  title: 'Bathroom Remodeling',
+  category: 'Bathroom Remodeling',
+},
+{
+  id: 77,
+  image: bathroom07,
+  title: 'Bathroom Remodeling',
+  category: 'Bathroom Remodeling',
+},
+{
+  id: 78,
+  image: bathroom08,
+  title: 'Bathroom Remodeling',
+  category: 'Bathroom Remodeling',
+},
+{
+  id: 79,
+  image: bathroom09,
+  title: 'Bathroom Remodeling',
+  category: 'Bathroom Remodeling',
+},
+{
+  id: 80,
+  image: bathroom10,
+  title: 'Bathroom Remodeling',
+  category: 'Bathroom Remodeling',
+},
+{
+  id: 81,
+  image: bathroom11,
+  title: 'Bathroom Remodeling',
+  category: 'Bathroom Remodeling',
+},
+{
+  id: 82,
+  image: bathroom12,
+  title: 'Bathroom Remodeling',
+  category: 'Bathroom Remodeling',
+},
+{
+  id: 83,
+  image: bathroom13,
+  title: 'Bathroom Remodeling',
+  category: 'Bathroom Remodeling',
+},
+{
+  id: 84,
+  image: bathroom14,
+  title: 'Bathroom Remodeling',
+  category: 'Bathroom Remodeling',
+},
+{
+  id: 85,
+  image: bathroom15,
+  title: 'Bathroom Remodeling',
+  category: 'Bathroom Remodeling',
+},
+{
+  id: 86,
+  image: bathroom16,
+  title: 'Bathroom Remodeling',
+  category: 'Bathroom Remodeling',
+},
+{
+  id: 87,
+  image: bathroom17,
+  title: 'Bathroom Remodeling',
+  category: 'Bathroom Remodeling',
+},
+{
+  id: 88,
+  image: bathroom18,
+  title: 'Bathroom Remodeling',
+  category: 'Bathroom Remodeling',
+},
+{
+  id: 89,
+  image: bathroom19,
+  title: 'Bathroom Remodeling',
+  category: 'Bathroom Remodeling',
+},
+{
+  id: 90,
+  image: bathroom20,
+  title: 'Bathroom Remodeling',
+  category: 'Bathroom Remodeling',
+},
+{
+  id: 91,
+  image: bathroom21,
+  title: 'Bathroom Remodeling',
+  category: 'Bathroom Remodeling',
+},
+{
+  id: 92,
+  image: bathroom22,
+  title: 'Bathroom Remodeling',
+  category: 'Bathroom Remodeling',
+},
+{
+  id: 93,
+  image: bathroom23,
+  title: 'Bathroom Remodeling',
+  category: 'Bathroom Remodeling',
+},
+{
+  id: 94,
+  image: bathroom24,
+  title: 'Bathroom Remodeling',
+  category: 'Bathroom Remodeling',
+},
+{
+  id: 95,
+  image: bathroom25,
+  title: 'Bathroom Remodeling',
+  category: 'Bathroom Remodeling',
+},
+{
+  id: 96,
+  image: bathroom26,
+  title: 'Bathroom Remodeling',
+  category: 'Bathroom Remodeling',
+},
+{
+  id: 97,
+  image: bathroom27,
+  title: 'Bathroom Remodeling',
+  category: 'Bathroom Remodeling',
+},
+{
+  id: 98,
+  image: bathroom28,
+  title: 'Bathroom Remodeling',
+  category: 'Bathroom Remodeling',
+},
+{
+  id: 99,
+  image: bathroom29,
+  title: 'Bathroom Remodeling',
+  category: 'Bathroom Remodeling',
+},
+{
+  id: 100,
+  image: bathroom30,
+  title: 'Bathroom Remodeling',
+  category: 'Bathroom Remodeling',
+},
+{
+  id: 101,
+  image: bathroom31,
+  title: 'Bathroom Remodeling',
+  category: 'Bathroom Remodeling',
+},
+{
+  id: 102,
+  image: bathroom32,
+  title: 'Bathroom Remodeling',
+  category: 'Bathroom Remodeling',
+},
+{
+  id: 103,
+  image: bathroom33,
+  title: 'Bathroom Remodeling',
+  category: 'Bathroom Remodeling',
+},
+{
+  id: 104,
+  image: bathroom34,
+  title: 'Bathroom Remodeling',
+  category: 'Bathroom Remodeling',
+},
+{
+  id: 105,
+  image: bathroom35,
+  title: 'Bathroom Remodeling',
+  category: 'Bathroom Remodeling',
+},
+{
+  id: 106,
+  image: tile01,
+  title: 'Tile',
+  category: 'Luxury Tile',
+},
+{
+  id: 107,
+  image: tile02,
+  title: 'Tile',
+  category: 'Luxury Tile',
+},
+{
+  id: 108,
+  image: tile03,
+  title: 'Tile',
+  category: 'Luxury Tile',
+},
+{
+  id: 109,
+  image: tile04,
+  title: 'Tile',
+  category: 'Luxury Tile',
+},
+{
+  id: 110,
+  image: tile05,
+  title: 'Tile',
+  category: 'Luxury Tile',
+},
+{
+  id: 111,
+  image: tile06,
+  title: 'Tile',
+  category: 'Luxury Tile',
+},
+{
+  id: 112,
+  image: tile07,
+  title: 'Tile',
+  category: 'Luxury Tile',
+},
+{
+  id: 113,
+  image: tile08,
+  title: 'Tile',
+  category: 'Luxury Tile',
+},
+{
+  id: 114,
+  image: tile09,
+  title: 'Tile',
+  category: 'Luxury Tile',
+},
+{
+  id: 115,
+  image: tile10,
+  title: 'Tile',
+  category: 'Luxury Tile',
+},
+{
+  id: 116,
+  image: tile11,
+  title: 'Tile',
+  category: 'Luxury Tile',
+},
+{
+  id: 117,
+  image: tile12,
+  title: 'Tile',
+  category: 'Luxury Tile',
+},
+{
+  id: 118,
+  image: tile13,
+  title: 'Tile',
+  category: 'Luxury Tile',
+},
+{
+  id: 119,
+  image: tile14,
+  title: 'Tile',
+  category: 'Luxury Tile',
+},
+{
+  id: 120,
+  image: tile15,
+  title: 'Tile',
+  category: 'Luxury Tile',
+},
+{
+  id: 121,
+  image: tile16,
+  title: 'Tile',
+  category: 'Luxury Tile',
+},
+{
+  id: 122,
+  image: tile17,
+  title: 'Tile',
+  category: 'Luxury Tile',
+},
+{
+  id: 123,
+  image: tile18,
+  title: 'Tile',
+  category: 'Luxury Tile',
+},
+{
+  id: 124,
+  image: tile19,
+  title: 'Tile',
+  category: 'Luxury Tile',
+},
+{
+  id: 125,
+  image: tile20,
+  title: 'Tile',
+  category: 'Luxury Tile',
+},
+{
+  id: 126,
+  image: tile21,
+  title: 'Tile',
+  category: 'Luxury Tile',
+},
+{
+  id: 127,
+  image: tile22,
+  title: 'Tile',
+  category: 'Luxury Tile',
+},
+{
+  id: 128,
+  image: tile23,
+  title: 'Tile',
+  category: 'Luxury Tile',
+},
+{
+  id: 129,
+  image: tile24,
+  title: 'Tile',
+  category: 'Luxury Tile',
+},
+{
+  id: 130,
+  image: tile25,
+  title: 'Tile',
+  category: 'Luxury Tile',
+},
+{
+  id: 131,
+  image: tile26,
+  title: 'Tile',
+  category: 'Luxury Tile',
+},
+{
+  id: 132,
+  image: tile27,
+  title: 'Tile',
+  category: 'Luxury Tile',
+},
+{
+  id: 133,
+  image: tile28,
+  title: 'Tile',
+  category: 'Luxury Tile',
+},
+{
+  id: 134,
+  image: tile29,
+  title: 'Tile',
+  category: 'Luxury Tile',
+},
+{
+  id: 135,
+  image: tile30,
+  title: 'Tile',
+  category: 'Luxury Tile',
+},
+{
+  id: 136,
+  image: tile31,
+  title: 'Tile',
+  category: 'Luxury Tile',
+},
+{
+  id: 137,
+  image: tile32,
+  title: 'Tile',
+  category: 'Luxury Tile',
+},
+{
+  id: 138,
+  image: tile33,
+  title: 'Tile',
+  category: 'Luxury Tile',
+},
+{
+  id: 139,
+  image: tile34,
+  title: 'Tile',
+  category: 'Luxury Tile',
+},
+{
+  id: 140,
+  image: tile35,
+  title: 'Tile',
+  category: 'Luxury Tile',
+},
+{
+  id: 141,
+  image: tile36,
+  title: 'Tile',
+  category: 'Luxury Tile',
+},
+{
+  id: 142,
+  image: tile37,
+  title: 'Tile',
+  category: 'Luxury Tile',
+},
+{
+  id: 143,
+  image: tile38,
+  title: 'Tile',
+  category: 'Luxury Tile',
+},
+{
+  id: 144,
+  image: tile39,
+  title: 'Tile',
+  category: 'Luxury Tile',
+},
+{
+  id: 145,
+  image: tile40,
+  title: 'Tile',
+  category: 'Luxury Tile',
+},
+{
+  id: 146,
+  image: tile41,
+  title: 'Tile',
+  category: 'Luxury Tile',
+},
+{
+  id: 147,
+  image: tile42,
+  title: 'Tile',
+  category: 'Luxury Tile',
+},
+{
+  id: 148,
+  image: tile43,
+  title: 'Tile',
+  category: 'Luxury Tile',
+},
+{
+  id: 149,
+  image: tile44,
+  title: 'Tile',
+  category: 'Luxury Tile',
+},
+{
+  id: 150,
+  image: tile45,
+  title: 'Tile',
+  category: 'Luxury Tile',
+},
+{
+  id: 151,
+  image: tile46,
+  title: 'Tile',
+  category: 'Luxury Tile',
+},
+{
+  id: 152,
+  image: tile47,
+  title: 'Tile',
+  category: 'Luxury Tile',
+},
+{
+  id: 153,
+  image: tile48,
+  title: 'Tile',
+  category: 'Luxury Tile',
+},
+{
+  id: 154,
+  image: tile49,
+  title: 'Tile',
+  category: 'Luxury Tile',
+},
+{
+  id: 155,
+  image: tile50,
+  title: 'Tile',
+  category: 'Luxury Tile',
 },
 ];

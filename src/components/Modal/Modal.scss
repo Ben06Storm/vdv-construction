@@ -50,6 +50,7 @@
   }
 
   &--image {
+    width: 100%;
     padding: 40px;
     background: rgba(0, 0, 0, .9);
 
@@ -78,38 +79,28 @@
   }
 
   @media (max-width: 600px) {
-    padding: 16px;
 
-    &__content {
-      padding: 40px 20px 20px;
-    }
+    .modal {
+      padding: 16px;
 
-    &--image {
-      padding: 20px;
+      &--image {
+        align-items: flex-start;
+        padding: 8px;
 
-      .modal__content {
-        width: 100%;
-        padding: 0;
-      }
+        .modal__content {
+          max-height: calc(100vh - 40px);
+          width: 100%;
+          padding: 0;
+          overflow: hidden;
+        }
 
-      .modal__close {
-        top: -12px;
-        right: -12px;
+        .modal__close {
+          top: -12px;
+          right: -12px;
+        }
       }
     }
   }
-
-  @media (max-height: 500px) {
-  .modal {
-    &--image {
-      padding: 12px;
-    }
-      &__close {
-        top: 80%;
-        right: -16px;
-    }
-  }
-}
 }
 
 @keyframes modalFadeIn {

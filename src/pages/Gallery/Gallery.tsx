@@ -181,7 +181,6 @@ const Gallery = () => {
               )}
 
               <div className="gallery-page__info">
-                <h3>{currentImage.title}</h3>
                 <p>{currentImage.category}</p>
 
                 <span>
