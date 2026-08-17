@@ -102,9 +102,7 @@ const ContactForm = () => {
       setFormData(initialFormData);
 
     } catch {
-      setError(
-        'Something went wrong. Please try again.',
-      );
+      setError('Something went wrong. Please try again.');
     } finally {
       setLoading(false);
     }
@@ -253,18 +251,19 @@ const ContactForm = () => {
             {errors.message}
           </p>
         )}
-        {success && (
-          <p className="contactForm__success">
-            Your request has been sent successfully!
-          </p>
-        )}
-
-        {error && (
-          <p className="contactForm__server-error">
-            {error}
-          </p>
-        )}
       </div>
+
+      {success && (
+        <p className="contactForm__success">
+          Your request has been sent successfully!
+        </p>
+      )}
+
+      {error && (
+        <p className="contactForm__server-error">
+          {error}
+        </p>
+      )}
 
       <button
         className="contactForm__button"
