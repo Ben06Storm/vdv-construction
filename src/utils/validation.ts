@@ -1,10 +1,4 @@
-type FormData = {
-  name: string;
-  phone: string;
-  email: string;
-  project: string;
-  message: string;
-};
+import type { ContactFormData } from '../types/forms';
 
 export type FormErrors = {
   name?: string;
@@ -30,12 +24,15 @@ export const isValidEmail = (email: string) => {
 };
 
 export const validateForm = (
-  formData: FormData,
+  formData: ContactFormData,
 ): FormErrors => {
   const errors: FormErrors = {};
 
   if (!formData.name.trim()) {
     errors.name = 'Please enter your name.';
+  } else if (formData.name.trim().length < 2) {
+    errors.name =
+      'Name must contain at least 2 characters.';
   }
 
   if (!formData.phone.trim()) {
@@ -56,6 +53,9 @@ export const validateForm = (
 
   if (!formData.message.trim()) {
     errors.message = 'Please tell us about your project.';
+  } else if (formData.message.trim().length < 40) {
+    errors.message =
+      'Please provide a little more information about your project.';
   }
 
   return errors;
