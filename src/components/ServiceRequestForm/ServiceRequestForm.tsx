@@ -1,8 +1,8 @@
 import { useState } from 'react';
 
 import {
-  isValidEmail,
-  isValidPhone,
+  validateServiceRequestForm,
+  type BaseFormErrors,
 } from '../../utils/validation';
 import type {
   ServiceRequestFormData,
@@ -28,6 +28,9 @@ const ServiceRequestForm = ({
   const [formData, setFormData] =
     useState<ServiceRequestFormData>(initialFormData);
 
+  const [errors, setErrors] =
+    useState<BaseFormErrors>({});
+
   const [loading, setLoading] =
     useState(false);
 
@@ -42,12 +45,16 @@ const ServiceRequestForm = ({
       HTMLInputElement | HTMLTextAreaElement
     >,
   ) => {
-    const { name, value } =
-      event.target;
+    const { name, value } = event.target;
 
     setFormData(prev => ({
       ...prev,
       [name]: value,
+    }));
+
+    setErrors(prev => ({
+      ...prev,
+      [name]: undefined,
     }));
 
     setError('');
@@ -62,52 +69,29 @@ const ServiceRequestForm = ({
     setSuccess(false);
     setError('');
 
-    if (!formData.name.trim()) {
-      setError('Please enter your name.');
+    const validationErrors =
+      validateServiceRequestForm(formData);
+
+    if (Object.keys(validationErrors).length > 0) {
+      setErrors(validationErrors);
       return;
     }
 
-    if (!formData.phone.trim()) {
-      setError(
-        'Please enter your phone number.',
-      );
-      return;
-    }
-
-    if (!isValidPhone(formData.phone)) {
-      setError(
-        'Please enter a valid phone number.',
-      );
-      return;
-    }
-
-    if (!formData.email.trim()) {
-      setError(
-        'Please enter your email address.',
-      );
-      return;
-    }
-
-    if (!isValidEmail(formData.email)) {
-      setError(
-        'Please enter a valid email address.',
-      );
-      return;
-    }
-
+    setErrors({});
     setLoading(true);
 
     try {
-
-await submitServiceRequest({
-  ...formData,
-  service: serviceTitle,
-});
+      await submitServiceRequest({
+        ...formData,
+        service: serviceTitle,
+      });
 
       setSuccess(true);
       setFormData(initialFormData);
+      setErrors({});
 
-    } catch {
+    } catch (error) {
+      console.error('Service request error:', error);
       setError(
         'Something went wrong. Please try again.',
       );
@@ -136,11 +120,12 @@ await submitServiceRequest({
         className="service-request-form__form"
         onSubmit={handleSubmit}
         noValidate
-      >        {success && (
-        <p className="service-request-form__success">
-          Your request has been sent successfully!
-        </p>
-      )}
+      >
+        {success && (
+          <p className="service-request-form__success">
+            Your request has been sent successfully!
+          </p>
+        )}
 
         {error && (
           <p className="service-request-form__error">
@@ -148,38 +133,66 @@ await submitServiceRequest({
           </p>
         )}
         <div className="service-request-form__row">
-          <input
-            type="text"
-            name="name"
-            placeholder="Your Name"
-            value={formData.name}
-            onChange={handleChange}
-          />
+          <div className="service-request-form__field">
+            <input
+              type="text"
+              name="name"
+              placeholder="Your Name"
+              value={formData.name}
+              onChange={handleChange}
+            />
+            {errors.name && (
+              <p className="service-request-form__field-error">
+                {errors.name}
+              </p>
+            )}
+          </div>
 
-          <input
-            type="tel"
-            name="phone"
-            placeholder="Phone Number"
-            value={formData.phone}
-            onChange={handleChange}
-          />
+          <div className="service-request-form__field">
+            <input
+              type="tel"
+              name="phone"
+              placeholder="Phone Number"
+              value={formData.phone}
+              onChange={handleChange}
+            />
+            {errors.phone && (
+              <p className="service-request-form__field-error">
+                {errors.phone}
+              </p>
+            )}
+          </div>
         </div>
 
-        <input
-          type="email"
-          name="email"
-          placeholder="Email Address"
-          value={formData.email}
-          onChange={handleChange}
-        />
+        <div className="service-request-form__field">
+          <input
+            type="email"
+            name="email"
+            placeholder="Email Address"
+            value={formData.email}
+            onChange={handleChange}
+          />
+          {errors.email && (
+            <p className="service-request-form__field-error">
+              {errors.email}
+            </p>
+          )}
+        </div>
 
-        <textarea
-          name="message"
-          rows={4}
-          placeholder={`Tell us more about your ${serviceTitle.toLowerCase()} request`}
-          value={formData.message}
-          onChange={handleChange}
-        />
+        <div className="service-request-form__field">
+          <textarea
+            name="message"
+            rows={4}
+            placeholder={`Tell us more about your ${serviceTitle.toLowerCase()} request`}
+            value={formData.message}
+            onChange={handleChange}
+          />
+          {errors.message && (
+            <p className="service-request-form__field-error">
+              {errors.message}
+            </p>
+          )}
+        </div>
 
         <button
           type="submit"
