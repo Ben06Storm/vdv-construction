@@ -1,6 +1,6 @@
 
 
-import type { Rating } from '../../data/reviews';
+import type { Rating } from '../../types/review';
 
 import RatingStars from '../RatingStars/RatingStars';
 
