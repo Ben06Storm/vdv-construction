@@ -1,6 +1,9 @@
 import { apiClient } from './client';
 
-import type { ReviewFormData } from '../types/forms';
+import type { 
+  Review,
+  ReviewFormData,
+} from '../types/review';
 
 export const submitReview = (
   data: ReviewFormData,
@@ -8,5 +11,11 @@ export const submitReview = (
   return apiClient('/reviews', {
     method: 'POST',
     body: data,
+  });
+};
+
+export const getReviews = () => {
+  return apiClient<Review[]>('/reviews', {
+    method: 'GET',
   });
 };

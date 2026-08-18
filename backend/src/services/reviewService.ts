@@ -1,9 +1,23 @@
 import type { CreateReviewData } from '../types/review';
+import { prisma } from '../lib/prisma';
 
 export const createReview = (
   data: CreateReviewData,
 ) => {
-  console.log('Saving review:', data);
+  return prisma.review.create({
+    data: {
+      name: data.name,
+      city: data.city,
+      rating: data.rating,
+      review: data.review,
+    },
+  });
+};
 
-  return data;
+export const getReviews = () => {
+  return prisma.review.findMany({
+    orderBy: {
+      createdAt: 'desc',
+    },
+  });
 };
