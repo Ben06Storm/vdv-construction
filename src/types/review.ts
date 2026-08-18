@@ -1,0 +1,16 @@
+export type Rating = 1 | 2 | 3 | 4 | 5;
+
+export type Review = {
+  id: number;
+  name: string;
+  city: string;
+  rating: Rating;
+  review: string;
+};
+
+export type ReviewFormData = {
+  name: string;
+  city: string;
+  rating: Rating | 0;
+  review: string;
+};

@@ -3,6 +3,7 @@ import type {
   ReviewFormData,
 } from '../../types/forms';
 
+import type { Rating } from '../../types/review';
 import RatingStars from '../RatingStars/RatingStars';
 
 import './ReviewForm.scss';
@@ -48,9 +49,12 @@ const ReviewForm = ({
   };
 
   const handleRating = (rating: number) => {
+      if (rating < 1 || rating > 5) {
+    return;
+  }
     setFormData((prev) => ({
       ...prev,
-      rating,
+      rating: rating as Rating,
     }));
 
     setValidationError('');

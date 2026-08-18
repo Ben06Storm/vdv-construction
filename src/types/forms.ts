@@ -1,3 +1,5 @@
+
+
 export type ContactFormData = {
   name: string;
   phone: string;
@@ -18,9 +20,4 @@ export type ServiceRequestPayload =
     service: string;
   };
 
-export type ReviewFormData = {
-  name: string;
-  city: string;
-  rating: number;
-  review: string;
-};
+export type { ReviewFormData } from './review';
