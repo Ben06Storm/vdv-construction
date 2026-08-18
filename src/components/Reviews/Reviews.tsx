@@ -1,4 +1,4 @@
-import { useRef, useState } from 'react';
+import { useEffect, useRef, useState } from 'react';
 
 import {
   Swiper,
@@ -19,9 +19,9 @@ import {
 import 'swiper/css';
 import 'swiper/css/pagination';
 
-import { reviewsCards } from '../../data/reviews';
+import type { Review } from '../../types/review';
+import { getReviews, submitReview } from '../../api/reviewApi';
 import type { ReviewFormData } from '../../types/forms';
-import { submitReview } from '../../api/reviewApi';
 
 import SectionTitle from '../SectionTitle/SectionTitle';
 import ReviewCard from '../ReviewCard/ReviewCard';
@@ -31,14 +31,21 @@ import RatingStars from '../RatingStars/RatingStars';
 
 import './Reviews.scss';
 
-type ReviewItem = (typeof reviewsCards)[number];
-
 const Reviews = () => {
   const swiperRef =
     useRef<SwiperType | null>(null);
 
+  const [reviews, setReviews] =
+    useState<Review[]>([]);
+
+  const [isLoadingReviews, setIsLoadingReviews] =
+    useState(true);
+
+  const [reviewsError, setReviewsError] =
+    useState<string | null>(null);
+
   const [selectedReview, setSelectedReview] =
-    useState<ReviewItem | null>(null);
+    useState<Review | null>(null);
 
   const [isReviewFormOpen, setIsReviewFormOpen] =
     useState(false);
@@ -49,8 +56,44 @@ const Reviews = () => {
   const [submitError, setSubmitError] =
     useState<string | null>(null);
 
+const loadReviews = async () => {
+  try {
+    const data = await getReviews();
+
+    setReviews(data);
+    setReviewsError(null);
+  } catch (error) {
+    setReviewsError(
+      error instanceof Error
+        ? error.message
+        : 'Failed to load reviews.',
+    );
+  } finally {
+    setIsLoadingReviews(false);
+  }
+};
+
+useEffect(() => {
+  const fetchReviews = async () => {
+    try {
+      const data = await getReviews();
+
+      setReviews(data);
+    } catch (error) {
+      setReviewsError(
+        error instanceof Error
+          ? error.message
+          : 'Failed to load reviews.',
+      );
+    } finally {
+      setIsLoadingReviews(false);
+    }
+  };
+  void fetchReviews();
+}, []);
+
   const handleOpenReview = (
-    review: ReviewItem,
+    review: Review,
   ) => {
     setSelectedReview(review);
   };
@@ -89,6 +132,7 @@ const Reviews = () => {
 
     try {
       await submitReview(data);
+      await loadReviews();
       setIsReviewFormOpen(false);
     } catch (error) {
       setSubmitError(
@@ -124,6 +168,15 @@ const Reviews = () => {
           </button>
         </div>
 
+{isLoadingReviews && (
+  <p>Loading reviews...</p>
+)}
+
+{reviewsError && (
+  <p className="reviews__error">
+    {reviewsError}
+  </p>
+)}
         <div className="reviews__carousel">
           <button
             type="button"
@@ -163,7 +216,7 @@ const Reviews = () => {
                 },
               }}
             >
-              {reviewsCards.map((item) => (
+              {reviews.map((item) => (
                 <SwiperSlide key={item.id}>
                   <ReviewCard
                     {...item}
