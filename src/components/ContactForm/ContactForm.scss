@@ -11,32 +11,15 @@
   }
 
   &__error {
-    color: #d9534f;
+    color: var(--error);
     font-size: 16px;
     line-height: 1.4;
   }
 
   &__server-error {
-    color: #d9534f;
+    color: var(--error);
     font-size: 18px;
     line-height: 1.4;
-  }
-
-  &__success {
-    color: #3c9b5f;
-    font-size: 14px;
-  }
-
-  &__row {
-    display: grid;
-    grid-template-columns: repeat(2, 1fr);
-    gap: 16px;
-  }
-
-  &__row {
-    display: grid;
-    grid-template-columns: repeat(2, 1fr);
-    gap: 18px;
   }
 
   &__success {
@@ -45,16 +28,17 @@
     gap: 10px;
     padding: 14px 18px;
     background: rgba(76, 175, 80, .12);
-    border-left: 3px solid #4CAF50;
-    color: #4CAF50;
+    border-left: 3px solid var(--success);
+    color: var(--success);
     border-radius: 8px;
+    font-size: 18px;
   }
 
-  // &__error {
-  //   color: #ff4d4f;
-  //   font-size: 15px;
-  //   font-weight: 500;
-  // }
+  &__row {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 18px;
+  }
 
   input,
   textarea {
@@ -72,7 +56,6 @@
     -moz-appearance: none;
 
     &:focus {
-      outline: none;
       border-color: var(--gold);
     }
 
@@ -97,9 +80,14 @@
     cursor: pointer;
     transition: .3s;
 
-    &:hover {
+    &:hover:not(:disabled) {
       transform: translateY(-2px);
       filter: brightness(1.08);
+    }
+
+    &:disabled {
+      opacity: .7;
+      cursor: not-allowed;
     }
   }
 
@@ -110,11 +98,6 @@
 
     &__button {
       width: 100%;
-
-      &:disabled {
-        opacity: .7;
-        cursor: not-allowed;
-      }
     }
   }
 
