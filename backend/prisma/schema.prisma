@@ -13,5 +13,12 @@ model Review {
   city      String
   rating    Int
   review    String
+  status String @default("PENDING")
   createdAt DateTime @default(now())
+}
+
+model playing_with_neon {
+  id    Int    @id @default(autoincrement())
+  name  String
+  value Float? @db.Real
 }
