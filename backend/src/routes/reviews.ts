@@ -13,6 +13,7 @@ import {
   updateReviewStatus,
   deleteReview,
 } from '../services/reviewService';
+import { authMiddleware } from '../middleware/auth';
 
 const router = Router();
 
@@ -29,7 +30,7 @@ router.get('/', async (_req, res) => {
   }
 });
 
-router.get('/admin', async (_req, res) => {
+router.get('/admin', authMiddleware, async (_req, res) => {
   try {
     const reviews = await getAllReviews();
 
@@ -43,7 +44,7 @@ router.get('/admin', async (_req, res) => {
   }
 });
 
-router.patch('/admin/:id', async (req, res) => {
+router.patch('/admin/:id', authMiddleware, async (req, res) => {
   const id = Number(req.params.id);
   const { status } = req.body as { status: ReviewStatus };
 
@@ -79,7 +80,7 @@ router.patch('/admin/:id', async (req, res) => {
   }
 });
 
-router.delete('/admin/:id', async (req, res) => {
+router.delete('/admin/:id', authMiddleware, async (req, res) => {
   const id = Number(req.params.id);
 
   if (!Number.isInteger(id)) {

@@ -22,3 +22,10 @@ model playing_with_neon {
   name  String
   value Float? @db.Real
 }
+
+model Admin {
+  id           Int      @id @default(autoincrement())
+  email        String   @unique
+  passwordHash String
+  createdAt    DateTime @default(now())
+}
