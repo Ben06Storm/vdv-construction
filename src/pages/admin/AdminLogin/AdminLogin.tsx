@@ -5,6 +5,8 @@ import {
 
 import { loginAdmin } from '../../../services/adminApi';
 
+import './AdminLogin.scss';
+
 const AdminLogin = () => {
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
@@ -43,17 +45,27 @@ const AdminLogin = () => {
     }
   };
 
-  return (
-    <main>
-      <h1>Admin Login</h1>
+return (
+  <main className="admin-login">
+    <div className="admin-login__container">
+      <form
+        className="admin-login__form"
+        onSubmit={handleSubmit}
+      >
+        <h1 className="admin-login__title">
+          Admin Login
+        </h1>
 
-      <form onSubmit={handleSubmit}>
-        <div>
-          <label htmlFor="email">
+        <div className="admin-login__field">
+          <label
+            className="admin-login__label"
+            htmlFor="email"
+          >
             Email
           </label>
 
           <input
+            className="admin-login__input"
             id="email"
             type="email"
             value={email}
@@ -64,12 +76,16 @@ const AdminLogin = () => {
           />
         </div>
 
-        <div>
-          <label htmlFor="password">
+        <div className="admin-login__field">
+          <label
+            className="admin-login__label"
+            htmlFor="password"
+          >
             Password
           </label>
 
           <input
+            className="admin-login__input"
             id="password"
             type="password"
             value={password}
@@ -81,18 +97,24 @@ const AdminLogin = () => {
         </div>
 
         {error && (
-          <p>{error}</p>
+          <p className="admin-login__error">
+            {error}
+          </p>
         )}
 
         <button
+          className="admin-login__button"
           type="submit"
           disabled={loading}
         >
-          {loading ? 'Logging in...' : 'Login'}
+          {loading
+            ? 'Logging in...'
+            : 'Login'}
         </button>
       </form>
-    </main>
-  );
+    </div>
+  </main>
+);
 };
 
 export default AdminLogin;

@@ -3,7 +3,10 @@ import type {
   AdminLoginResponse,
 } from '../types/admin';
 
-import type { Review } from '../types/review';
+import type { 
+  Review,
+  ReviewStatus,
+} from '../types/review';
 
 const API_URL = import.meta.env.VITE_API_URL;
 
@@ -60,3 +63,37 @@ export const getAdminReviews = async (): Promise<
 
   return result;
 };
+
+export const updateReviewStatus = async (
+  id: number,
+  status: ReviewStatus,
+): Promise<Review> => {
+  const token = localStorage.getItem('adminToken');
+
+  if (!token) {
+    throw new Error('Admin token is missing.');
+  }
+
+  const response = await fetch(
+    `${API_URL}/reviews/admin/${id}`,
+    {
+      method: 'PATCH',
+      headers: {
+        'Content-Type': 'application/json',
+        Authorization: `Bearer ${token}`,
+      },
+      body: JSON.stringify({ status }),
+    },
+  );
+
+  const result = await response.json();
+
+  if (!response.ok) {
+    throw new Error(
+      result.message || 'Failed to update review status.',
+    );
+  }
+
+  return result.review;
+};
+
