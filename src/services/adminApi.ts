@@ -97,3 +97,32 @@ export const updateReviewStatus = async (
   return result.review;
 };
 
+export const deleteReview = async (
+  id: number,
+): Promise<Review> => {
+  const token = localStorage.getItem('adminToken');
+
+  if (!token) {
+    throw new Error('Admin token is missing.');
+  }
+
+  const response = await fetch(
+    `${API_URL}/reviews/admin/${id}`,
+    {
+      method: 'DELETE',
+      headers: {
+        Authorization: `Bearer ${token}`,
+      },
+    },
+  );
+
+  const result = await response.json();
+
+  if (!response.ok) {
+    throw new Error(
+      result.message || 'Failed to delete review.',
+    );
+  }
+
+  return result.review;
+};

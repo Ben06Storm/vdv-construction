@@ -1,6 +1,7 @@
 import { useEffect, useState } from 'react';
 
 import {
+  deleteReview,
   getAdminReviews,
   updateReviewStatus,
 } from '../../../services/adminApi';
@@ -22,9 +23,6 @@ const AdminReviews = () => {
     const loadReviews = async () => {
       try {
         const data = await getAdminReviews();
-
-        console.log('ADMIN REVIEWS:', data);
-
         setReviews(data);
       } catch (error) {
         console.error('ADMIN REVIEWS ERROR:', error);
@@ -78,6 +76,39 @@ const AdminReviews = () => {
     }
   };
 
+  const handleDelete = async (id: number) => {
+    const isConfirmed = window.confirm(
+      'Are you sure you want to delete this review?',
+    );
+
+    if (!isConfirmed) {
+      return;
+    }
+
+    try {
+      setUpdatingId(id);
+      setError('');
+
+      await deleteReview(id);
+
+      setReviews((currentReviews) =>
+        currentReviews.filter(
+          (review) => review.id !== id,
+        ),
+      );
+    } catch (error) {
+      console.error('DELETE REVIEW ERROR:', error);
+
+      setError(
+        error instanceof Error
+          ? error.message
+          : 'Failed to delete review.',
+      );
+    } finally {
+      setUpdatingId(null);
+    }
+  };
+
   return (
     <main className="admin-reviews">
       <div className="admin-reviews__container">
@@ -124,8 +155,9 @@ const AdminReviews = () => {
                     <strong className={`admin-review-card__status admin-review-card__status--${review.status.toLowerCase()}`}>
                       Status: {review.status}
                     </strong>
+                    <div className="admin-review-card__actions">
                       {review.status === 'PENDING' && (
-                        <div className="admin-review-card__actions">
+                        <>
                           <button
                             className="admin-review-card__button admin-review-card__button--approve"
                             type="button"
@@ -156,8 +188,17 @@ const AdminReviews = () => {
                               ? 'Updating...'
                               : 'Reject'}
                           </button>
-                        </div>
+                        </>
                       )}
+                      <button
+                        className="admin-review-card__button admin-review-card__button--delete"
+                        type="button"
+                        onClick={() => handleDelete(review.id)}
+                        disabled={isUpdating}
+                      >
+                        {isUpdating ? 'Deleting...' : 'Delete'}
+                      </button>
+                    </div>
                   </article>
                 );
               })}
