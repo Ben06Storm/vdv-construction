@@ -14,12 +14,20 @@ import type {
 
 import './AdminReviews.scss';
 
+type ReviewFilter =
+  | 'ALL'
+  | 'PENDING'
+  | 'APPROVED'
+  | 'REJECTED';
+
 const AdminReviews = () => {
   const navigate = useNavigate();
+
   const [reviews, setReviews] = useState<Review[]>([]);
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState('');
   const [updatingId, setUpdatingId] = useState<number | null>(null);
+  const [filter, setFilter] = useState<ReviewFilter>('ALL');
 
   useEffect(() => {
     const loadReviews = async () => {
@@ -117,6 +125,25 @@ const AdminReviews = () => {
     navigate('/admin/login');
   };
 
+  const pendingCount = reviews.filter(
+    (review) => review.status === 'PENDING',
+  ).length;
+
+  const approvedCount = reviews.filter(
+    (review) => review.status === 'APPROVED',
+  ).length;
+
+  const rejectedCount = reviews.filter(
+    (review) => review.status === 'REJECTED',
+  ).length;
+
+  const filteredReviews =
+    filter === 'ALL'
+      ? reviews
+      : reviews.filter(
+        (review) => review.status === filter,
+      );
+
   return (
     <main className="admin-reviews">
       <div className="admin-reviews__container">
@@ -133,6 +160,55 @@ const AdminReviews = () => {
             Logout
           </button>
         </div>
+        <div className="admin-reviews__filters">
+          <button
+            className={
+              filter === 'ALL'
+                ? 'admin-reviews__filter admin-reviews__filter--active'
+                : 'admin-reviews__filter'
+            }
+            type="button"
+            onClick={() => setFilter('ALL')}
+          >
+            All ({reviews.length})
+          </button>
+
+          <button
+            className={
+              filter === 'PENDING'
+                ? 'admin-reviews__filter admin-reviews__filter--active'
+                : 'admin-reviews__filter'
+            }
+            type="button"
+            onClick={() => setFilter('PENDING')}
+          >
+            Pending ({pendingCount})
+          </button>
+
+          <button
+            className={
+              filter === 'APPROVED'
+                ? 'admin-reviews__filter admin-reviews__filter--active'
+                : 'admin-reviews__filter'
+            }
+            type="button"
+            onClick={() => setFilter('APPROVED')}
+          >
+            Approved ({approvedCount})
+          </button>
+
+          <button
+            className={
+              filter === 'REJECTED'
+                ? 'admin-reviews__filter admin-reviews__filter--active'
+                : 'admin-reviews__filter'
+            }
+            type="button"
+            onClick={() => setFilter('REJECTED')}
+          >
+            Rejected ({rejectedCount})
+          </button>
+        </div>
         {loading && (
           <p className="admin-reviews__message">
             Loading reviews...
@@ -144,13 +220,13 @@ const AdminReviews = () => {
           </p>
         )}
         {!loading && !error && (
-          reviews.length === 0 ? (
+          filteredReviews.length === 0 ? (
             <p className="admin-reviews__message">
               No reviews found.
             </p>
           ) : (
             <div className="admin-reviews__list">
-              {reviews.map((review) => {
+              {filteredReviews.map((review) => {
                 const isUpdating =
                   updatingId === review.id;
                 return (

@@ -33,6 +33,42 @@
     }
   }
 
+  &__filters {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+  margin-bottom: 30px;
+}
+
+&__filter {
+  padding: 9px 16px;
+  border: 1px solid var(--border);
+  border-radius: 5px;
+  background: var(--white);
+  color: #333;
+  font: inherit;
+  font-weight: 600;
+  cursor: pointer;
+  transition:
+    background 0.2s ease,
+    border-color 0.2s ease,
+    color 0.2s ease;
+
+  &:hover {
+    background: #f0f0f0;
+  }
+
+  &--active {
+    border-color: var(--approve);
+    background: var(--approve);
+    color: var(--white);
+
+      &:hover {
+    background: var(--success);
+  }
+  }
+}
+
   &__title {
     margin: 0;
     font-size: 32px;
@@ -133,17 +169,17 @@
 
     &--approve {
       background: var(--approve);
-      color: #fff;
+      color: var(--white);
     }
 
     &--reject {
-      background: #dc3545;
-      color: #fff;
+      background: var(--error);
+      color: var(--white);
     }
 
     &--delete {
       background: #6c757d;
-      color: #fff;
+      color: var(--white);
     }
   }
 }
