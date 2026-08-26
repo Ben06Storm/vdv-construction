@@ -75,6 +75,33 @@
     font-weight: 700;
   }
 
+  &__pending {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  width: fit-content;
+  padding: 10px 14px;
+  border: 1px solid var(--border);
+  border-radius: 6px;
+  background: var(--white);
+}
+
+&__pending-label {
+  color: #333;
+  font-size: 15px;
+  font-weight: 600;
+}
+
+&__pending-count {
+  min-width: 28px;
+  padding: 4px 8px;
+  border-radius: 4px;
+  background: var(--bg-gold);
+  color: var(--gold);
+  font-size: 14px;
+  text-align: center;
+}
+
   &__message {
     font-size: 18px;
   }
@@ -126,7 +153,7 @@
     font-size: 14px;
 
     &--pending {
-      background: #fff3cd;
+      background: var(--bg-gold);
       color: var(--gold);
     }
 
@@ -187,6 +214,11 @@
 @media (max-width: 576px) {
   .admin-reviews {
     padding: 100px 16px 40px;
+
+    &__header {
+      display: grid;
+      grid-template-columns: 1fr;
+    }
   }
 
   .admin-review-card {

@@ -151,7 +151,15 @@ const AdminReviews = () => {
           <h1 className="admin-reviews__title">
             Reviews Admin
           </h1>
+          <div className="admin-reviews__pending">
+            <span className="admin-reviews__pending-label">
+              Pending reviews
+            </span>
 
+            <strong className="admin-reviews__pending-count">
+              {pendingCount}
+            </strong>
+          </div>
           <button
             className="admin-reviews__logout"
             type="button"
