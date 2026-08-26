@@ -9,8 +9,32 @@
     margin: 0 auto;
   }
 
+  &__header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 20px;
+    margin-bottom: 30px;
+  }
+
+  &__logout {
+    padding: 9px 16px;
+    border: 1px solid var(--border);
+    border-radius: 5px;
+    background: var(--error);
+    color: #333;
+    font: inherit;
+    font-weight: 600;
+    cursor: pointer;
+    transition: background 0.2s ease;
+
+    &:hover {
+      background: #e57a7a;
+    }
+  }
+
   &__title {
-    margin: 0 0 30px;
+    margin: 0;
     font-size: 32px;
     font-weight: 700;
   }

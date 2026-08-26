@@ -16,6 +16,7 @@ import TermsOfService from './pages/TermsOfService/TermsOfService';
 import Gallery from './pages/Gallery/Gallery';
 import AdminLogin from './pages/admin/AdminLogin/AdminLogin';
 import AdminReviews from './pages/admin/AdminReviews/AdminReviews';
+import ProtectedRoute from './components/ProtectedRoute/ProtectedRoute';
 
 const App = () => {
   return (
@@ -81,9 +82,11 @@ const App = () => {
         <Route
           path="/admin/reviews"
           element={
-            <AdminLayout>
-              <AdminReviews />
-            </AdminLayout>
+            <ProtectedRoute>
+              <AdminLayout>
+                <AdminReviews />
+              </AdminLayout>
+            </ProtectedRoute>
           }
         />
       </Routes>

@@ -1,4 +1,5 @@
 import { useEffect, useState } from 'react';
+import { useNavigate } from 'react-router-dom';
 
 import {
   deleteReview,
@@ -14,6 +15,7 @@ import type {
 import './AdminReviews.scss';
 
 const AdminReviews = () => {
+  const navigate = useNavigate();
   const [reviews, setReviews] = useState<Review[]>([]);
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState('');
@@ -109,12 +111,28 @@ const AdminReviews = () => {
     }
   };
 
+  const handleLogout = () => {
+    localStorage.removeItem('adminToken');
+
+    navigate('/admin/login');
+  };
+
   return (
     <main className="admin-reviews">
       <div className="admin-reviews__container">
-        <h1 className="admin-reviews__title">
-          Reviews Admin
-        </h1>
+        <div className="admin-reviews__header">
+          <h1 className="admin-reviews__title">
+            Reviews Admin
+          </h1>
+
+          <button
+            className="admin-reviews__logout"
+            type="button"
+            onClick={handleLogout}
+          >
+            Logout
+          </button>
+        </div>
         {loading && (
           <p className="admin-reviews__message">
             Loading reviews...
@@ -152,7 +170,10 @@ const AdminReviews = () => {
                     <p className="admin-review-card__text">
                       {review.review}
                     </p>
-                    <strong className={`admin-review-card__status admin-review-card__status--${review.status.toLowerCase()}`}>
+                    <strong
+                      className={`
+                        admin-review-card__status 
+                        admin-review-card__status--${review.status.toLowerCase()}`}>
                       Status: {review.status}
                     </strong>
                     <div className="admin-review-card__actions">
