@@ -144,6 +144,15 @@ const AdminReviews = () => {
         (review) => review.status === filter,
       );
 
+  const totalReviews = reviews.length;
+  const averageRating =
+    reviews.length === 0
+      ? 0
+      : reviews.reduce(
+        (sum, review) => sum + review.rating,
+        0,
+      ) / reviews.length;
+
   return (
     <main className="admin-reviews">
       <div className="admin-reviews__container">
@@ -151,15 +160,6 @@ const AdminReviews = () => {
           <h1 className="admin-reviews__title">
             Reviews Admin
           </h1>
-          <div className="admin-reviews__pending">
-            <span className="admin-reviews__pending-label">
-              Pending reviews
-            </span>
-
-            <strong className="admin-reviews__pending-count">
-              {pendingCount}
-            </strong>
-          </div>
           <button
             className="admin-reviews__logout"
             type="button"
@@ -167,6 +167,43 @@ const AdminReviews = () => {
           >
             Logout
           </button>
+        </div>
+        <div className="admin-reviews__stats">
+          <article className="admin-stat-card">
+            <span className="admin-stat-card__label">
+              Total Reviews
+            </span>
+            <strong className="admin-stat-card__value">
+              {totalReviews}
+            </strong>
+          </article>
+
+          <article className="admin-stat-card">
+            <span className="admin-stat-card__label">
+              Pending
+            </span>
+            <strong className="admin-stat-card__value">
+              {pendingCount}
+            </strong>
+          </article>
+
+          <article className="admin-stat-card">
+            <span className="admin-stat-card__label">
+              Approved
+            </span>
+            <strong className="admin-stat-card__value">
+              {approvedCount}
+            </strong>
+          </article>
+
+          <article className="admin-stat-card">
+            <span className="admin-stat-card__label">
+              Average Rating
+            </span>
+            <strong className="admin-stat-card__value">
+              {averageRating.toFixed(1)}
+            </strong>
+          </article>
         </div>
         <div className="admin-reviews__filters">
           <button
