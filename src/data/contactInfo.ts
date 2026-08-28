@@ -1,9 +1,10 @@
-
 import {
   Phone,
   Mail,
   MapPin,
 } from 'lucide-react';
+
+import { BUSINESS_EMAIL } from '../config/email';
 
 export const contactInfo = [
   {
@@ -13,8 +14,8 @@ export const contactInfo = [
   },
   {
     icon: Mail,
-    text: 'llcvdvconstruction@gmail.com',
-    href: 'mailto:llcvdvconstruction@gmail.com',
+    text: BUSINESS_EMAIL,
+    href: `mailto:${BUSINESS_EMAIL}`,
   },
   {
     icon: MapPin,
