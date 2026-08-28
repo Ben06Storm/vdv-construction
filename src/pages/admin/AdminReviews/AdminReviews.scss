@@ -115,6 +115,8 @@
   }
 
   &__value {
+    display: flex;
+    gap: 5px;
     color: var(--bg-dark);
     font-size: 28px;
     font-weight: 700;

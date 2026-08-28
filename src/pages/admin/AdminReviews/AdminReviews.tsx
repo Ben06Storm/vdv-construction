@@ -1,6 +1,8 @@
 import { useEffect, useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 
+import { Star } from 'lucide-react';
+
 import {
   deleteReview,
   getAdminReviews,
@@ -202,6 +204,13 @@ const AdminReviews = () => {
             </span>
             <strong className="admin-stat-card__value">
               {averageRating.toFixed(1)}
+              <Star
+                size={24}
+                strokeWidth={1.5}
+                fill="gold"
+                color="gold"
+                aria-hidden="true"
+              />
             </strong>
           </article>
         </div>
