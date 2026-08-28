@@ -1,6 +1,7 @@
 import type { NextFunction, Request, Response } from 'express';
 import jwt from 'jsonwebtoken';
 
+import { env } from '../config/env';
 import type { AdminPayload } from '../types/admin';
 
 export const authMiddleware = (
@@ -28,20 +29,10 @@ export const authMiddleware = (
     return;
   }
 
-  const jwtSecret = process.env.JWT_SECRET;
-
-  if (!jwtSecret) {
-    res.status(500).json({
-      message: 'JWT_SECRET is not configured.',
-    });
-
-    return;
-  }
-
   try {
     const payload = jwt.verify(
       token,
-      jwtSecret,
+      env.JWT_SECRET,
     ) as AdminPayload;
 
     req.admin = payload;

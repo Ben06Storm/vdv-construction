@@ -1,16 +1,17 @@
 import 'dotenv/config';
 import express from 'express';
 import cors from 'cors';
+
+import { env } from './config/env';
 import reviewsRouter from './routes/reviews';
 import adminRouter from './routes/admin';
 
 const app = express();
 const PORT = process.env.PORT || 5000;
-const FRONTEND_URL = process.env.FRONTEND_URL;
 
 app.use(
   cors({
-    origin: FRONTEND_URL,
+    origin: env.FRONTEND_URL,
   }),
 );
 app.use(express.json());
