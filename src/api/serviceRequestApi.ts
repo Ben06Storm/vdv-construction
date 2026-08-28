@@ -3,6 +3,7 @@ import emailjs from '@emailjs/browser';
 import type {
   ServiceRequestPayload,
 } from '../types/forms';
+import { BUSINESS_EMAIL } from '../config/email';
 
 export const submitServiceRequest = (
   data: ServiceRequestPayload,
@@ -17,6 +18,7 @@ export const submitServiceRequest = (
       service: data.service,
       message: data.message,
       time: new Date().toLocaleString(),
+      to_email: BUSINESS_EMAIL,
     },
     {
       publicKey:

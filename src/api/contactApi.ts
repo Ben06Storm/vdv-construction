@@ -1,6 +1,7 @@
 import emailjs from '@emailjs/browser';
 
 import type { ContactFormData } from '../types/forms';
+import { BUSINESS_EMAIL } from '../config/email';
 
 export const submitContactForm = (
   data: ContactFormData,
@@ -15,6 +16,7 @@ export const submitContactForm = (
       project: data.project,
       message: data.message,
       time: new Date().toLocaleString(),
+      to_email: BUSINESS_EMAIL,
     },
     {
       publicKey:
