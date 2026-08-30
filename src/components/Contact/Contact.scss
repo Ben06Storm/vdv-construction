@@ -1,33 +1,37 @@
 .contact {
   position: relative;
-  padding: clamp(60px, 8vw, 80px) 0;
+  padding: clamp(72px, 9vw, 112px) 0;
   background:
-    linear-gradient(rgba(8, 8, 8, .82),
-      rgba(8, 8, 8, .82)),
+    linear-gradient(rgba(12, 11, 10, 0.88), rgba(12, 11, 10, 0.88)),
     url('../../assets/images/shower.png') center / cover;
-  border-bottom: 2px solid var(--border);
+  border-top: 1px solid var(--border);
 
   &__wrapper {
     display: grid;
-    grid-template-columns: minmax(320px, 420px) 1fr;
-    gap: clamp(40px, 5vw, 70px);
-    align-items: center;
+    grid-template-columns: minmax(280px, 420px) minmax(0, 1fr);
+    gap: clamp(32px, 5vw, 72px);
+    align-items: start;
   }
 
   &__description {
     color: var(--text-h);
-    line-height: 1.8;
+    line-height: 1.7;
+    max-width: 38ch;
   }
 
   &__items {
     display: flex;
     flex-direction: column;
-    gap: 18px;
+    gap: 14px;
+    margin-top: 28px;
   }
 
   &__form {
-    display: flex;
-    flex-direction: column;
+    background: var(--bg-card);
+    border: 1px solid var(--border);
+    border-radius: 24px;
+    padding: clamp(24px, 3vw, 36px);
+    box-shadow: var(--shadow);
     grid-row: 1 / span 3;
     grid-column: 2;
   }
@@ -42,24 +46,6 @@
     &__items {
       grid-column: auto;
       grid-row: auto;
-    }
-
-    &__info {
-      text-align: center;
-    }
-
-    &__items {
-      align-items: center;
-    }
-  }
-}
-
-@media (max-width: 375px) {
-  .contact {
-
-    &__items {
-      align-items: start;
-      gap: 0;
     }
   }
 }

@@ -2,17 +2,17 @@
   position: fixed;
   inset: 0 0 auto;
   width: 100%;
-  padding: 8px 0;
-  background: var(--bg-dark);
-  border-bottom: 2px solid var(--border);
-  box-shadow: var(--shadow);
+  padding: 10px 0;
+  background: color-mix(in srgb, var(--bg-dark) 88%, transparent);
+  backdrop-filter: blur(16px);
+  border-bottom: 1px solid var(--border);
   z-index: var(--z-header);
 
   &__row {
     display: flex;
     align-items: center;
     justify-content: space-between;
-    gap: clamp(24px, 4vw, 34px);
+    gap: clamp(16px, 3vw, 34px);
   }
 
   &__logo {
@@ -28,14 +28,20 @@
   &__nav-list {
     display: flex;
     align-items: center;
-    gap: clamp(18px, 2vw, 32px);
+    gap: clamp(16px, 2vw, 28px);
   }
 
   &__nav-link {
     display: inline-block;
-    padding: 8px 0;
-    border-bottom: 3px solid transparent;
-    transition: .35s ease;
+    padding: 10px 0;
+    font-size: 0.78rem;
+    font-weight: 700;
+    letter-spacing: 0.16em;
+    text-transform: uppercase;
+    color: var(--description);
+    border-bottom: 2px solid transparent;
+    transition: color 0.25s ease, border-color 0.25s ease;
+
     &:hover,
     &:focus-visible {
       color: var(--gold);
@@ -45,12 +51,7 @@
 }
 
 @media (max-width: 768px) {
-
   .header {
-    &__row {
-      justify-content: space-between;
-    }
-
     &__nav {
       display: none;
     }
