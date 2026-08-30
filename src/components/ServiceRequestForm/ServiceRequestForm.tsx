@@ -4,9 +4,7 @@ import {
   validateServiceRequestForm,
   type BaseFormErrors,
 } from '../../utils/validation';
-import type {
-  ServiceRequestFormData,
-} from '../../types/forms';
+import type { ServiceRequestFormData } from '../../types/forms';
 import { submitServiceRequest } from '../../api/serviceRequestApi';
 
 import './ServiceRequestForm.scss';
@@ -27,18 +25,10 @@ const ServiceRequestForm = ({
 }: ServiceRequestFormProps) => {
   const [formData, setFormData] =
     useState<ServiceRequestFormData>(initialFormData);
-
-  const [errors, setErrors] =
-    useState<BaseFormErrors>({});
-
-  const [loading, setLoading] =
-    useState(false);
-
-  const [success, setSuccess] =
-    useState(false);
-
-  const [error, setError] =
-    useState('');
+  const [errors, setErrors] = useState<BaseFormErrors>({});
+  const [loading, setLoading] = useState(false);
+  const [success, setSuccess] = useState(false);
+  const [error, setError] = useState('');
 
   const handleChange = (
     event: React.ChangeEvent<
@@ -47,12 +37,12 @@ const ServiceRequestForm = ({
   ) => {
     const { name, value } = event.target;
 
-    setFormData(prev => ({
+    setFormData((prev) => ({
       ...prev,
       [name]: value,
     }));
 
-    setErrors(prev => ({
+    setErrors((prev) => ({
       ...prev,
       [name]: undefined,
     }));
@@ -65,7 +55,6 @@ const ServiceRequestForm = ({
     event: React.FormEvent<HTMLFormElement>,
   ) => {
     event.preventDefault();
-
     setSuccess(false);
     setError('');
 
@@ -88,13 +77,8 @@ const ServiceRequestForm = ({
 
       setSuccess(true);
       setFormData(initialFormData);
-      setErrors({});
-
-    } catch (error) {
-      console.error('Service request error:', error);
-      setError(
-        'Something went wrong. Please try again.',
-      );
+    } catch {
+      setError('Something went wrong. Please try again.');
     } finally {
       setLoading(false);
     }
@@ -103,17 +87,14 @@ const ServiceRequestForm = ({
   return (
     <div className="service-request-form">
       <p className="service-request-form__subtitle">
-        REQUEST A SERVICE
+        Request a service
       </p>
-
       <h3 className="service-request-form__title">
         {serviceTitle}
       </h3>
-
       <p className="service-request-form__description">
-        Leave your details below and our team
-        will contact you to discuss your{' '}
-        {serviceTitle.toLowerCase()} project.
+        Leave your details below and our team will contact you
+        to discuss your {serviceTitle.toLowerCase()} project.
       </p>
 
       <form
@@ -128,16 +109,17 @@ const ServiceRequestForm = ({
         )}
 
         {error && (
-          <p className="service-request-form__error">
-            {error}
-          </p>
+          <p className="service-request-form__error">{error}</p>
         )}
+
         <div className="service-request-form__row">
           <div className="service-request-form__field">
+            <label htmlFor="service-name">Your name</label>
             <input
+              id="service-name"
               type="text"
               name="name"
-              placeholder="Your Name"
+              placeholder="Your name"
               value={formData.name}
               onChange={handleChange}
             />
@@ -149,10 +131,12 @@ const ServiceRequestForm = ({
           </div>
 
           <div className="service-request-form__field">
+            <label htmlFor="service-phone">Phone number</label>
             <input
+              id="service-phone"
               type="tel"
               name="phone"
-              placeholder="Phone Number"
+              placeholder="Phone number"
               value={formData.phone}
               onChange={handleChange}
             />
@@ -165,10 +149,12 @@ const ServiceRequestForm = ({
         </div>
 
         <div className="service-request-form__field">
+          <label htmlFor="service-email">Email address</label>
           <input
+            id="service-email"
             type="email"
             name="email"
-            placeholder="Email Address"
+            placeholder="Email address"
             value={formData.email}
             onChange={handleChange}
           />
@@ -180,7 +166,9 @@ const ServiceRequestForm = ({
         </div>
 
         <div className="service-request-form__field">
+          <label htmlFor="service-message">Project details</label>
           <textarea
+            id="service-message"
             name="message"
             rows={4}
             placeholder={`Tell us more about your ${serviceTitle.toLowerCase()} request`}
@@ -194,13 +182,8 @@ const ServiceRequestForm = ({
           )}
         </div>
 
-        <button
-          type="submit"
-          disabled={loading}
-        >
-          {loading
-            ? 'Sending...'
-            : 'SEND REQUEST'}
+        <button type="submit" disabled={loading}>
+          {loading ? 'Sending...' : 'Send request'}
         </button>
       </form>
     </div>

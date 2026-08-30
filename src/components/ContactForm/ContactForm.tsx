@@ -23,33 +23,24 @@ const initialFormData: ContactFormData = {
 const ContactForm = () => {
   const [formData, setFormData] =
     useState<ContactFormData>(initialFormData);
-
-  const [errors, setErrors] =
-    useState<FormErrors>({});
-
-  const [loading, setLoading] =
-    useState(false);
-
-  const [success, setSuccess] =
-    useState(false);
-
-  const [error, setError] =
-    useState('');
+  const [errors, setErrors] = useState<FormErrors>({});
+  const [loading, setLoading] = useState(false);
+  const [success, setSuccess] = useState(false);
+  const [error, setError] = useState('');
 
   const handleChange = (
     event: React.ChangeEvent<
-      HTMLInputElement |
-      HTMLTextAreaElement
+      HTMLInputElement | HTMLTextAreaElement
     >,
   ) => {
     const { name, value } = event.target;
 
-    setFormData(prev => ({
+    setFormData((prev) => ({
       ...prev,
       [name]: value,
     }));
 
-    setErrors(prev => ({
+    setErrors((prev) => ({
       ...prev,
       [name]: undefined,
     }));
@@ -58,15 +49,13 @@ const ContactForm = () => {
     setSuccess(false);
   };
 
-  const handleProjectChange = (
-    value: string,
-  ) => {
-    setFormData(prev => ({
+  const handleProjectChange = (value: string) => {
+    setFormData((prev) => ({
       ...prev,
       project: value,
     }));
 
-    setErrors(prev => ({
+    setErrors((prev) => ({
       ...prev,
       project: undefined,
     }));
@@ -79,13 +68,11 @@ const ContactForm = () => {
     event: React.FormEvent<HTMLFormElement>,
   ) => {
     event.preventDefault();
-
     setLoading(true);
     setSuccess(false);
     setError('');
 
-    const validationErrors =
-      validateForm(formData);
+    const validationErrors = validateForm(formData);
 
     if (Object.keys(validationErrors).length > 0) {
       setErrors(validationErrors);
@@ -97,10 +84,8 @@ const ContactForm = () => {
 
     try {
       await submitContactForm(formData);
-
       setSuccess(true);
       setFormData(initialFormData);
-
     } catch {
       setError('Something went wrong. Please try again.');
     } finally {
@@ -116,18 +101,13 @@ const ContactForm = () => {
     >
       <div className="contactForm__row">
         <div className="contactForm__field">
-          <label
-            className="visually-hidden"
-            htmlFor="name"
-          >
-            Your Name
-          </label>
+          <label htmlFor="name">Your name</label>
           <input
             id="name"
             type="text"
             name="name"
             autoComplete="name"
-            placeholder="Your Name"
+            placeholder="Jordan Hale"
             value={formData.name}
             onChange={handleChange}
             className={
@@ -136,27 +116,19 @@ const ContactForm = () => {
                 : 'contactForm__input'
             }
           />
-
           {errors.name && (
-            <p className="contactForm__error">
-              {errors.name}
-            </p>
+            <p className="contactForm__error">{errors.name}</p>
           )}
         </div>
 
         <div className="contactForm__field">
-          <label
-            className="visually-hidden"
-            htmlFor="phone"
-          >
-            Phone Number
-          </label>
+          <label htmlFor="phone">Phone number</label>
           <input
             id="phone"
             type="tel"
             name="phone"
             autoComplete="tel"
-            placeholder="Phone Number"
+            placeholder="(971) 555-1234"
             value={formData.phone}
             onChange={handleChange}
             className={
@@ -165,28 +137,20 @@ const ContactForm = () => {
                 : 'contactForm__input'
             }
           />
-
           {errors.phone && (
-            <p className="contactForm__error">
-              {errors.phone}
-            </p>
+            <p className="contactForm__error">{errors.phone}</p>
           )}
         </div>
       </div>
 
       <div className="contactForm__field">
-        <label
-          className="visually-hidden"
-          htmlFor="email"
-        >
-          Email Address
-        </label>
+        <label htmlFor="email">Email address</label>
         <input
           id="email"
           type="email"
           name="email"
           autoComplete="email"
-          placeholder="Email Address"
+          placeholder="you@email.com"
           value={formData.email}
           onChange={handleChange}
           className={
@@ -195,48 +159,32 @@ const ContactForm = () => {
               : 'contactForm__input'
           }
         />
-
         {errors.email && (
-          <p className="contactForm__error">
-            {errors.email}
-          </p>
+          <p className="contactForm__error">{errors.email}</p>
         )}
       </div>
 
       <div className="contactForm__field">
-        <label
-          className="visually-hidden"
-          htmlFor="project"
-        >
-          Project Type
-        </label>
+        <label htmlFor="project">Project type</label>
         <CustomSelect
           id="project"
-          placeholder="Select Project Type"
+          placeholder="Select project type"
           options={projectOptions}
           value={formData.project}
           onChange={handleProjectChange}
         />
-
         {errors.project && (
-          <p className="contactForm__error">
-            {errors.project}
-          </p>
+          <p className="contactForm__error">{errors.project}</p>
         )}
       </div>
 
       <div className="contactForm__field">
-        <label
-          className="visually-hidden"
-          htmlFor="message"
-        >
-          Tell us about your project
-        </label>
+        <label htmlFor="message">Tell us about your project</label>
         <textarea
           id="message"
           name="message"
           rows={5}
-          placeholder="Tell us about your project..."
+          placeholder="Rooms, materials, timeline, anything we should know..."
           value={formData.message}
           onChange={handleChange}
           className={
@@ -245,24 +193,19 @@ const ContactForm = () => {
               : 'contactForm__input'
           }
         />
-
         {errors.message && (
-          <p className="contactForm__error">
-            {errors.message}
-          </p>
+          <p className="contactForm__error">{errors.message}</p>
         )}
       </div>
 
       {success && (
         <p className="contactForm__success">
-          Your request has been sent successfully!
+          Your request has been sent successfully. We typically reply within one business day.
         </p>
       )}
 
       {error && (
-        <p className="contactForm__server-error">
-          {error}
-        </p>
+        <p className="contactForm__server-error">{error}</p>
       )}
 
       <button
@@ -270,9 +213,7 @@ const ContactForm = () => {
         type="submit"
         disabled={loading}
       >
-        {loading
-          ? 'Sending...'
-          : 'GET A FREE QUOTE'}
+        {loading ? 'Sending...' : 'Get a free quote'}
       </button>
     </form>
   );
