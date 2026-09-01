@@ -14,10 +14,13 @@ import {
   deleteReview,
 } from '../services/reviewService';
 import { authMiddleware } from '../middleware/auth';
+import { reviewCreationLimiter } from '../middleware/rateLimit';
 
 const router = Router();
 
-router.get('/', async (_req, res) => {
+router.get('/',
+  reviewCreationLimiter,
+  async (_req, res) => {
   try {
     const reviews = await getReviews();
     res.status(200).json(reviews);

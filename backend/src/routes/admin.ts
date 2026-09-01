@@ -2,10 +2,13 @@ import { Router } from 'express';
 
 import type { AdminLoginData } from '../types/admin';
 import { loginAdmin } from '../services/authService';
+import { adminLoginLimiter } from '../middleware/rateLimit';
 
 const router = Router();
 
-router.post('/login', async (req, res) => {
+router.post('/login',
+  adminLoginLimiter,
+  async (req, res) => {
   const data = req.body as AdminLoginData;
 
   if (!data.email || !data.password) {
