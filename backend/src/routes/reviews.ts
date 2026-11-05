@@ -18,9 +18,7 @@ import { reviewCreationLimiter } from '../middleware/rateLimit';
 
 const router = Router();
 
-router.get('/',
-  reviewCreationLimiter,
-  async (_req, res) => {
+router.get('/', async (_req, res) => {
   try {
     const reviews = await getReviews();
     res.status(200).json(reviews);
@@ -110,7 +108,9 @@ router.delete('/admin/:id', authMiddleware, async (req, res) => {
   }
 });
 
-router.post('/', async (req, res) => {
+router.post('/',
+  reviewCreationLimiter,
+  async (req, res) => {
   const data = req.body as CreateReviewData;
 
   const validationError = validateReview(data);
