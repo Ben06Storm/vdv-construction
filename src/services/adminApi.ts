@@ -3,126 +3,132 @@ import type {
   AdminLoginResponse,
 } from '../types/admin';
 
-import type { 
+import type {
   Review,
   ReviewStatus,
 } from '../types/review';
 
+import {
+  handleAdminAuthExpired,
+} from './adminAuth';
+
 const API_URL = import.meta.env.VITE_API_URL;
+
+type ApiRequestOptions = RequestInit & {
+  requireAuth?: boolean;
+};
+
+const apiRequest = async <T>(
+  endpoint: string,
+  options: ApiRequestOptions = {},
+): Promise<T> => {
+  const {
+    requireAuth = true,
+    ...requestOptions
+  } = options;
+
+  const headers = new Headers(
+    requestOptions.headers,
+  );
+
+  headers.set(
+    'Content-Type',
+    'application/json',
+  );
+
+  if (requireAuth) {
+    const token =
+      localStorage.getItem('adminToken');
+
+    if (!token) {
+      throw new Error(
+        'Admin token is missing.',
+      );
+    }
+
+    headers.set(
+      'Authorization',
+      `Bearer ${token}`,
+    );
+  }
+
+  const response = await fetch(
+    `${API_URL}${endpoint}`,
+    {
+      ...requestOptions,
+      headers,
+    },
+  );
+
+  const result = await response.json();
+
+  if (response.status === 401) {
+    handleAdminAuthExpired();
+
+    throw new Error(
+      result.message || 'Session expired.',
+    );
+  }
+
+  if (!response.ok) {
+    throw new Error(
+      result.message || 'Request failed.',
+    );
+  }
+
+  return result;
+};
 
 export const loginAdmin = async (
   data: AdminLoginData,
 ): Promise<AdminLoginResponse> => {
-  const response = await fetch(
-    `${API_URL}/admin/login`,
+  return apiRequest<AdminLoginResponse>(
+    '/admin/login',
     {
       method: 'POST',
-      headers: {
-        'Content-Type': 'application/json',
-      },
+      requireAuth: false,
       body: JSON.stringify(data),
     },
   );
-
-  const result = await response.json();
-
-  if (!response.ok) {
-    throw new Error(
-      result.message || 'Login failed.',
-    );
-  }
-
-  return result;
 };
 
-export const getAdminReviews = async (): Promise<
-  Review[]
-> => {
-  const token = localStorage.getItem('adminToken');
+export const getAdminReviews =
+  async (): Promise<Review[]> => {
+    return apiRequest<Review[]>(
+      '/reviews/admin',
+    );
+  };
 
-  if (!token) {
-    throw new Error('Admin token is missing.');
-  }
-
-  const response = await fetch(
-    `${API_URL}/reviews/admin`,
-    {
-      headers: {
-        Authorization: `Bearer ${token}`,
+export const updateReviewStatus =
+  async (
+    id: number,
+    status: ReviewStatus,
+  ): Promise<Review> => {
+    const result = await apiRequest<{
+      review: Review;
+    }>(
+      `/reviews/admin/${id}`,
+      {
+        method: 'PATCH',
+        body: JSON.stringify({ status }),
       },
-    },
-  );
-
-  const result = await response.json();
-
-  if (!response.ok) {
-    throw new Error(
-      result.message || 'Failed to get reviews.',
     );
-  }
 
-  return result;
-};
+    return result.review;
+  };
 
-export const updateReviewStatus = async (
-  id: number,
-  status: ReviewStatus,
-): Promise<Review> => {
-  const token = localStorage.getItem('adminToken');
-
-  if (!token) {
-    throw new Error('Admin token is missing.');
-  }
-
-  const response = await fetch(
-    `${API_URL}/reviews/admin/${id}`,
-    {
-      method: 'PATCH',
-      headers: {
-        'Content-Type': 'application/json',
-        Authorization: `Bearer ${token}`,
+export const deleteReview =
+  async (
+    id: number,
+  ): Promise<Review> => {
+    const result = await apiRequest<{
+      review: Review;
+    }>(
+      `/reviews/admin/${id}`,
+      {
+        method: 'DELETE',
       },
-      body: JSON.stringify({ status }),
-    },
-  );
-
-  const result = await response.json();
-
-  if (!response.ok) {
-    throw new Error(
-      result.message || 'Failed to update review status.',
     );
-  }
 
-  return result.review;
-};
-
-export const deleteReview = async (
-  id: number,
-): Promise<Review> => {
-  const token = localStorage.getItem('adminToken');
-
-  if (!token) {
-    throw new Error('Admin token is missing.');
-  }
-
-  const response = await fetch(
-    `${API_URL}/reviews/admin/${id}`,
-    {
-      method: 'DELETE',
-      headers: {
-        Authorization: `Bearer ${token}`,
-      },
-    },
-  );
-
-  const result = await response.json();
-
-  if (!response.ok) {
-    throw new Error(
-      result.message || 'Failed to delete review.',
-    );
-  }
-
-  return result.review;
-};
+    return result.review;
+  };

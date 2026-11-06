@@ -1,3 +1,5 @@
+import { useNavigate } from 'react-router-dom';
+
 import {
   useState,
   type FormEvent,
@@ -10,9 +12,10 @@ import './AdminLogin.scss';
 const AdminLogin = () => {
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
-
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState('');
+
+  const navigate = useNavigate();
 
   const handleSubmit = async (
     event: FormEvent<HTMLFormElement>,
@@ -33,7 +36,9 @@ const AdminLogin = () => {
         result.token,
       );
 
-      window.location.href = '/admin/reviews';
+      navigate('/admin/reviews', {
+        replace: true,
+      });
     } catch (error) {
       setError(
         error instanceof Error
@@ -45,76 +50,76 @@ const AdminLogin = () => {
     }
   };
 
-return (
-  <main className="admin-login">
-    <div className="admin-login__container">
-      <form
-        className="admin-login__form"
-        onSubmit={handleSubmit}
-      >
-        <h1 className="admin-login__title">
-          Admin Login
-        </h1>
-
-        <div className="admin-login__field">
-          <label
-            className="admin-login__label"
-            htmlFor="email"
-          >
-            Email
-          </label>
-
-          <input
-            className="admin-login__input"
-            id="email"
-            type="email"
-            value={email}
-            onChange={(event) =>
-              setEmail(event.target.value)
-            }
-            required
-          />
-        </div>
-
-        <div className="admin-login__field">
-          <label
-            className="admin-login__label"
-            htmlFor="password"
-          >
-            Password
-          </label>
-
-          <input
-            className="admin-login__input"
-            id="password"
-            type="password"
-            value={password}
-            onChange={(event) =>
-              setPassword(event.target.value)
-            }
-            required
-          />
-        </div>
-
-        {error && (
-          <p className="admin-login__error">
-            {error}
-          </p>
-        )}
-
-        <button
-          className="admin-login__button"
-          type="submit"
-          disabled={loading}
+  return (
+    <main className="admin-login">
+      <div className="admin-login__container">
+        <form
+          className="admin-login__form"
+          onSubmit={handleSubmit}
         >
-          {loading
-            ? 'Logging in...'
-            : 'Login'}
-        </button>
-      </form>
-    </div>
-  </main>
-);
+          <h1 className="admin-login__title">
+            Admin Login
+          </h1>
+
+          <div className="admin-login__field">
+            <label
+              className="admin-login__label"
+              htmlFor="email"
+            >
+              Email
+            </label>
+
+            <input
+              className="admin-login__input"
+              id="email"
+              type="email"
+              value={email}
+              onChange={(event) =>
+                setEmail(event.target.value)
+              }
+              required
+            />
+          </div>
+
+          <div className="admin-login__field">
+            <label
+              className="admin-login__label"
+              htmlFor="password"
+            >
+              Password
+            </label>
+
+            <input
+              className="admin-login__input"
+              id="password"
+              type="password"
+              value={password}
+              onChange={(event) =>
+                setPassword(event.target.value)
+              }
+              required
+            />
+          </div>
+
+          {error && (
+            <p className="admin-login__error">
+              {error}
+            </p>
+          )}
+
+          <button
+            className="admin-login__button"
+            type="submit"
+            disabled={loading}
+          >
+            {loading
+              ? 'Logging in...'
+              : 'Login'}
+          </button>
+        </form>
+      </div>
+    </main>
+  );
 };
 
 export default AdminLogin;

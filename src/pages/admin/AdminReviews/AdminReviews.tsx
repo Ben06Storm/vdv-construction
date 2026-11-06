@@ -1,7 +1,8 @@
+import { Star } from 'lucide-react';
+
 import { useEffect, useState } from 'react';
 import { useNavigate } from 'react-router-dom';
-
-import { Star } from 'lucide-react';
+import { ADMIN_AUTH_EXPIRED_EVENT } from '../../../services/adminAuth';
 
 import {
   deleteReview,
@@ -51,6 +52,26 @@ const AdminReviews = () => {
 
     loadReviews();
   }, []);
+
+  useEffect(() => {
+  const handleAuthExpired = () => {
+    navigate('/admin/login', {
+      replace: true,
+    });
+  };
+
+  window.addEventListener(
+    ADMIN_AUTH_EXPIRED_EVENT,
+    handleAuthExpired,
+  );
+
+  return () => {
+    window.removeEventListener(
+      ADMIN_AUTH_EXPIRED_EVENT,
+      handleAuthExpired,
+    );
+  };
+}, [navigate]);
 
   const handleStatusChange = async (
     id: number,

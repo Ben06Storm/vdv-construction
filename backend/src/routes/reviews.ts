@@ -14,6 +14,7 @@ import {
   deleteReview,
 } from '../services/reviewService';
 import { authMiddleware } from '../middleware/auth';
+import { reviewCreationLimiter } from '../middleware/rateLimit';
 
 const router = Router();
 
@@ -107,7 +108,9 @@ router.delete('/admin/:id', authMiddleware, async (req, res) => {
   }
 });
 
-router.post('/', async (req, res) => {
+router.post('/',
+  reviewCreationLimiter,
+  async (req, res) => {
   const data = req.body as CreateReviewData;
 
   const validationError = validateReview(data);
