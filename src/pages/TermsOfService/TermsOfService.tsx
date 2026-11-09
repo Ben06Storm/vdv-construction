@@ -1,6 +1,34 @@
+import { useEffect } from 'react';
 import LegalPage from '../../components/LegalPage/LegalPage';
 
 const TermsOfService = () => {
+  useEffect(() => {
+    document.title =
+      'Terms of Service | VDV Construction';
+    const description =
+      'Read the VDV Construction Terms of Service for information about website use, construction services, project requests, estimates, and customer reviews.';
+    let metaDescription = document.querySelector(
+      'meta[name="description"]',
+    );
+    if (!metaDescription) {
+      metaDescription = document.createElement('meta');
+      metaDescription.setAttribute('name', 'description');
+      document.head.appendChild(metaDescription);
+    }
+    metaDescription.setAttribute('content', description);
+    return () => {
+      document.title =
+        'VDV Construction | Quality Home Remodeling in Portland & Vancouver';
+      const metaDescription = document.querySelector(
+        'meta[name="description"]',
+      );
+      metaDescription?.setAttribute(
+        'content',
+        'VDV Construction provides quality home remodeling in Portland, OR, and Vancouver, WA. Explore our tile installation, custom showers, decks, heated floors, porcelain slabs, and custom sauna services.',
+      );
+    };
+  }, []);
+
   return (<LegalPage
     title="Terms of Service"
     lastUpdated="August 2026"

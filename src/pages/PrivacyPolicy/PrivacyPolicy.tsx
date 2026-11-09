@@ -1,6 +1,33 @@
+import { useEffect } from 'react';
 import LegalPage from '../../components/LegalPage/LegalPage';
 
 const PrivacyPolicy = () => {
+  useEffect(() => {
+    document.title = 'Privacy Policy | VDV Construction';
+    const description =
+      'Learn how VDV Construction collects, uses, and protects your personal information in our Privacy Policy.';
+    let metaDescription = document.querySelector(
+      'meta[name="description"]',
+    );
+    if (!metaDescription) {
+      metaDescription = document.createElement('meta');
+      metaDescription.setAttribute('name', 'description');
+      document.head.appendChild(metaDescription);
+    }
+    metaDescription.setAttribute('content', description);
+    return () => {
+      document.title =
+        'VDV Construction | Quality Home Remodeling in Portland & Vancouver';
+      const metaDescription = document.querySelector(
+        'meta[name="description"]',
+      );
+      metaDescription?.setAttribute(
+        'content',
+        'VDV Construction provides quality home remodeling in Portland, OR, and Vancouver, WA. Explore our tile installation, custom showers, decks, heated floors, porcelain slabs, and custom sauna services.',
+      );
+    };
+  }, []);
+
   return (<LegalPage
     title="Privacy Policy"
     lastUpdated="August 2026"
