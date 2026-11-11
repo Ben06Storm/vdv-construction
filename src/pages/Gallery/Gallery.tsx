@@ -37,32 +37,45 @@ const categoryOptions = [
 ];
 
 const Gallery = () => {
-  useEffect(() => {
+useEffect(() => {
+  document.title = 'Project Gallery | VDV Construction';
+  const description =
+    'Explore the VDV Construction project gallery featuring tile installation, custom showers, decks, heated floors, porcelain slabs, and custom saunas in Portland and Vancouver.';
+  let metaDescription = document.querySelector(
+    'meta[name="description"]',
+  );
+  if (!metaDescription) {
+    metaDescription = document.createElement('meta');
+    metaDescription.setAttribute('name', 'description');
+    document.head.appendChild(metaDescription);
+  }
+  metaDescription.setAttribute('content', description);
+  let canonical = document.querySelector(
+    'link[rel="canonical"]',
+  );
+  if (!canonical) {
+    canonical = document.createElement('link');
+    canonical.setAttribute('rel', 'canonical');
+    document.head.appendChild(canonical);
+  }
+  canonical.setAttribute(
+    'href',
+    'https://vdvconstruction.com/gallery',
+  );
+  return () => {
     document.title =
-      'Project Gallery | VDV Construction';
-    const description =
-      'Explore the VDV Construction project gallery featuring tile installation, custom showers, decks, heated floors, porcelain slabs, and custom saunas in Portland and Vancouver.';
-    let metaDescription = document.querySelector(
-      'meta[name="description"]',
+      'VDV Construction | Quality Home Remodeling in Portland & Vancouver';
+    metaDescription?.setAttribute(
+      'content',
+      'VDV Construction provides quality home remodeling in Portland, OR, and Vancouver, WA. Explore our tile installation, custom showers, decks, heated floors, porcelain slabs, and custom sauna services.',
     );
-    if (!metaDescription) {
-      metaDescription = document.createElement('meta');
-      metaDescription.setAttribute('name', 'description');
-      document.head.appendChild(metaDescription);
-    }
-    metaDescription.setAttribute('content', description);
-    return () => {
-      document.title =
-        'VDV Construction | Quality Home Remodeling in Portland & Vancouver';
-      const metaDescription = document.querySelector(
-        'meta[name="description"]',
-      );
-      metaDescription?.setAttribute(
-        'content',
-        'VDV Construction provides quality home remodeling in Portland, OR, and Vancouver, WA. Explore our tile installation, custom showers, decks, heated floors, porcelain slabs, and custom sauna services.',
-      );
-    };
-  }, []);
+    canonical?.setAttribute(
+      'href',
+      'https://vdvconstruction.com/',
+    );
+  };
+}, []);
+
   const [activeCategory, setActiveCategory] =
     useState(ALL_CATEGORY);
 

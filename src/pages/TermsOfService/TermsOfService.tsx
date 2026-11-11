@@ -3,8 +3,7 @@ import LegalPage from '../../components/LegalPage/LegalPage';
 
 const TermsOfService = () => {
   useEffect(() => {
-    document.title =
-      'Terms of Service | VDV Construction';
+    document.title = 'Terms of Service | VDV Construction';
     const description =
       'Read the VDV Construction Terms of Service for information about website use, construction services, project requests, estimates, and customer reviews.';
     let metaDescription = document.querySelector(
@@ -16,15 +15,28 @@ const TermsOfService = () => {
       document.head.appendChild(metaDescription);
     }
     metaDescription.setAttribute('content', description);
+    let canonical = document.querySelector(
+      'link[rel="canonical"]',
+    );
+    if (!canonical) {
+      canonical = document.createElement('link');
+      canonical.setAttribute('rel', 'canonical');
+      document.head.appendChild(canonical);
+    }
+    canonical.setAttribute(
+      'href',
+      'https://vdvconstruction.com/terms-of-service',
+    );
     return () => {
       document.title =
         'VDV Construction | Quality Home Remodeling in Portland & Vancouver';
-      const metaDescription = document.querySelector(
-        'meta[name="description"]',
-      );
       metaDescription?.setAttribute(
         'content',
         'VDV Construction provides quality home remodeling in Portland, OR, and Vancouver, WA. Explore our tile installation, custom showers, decks, heated floors, porcelain slabs, and custom sauna services.',
+      );
+      canonical?.setAttribute(
+        'href',
+        'https://vdvconstruction.com/',
       );
     };
   }, []);
