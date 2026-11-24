@@ -67,14 +67,6 @@ const validateCommonFields = (
       'Please enter a valid email address.';
   }
 
-  if (!formData.message.trim()) {
-    errors.message =
-      'Please tell us about your project.';
-  } else if (formData.message.trim().length < 40) {
-    errors.message =
-      'Please provide more information about your project.';
-  }
-
   return errors;
 };
 
