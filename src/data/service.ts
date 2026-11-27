@@ -1,12 +1,12 @@
 
-import LuxuryTile from '../assets/images/luxuryTile.png';
-import Deck from '../assets/images/decks.png';
+import LuxuryTile from '../assets/images/gallery/bathroom/bathroom-21.webp';
+import Deck from '../assets/images/gallery/deck/deck-37.webp';
 import Heated from '../assets/images/heatedFloor.png';
-import LargeTile from '../assets/images/largeTile.png';
-import Sauna from '../assets/images/sauna.png';
-import BathroomRemodeling from '../assets/images/bathroomRemodeling.png';
+import LargeTile from '../assets/images/gallery/tile/tile-37.webp';
+import Sauna from '../assets/images/gallery/sauna/sauna-13.webp';
+import BathroomRemodeling from '../assets/images/gallery/bathroom/bathroom-24.webp';
 import Waterproof from '../assets/images/waterproof.png';
-import CommercialTile from '../assets/images/comercialTile.png';
+import CommercialTile from '../assets/images/gallery/tile/tile-01.webp';
 
 export interface Service {
   id: number;
